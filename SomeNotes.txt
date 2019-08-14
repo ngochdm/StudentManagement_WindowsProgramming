@@ -1,3 +1,4 @@
+//ButtonSize: 140, 165
 --- Entity ---
 THANHVIENTRUONG
 GIAOVU = THANHVIENTRUONG
