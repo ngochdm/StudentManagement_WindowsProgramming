@@ -1,0 +1,12 @@
+GiaoVu(MaGiaoVu,SoCMND,HoTen,MatKhau,NgaySinh,DiaChi,GioiTinh)
+       --------
+SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
+	 ----
+Lop(MaLop,TenLop)
+    -----
+MonHoc(MaMonHoc,TenMonHoc)
+       --------
+TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+    --------------------
+BangDiem(MSSV,MaLop,MaMonHoc,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong)
+	 -------------------------
