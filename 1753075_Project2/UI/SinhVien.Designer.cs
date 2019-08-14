@@ -63,6 +63,7 @@
             // btn_score
             // 
             this.btn_score.Image = ((System.Drawing.Image)(resources.GetObject("btn_score.Image")));
+            this.btn_score.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_score.Location = new System.Drawing.Point(274, 82);
             this.btn_score.Name = "btn_score";
             this.btn_score.Size = new System.Drawing.Size(140, 165);
@@ -138,6 +139,7 @@
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -179,6 +181,7 @@
             this.btn_logout.Text = "Log Out";
             this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // btn_viewDSLop
             // 

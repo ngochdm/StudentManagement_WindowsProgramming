@@ -1,4 +1,5 @@
 //ButtonSize: 140, 165
+//Image Size: 80x80pixels 
 --- Entity ---
 THANHVIENTRUONG
 GIAOVU = THANHVIENTRUONG

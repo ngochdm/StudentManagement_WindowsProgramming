@@ -61,6 +61,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_viewTKB = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,7 +155,7 @@
             this.btn_addScore.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_addScore.Location = new System.Drawing.Point(577, 70);
             this.btn_addScore.Name = "btn_addScore";
-            this.btn_addScore.Size = new System.Drawing.Size(140, 165);
+            this.btn_addScore.Size = new System.Drawing.Size(145, 165);
             this.btn_addScore.TabIndex = 7;
             this.btn_addScore.Text = "Thêm Bảng Điểm";
             this.btn_addScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -205,6 +206,7 @@
             this.bảngĐiểmToolStripMenuItem,
             this.danhSáchLớpToolStripMenuItem,
             this.thờiKhóaBiểuToolStripMenuItem,
+            this.logOutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
@@ -356,6 +358,14 @@
             this.btn_logout.Text = "Log Out";
             this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // GiaoVu
             // 
@@ -421,5 +431,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btn_viewTKB;
         private System.Windows.Forms.Button btn_logout;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }
