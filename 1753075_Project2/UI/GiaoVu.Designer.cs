@@ -52,14 +52,15 @@
             this.xemDanhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sửaDanhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemThờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmThờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sửaThờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xemThờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_viewTKB = new System.Windows.Forms.Button();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_viewTKB = new System.Windows.Forms.Button();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -212,19 +213,19 @@
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.viewProfileToolStripMenuItem.Text = "View profile";
             // 
             // thêmLớpToolStripMenuItem
             // 
             this.thêmLớpToolStripMenuItem.Name = "thêmLớpToolStripMenuItem";
-            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmLớpToolStripMenuItem.Text = "Thêm Lớp";
             // 
             // thêmSinhViênToolStripMenuItem
             // 
             this.thêmSinhViênToolStripMenuItem.Name = "thêmSinhViênToolStripMenuItem";
-            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmSinhViênToolStripMenuItem.Text = "Thêm Sinh Viên";
             // 
             // bảngĐiểmToolStripMenuItem
@@ -234,25 +235,25 @@
             this.thêmBảngĐiểmToolStripMenuItem,
             this.sửaĐiểmToolStripMenuItem});
             this.bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
-            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
             // 
             // xemBảngĐiểmToolStripMenuItem
             // 
             this.xemBảngĐiểmToolStripMenuItem.Name = "xemBảngĐiểmToolStripMenuItem";
-            this.xemBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.xemBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(231, 30);
             this.xemBảngĐiểmToolStripMenuItem.Text = "Xem bảng điểm";
             // 
             // thêmBảngĐiểmToolStripMenuItem
             // 
             this.thêmBảngĐiểmToolStripMenuItem.Name = "thêmBảngĐiểmToolStripMenuItem";
-            this.thêmBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(231, 30);
             this.thêmBảngĐiểmToolStripMenuItem.Text = "Thêm bảng điểm";
             // 
             // sửaĐiểmToolStripMenuItem
             // 
             this.sửaĐiểmToolStripMenuItem.Name = "sửaĐiểmToolStripMenuItem";
-            this.sửaĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.sửaĐiểmToolStripMenuItem.Size = new System.Drawing.Size(231, 30);
             this.sửaĐiểmToolStripMenuItem.Text = "Sửa điểm";
             // 
             // danhSáchLớpToolStripMenuItem
@@ -261,7 +262,7 @@
             this.xemDanhSáchLớpToolStripMenuItem,
             this.sửaDanhSáchLớpToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
             // 
             // xemDanhSáchLớpToolStripMenuItem
@@ -283,8 +284,14 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
+            // 
+            // xemThờiKhóaBiểuToolStripMenuItem
+            // 
+            this.xemThờiKhóaBiểuToolStripMenuItem.Name = "xemThờiKhóaBiểuToolStripMenuItem";
+            this.xemThờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
+            this.xemThờiKhóaBiểuToolStripMenuItem.Text = "Xem Thời Khóa Biểu";
             // 
             // thêmThờiKhóaBiểuToolStripMenuItem
             // 
@@ -298,23 +305,12 @@
             this.sửaThờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
             this.sửaThờiKhóaBiểuToolStripMenuItem.Text = "Sửa Thời Khóa Biểu";
             // 
-            // xemThờiKhóaBiểuToolStripMenuItem
+            // exitToolStripMenuItem
             // 
-            this.xemThờiKhóaBiểuToolStripMenuItem.Name = "xemThờiKhóaBiểuToolStripMenuItem";
-            this.xemThờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
-            this.xemThờiKhóaBiểuToolStripMenuItem.Text = "Xem Thời Khóa Biểu";
-            // 
-            // btn_viewTKB
-            // 
-            this.btn_viewTKB.Image = ((System.Drawing.Image)(resources.GetObject("btn_viewTKB.Image")));
-            this.btn_viewTKB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_viewTKB.Location = new System.Drawing.Point(42, 452);
-            this.btn_viewTKB.Name = "btn_viewTKB";
-            this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewTKB.TabIndex = 11;
-            this.btn_viewTKB.Text = "Xem TKB";
-            this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_viewTKB.UseVisualStyleBackColor = true;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -328,27 +324,45 @@
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(252, 30);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(146, 30);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(146, 30);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // exitToolStripMenuItem
+            // btn_viewTKB
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.btn_viewTKB.Image = ((System.Drawing.Image)(resources.GetObject("btn_viewTKB.Image")));
+            this.btn_viewTKB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_viewTKB.Location = new System.Drawing.Point(42, 452);
+            this.btn_viewTKB.Name = "btn_viewTKB";
+            this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
+            this.btn_viewTKB.TabIndex = 11;
+            this.btn_viewTKB.Text = "Xem TKB";
+            this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_viewTKB.UseVisualStyleBackColor = true;
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.Image = ((System.Drawing.Image)(resources.GetObject("btn_logout.Image")));
+            this.btn_logout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_logout.Location = new System.Drawing.Point(577, 452);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(140, 165);
+            this.btn_logout.TabIndex = 12;
+            this.btn_logout.Text = "Log Out";
+            this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_logout.UseVisualStyleBackColor = true;
             // 
             // GiaoVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 641);
+            this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.btn_viewTKB);
             this.Controls.Add(this.btn_viewScore);
             this.Controls.Add(this.btn_changeScore);
@@ -406,5 +420,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btn_viewTKB;
+        private System.Windows.Forms.Button btn_logout;
     }
 }

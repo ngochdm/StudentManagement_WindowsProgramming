@@ -12,17 +12,17 @@ namespace DTO
             public string MaTV { get; set; }
             public string SoCMND { get; set; }
             public string HoTen { get; set; }
-            public string MatKhau { get; set; }
+            //public string MatKhau { get; set; }
             public string NgaySinh { get; set; }
             public string DiaChi { get; set; }
             public string GioiTinh { get; set; }
             public ThanhVienTruong() { }
-            public ThanhVienTruong(string tvid, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
+            public ThanhVienTruong(string tvid, string cmnd, string hoten, string ngsinh, string dchi, string gt)
             {
                 MaTV = tvid;
                 SoCMND = cmnd;
                 HoTen = hoten;
-                MatKhau = pwd;
+                //MatKhau = pwd;
                 NgaySinh = ngsinh;
                 DiaChi = dchi;
                 GioiTinh = gt;
@@ -55,7 +55,7 @@ namespace DTO
                  GioiTinh = gt;
              }*/
 
-            public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt): base(gv_id, cmnd, hoten, pwd, ngsinh, dchi, gt) { }
+            public GiaoVu(string gv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt): base(gv_id, cmnd, hoten, ngsinh, dchi, gt) { }
         }
 
         public class SinhVien:ThanhVienTruong
@@ -85,7 +85,7 @@ namespace DTO
                 DiaChi = dchi;
                 GioiTinh = gt;
             }*/
-            public SinhVien(string sv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt, string classId) : base(sv_id, cmnd, hoten, pwd, ngsinh, dchi, gt)
+            public SinhVien(string sv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt, string classId) : base(sv_id, cmnd, hoten, ngsinh, dchi, gt)
             {
                 MaLop = classId;
             }

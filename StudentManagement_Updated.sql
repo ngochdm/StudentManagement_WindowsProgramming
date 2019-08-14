@@ -14,7 +14,7 @@ create table GiaoVu (
 	MatKhau char(255) not null,
 	NgaySinh Date not null,
 	DiaChi nvarchar(255) not null,
-	GioiTinh varchar(1) not null,
+	GioiTinh nchar(3) not null,
 	primary key (MaGiaoVu)
 )
 
@@ -26,7 +26,7 @@ create table SinhVien (
 	MaLop char(10),
 	NgaySinh Date,
 	DiaChi nvarchar(255),
-	GioiTinh varchar(1) not null,
+	GioiTinh nchar(3) not null,
 	primary key (MSSV)
 )
 
@@ -91,3 +91,13 @@ INSERT INTO MONHOC VALUES
     ('CTT001',N'Những nguyên lí cơ bản của chủ nghĩa Mác-Lênin'),
     ('CTT006',N'Phương pháp lập trình hướng đối tượng')
 
+
+SELECT COUNT(MAGIAOVU)
+FROM GIAOVU 
+WHERE MAGIAOVU='giaovu1'
+
+SELECT COUNT(MAGIAOVU)
+FROM GIAOVU
+WHERE MAGIAOVU='giaovu' AND MATKHAU='giaovu'
+
+SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '1753075' AND MATKHAU = '123'

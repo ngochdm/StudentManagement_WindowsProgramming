@@ -63,7 +63,7 @@
             this.tb_username.Location = new System.Drawing.Point(202, 135);
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(368, 35);
-            this.tb_username.TabIndex = 2;
+            this.tb_username.TabIndex = 0;
             // 
             // tb_password
             // 
@@ -72,16 +72,17 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(368, 35);
-            this.tb_password.TabIndex = 2;
+            this.tb_password.TabIndex = 1;
             // 
             // btn_login
             // 
             this.btn_login.Location = new System.Drawing.Point(514, 266);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(86, 40);
-            this.btn_login.TabIndex = 3;
+            this.btn_login.TabIndex = 2;
             this.btn_login.Text = "LOGIN";
             this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // lb_stdmanagement
             // 
