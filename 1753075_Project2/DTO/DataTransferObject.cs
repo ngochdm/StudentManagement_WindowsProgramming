@@ -7,7 +7,7 @@ namespace DTO
 {
     public class DataTransferObject
     {
-        /*public class ThanhVienTruong
+        public class ThanhVienTruong
         {
             public string MaTV { get; set; }
             public string SoCMND { get; set; }
@@ -28,12 +28,12 @@ namespace DTO
                 GioiTinh = gt;
             }
 
-        }*/
+        }
 
-        public class GiaoVu 
+        public class GiaoVu : ThanhVienTruong
         {
             //GiaoVu(-MaGiaoVu-,SoCMND,HoTen,MatKhau,NgaySinh,DiaChi,GioiTinh)
-            #region KhaiBaoBien
+            /*#region KhaiBaoBien
             public string MaGV { get; set; }
             public string SoCMND { get; set; }
             public string HoTen { get; set; }
@@ -41,26 +41,27 @@ namespace DTO
             public string NgaySinh { get; set; }
             public string DiaChi { get; set; }
             public string GioiTinh { get; set; }
-            #endregion
+            #endregion*/
 
             public GiaoVu() { }
-            public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
-            {
-                MaGV = gv_id;
-                SoCMND = cmnd;
-                HoTen = hoten;
-                MatKhau = pwd;
-                NgaySinh = ngsinh;
-                DiaChi = dchi;
-                GioiTinh = gt;
-            }
-            //public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt): ThanhVienTruong(gv_id, cmnd, hoten, pwd, ngsinh, dchi, gt) { };
+            /* public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
+             {
+                 MaGV = gv_id;
+                 SoCMND = cmnd;
+                 HoTen = hoten;
+                 MatKhau = pwd;
+                 NgaySinh = ngsinh;
+                 DiaChi = dchi;
+                 GioiTinh = gt;
+             }*/
+
+            public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt): base(gv_id, cmnd, hoten, pwd, ngsinh, dchi, gt) { }
         }
 
-        public class SinhVien
+        public class SinhVien:ThanhVienTruong
         {
             //SinhVien(-MSSV-,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
-            #region KhaiBaoBien
+            /*#region KhaiBaoBien
             public string MaSV { get; set; }
             public string SoCMND { get; set; }
             public string HoTen { get; set; }
@@ -69,10 +70,12 @@ namespace DTO
             public string DiaChi { get; set; }
             public string GioiTinh { get; set; }
             public string MaLop { get; set; }
-            #endregion
+            #endregion*/
+
+            public string MaLop { get; set; }
 
             public SinhVien() { }
-            public SinhVien(string sv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
+            /*public SinhVien(string sv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
             {
                 MaSV = sv_id;
                 SoCMND = cmnd;
@@ -81,8 +84,11 @@ namespace DTO
                 NgaySinh = ngsinh;
                 DiaChi = dchi;
                 GioiTinh = gt;
+            }*/
+            public SinhVien(string sv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt, string classId) : base(sv_id, cmnd, hoten, pwd, ngsinh, dchi, gt)
+            {
+                MaLop = classId;
             }
-
         }
 
         public class ThoiKhoaBieu

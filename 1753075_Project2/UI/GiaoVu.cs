@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class LoginApp : Form
+    public partial class GiaoVu : Form
     {
-        public LoginApp()
+        public GiaoVu()
         {
             InitializeComponent();
         }

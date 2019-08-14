@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class LoginApp : Form
+    public partial class SinhVien : Form
     {
-        public LoginApp()
+        public SinhVien()
         {
             InitializeComponent();
         }
