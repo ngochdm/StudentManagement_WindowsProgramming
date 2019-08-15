@@ -33,7 +33,7 @@ namespace UI
                 else if (check == 1)
                 {
                     this.Hide();
-                    var giaovu = new GiaoVu();
+                    var giaovu = new GiaoVu(username);
                     giaovu.ShowDialog();
                     this.Close();
                 }

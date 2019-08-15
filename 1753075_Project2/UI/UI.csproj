@@ -35,6 +35,10 @@
     <Reference Include="BLL">
       <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
     </Reference>
+    <Reference Include="DTO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,6 +71,12 @@
     <Compile Include="SinhVien.Designer.cs">
       <DependentUpon>SinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewProfileForGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProfileForGV.Designer.cs">
+      <DependentUpon>ViewProfileForGV.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GiaoVu.resx">
       <DependentUpon>GiaoVu.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="SinhVien.resx">
       <DependentUpon>SinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProfileForGV.resx">
+      <DependentUpon>ViewProfileForGV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
