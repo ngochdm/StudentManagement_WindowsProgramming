@@ -89,9 +89,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(25, 191);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 60);
+            this.label1.Size = new System.Drawing.Size(172, 60);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Ghi chú:\r\nMã lớp tối đa 10 kí tự.\r\nTên lớp tối đa 30 kí tự.";
+            this.label1.Text = "Ghi chú:\r\n- Mã lớp tối đa 10 kí tự.\r\n- Tên lớp tối đa 30 kí tự.";
             // 
             // AddAClass
             // 

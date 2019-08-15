@@ -120,13 +120,64 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = "INSERT INTO LOPHOC VALUES (?, ?)"
+                //
+                CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{lop.MaLop}'"
             };
-            cmd.Parameters.AddWithValue("?", lop.MaLop);
-            cmd.Parameters.AddWithValue("?", lop.TenLop);
-            var rd = cmd.ExecuteNonQuery();
+            var rd = cmd.ExecuteScalar();
+            if (rd.ToString() == "0")
+            {
+                cmd.CommandText = "INSERT INTO LOPHOC VALUES (?, ?)";
+                cmd.Parameters.AddWithValue("?", lop.MaLop);
+                cmd.Parameters.AddWithValue("?", lop.TenLop);
+                rd = cmd.ExecuteNonQuery();
+                return rd.ToString() == "1";
+            }
+            else
+                return false;
             cnn.Close();
-            return rd == 1;
+        }
+        public bool insertAStudent(SinhVien sv)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = $"SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = '{sv.MaTV}'"
+            };
+            var rd = cmd.ExecuteScalar();
+            if (rd.ToString() == "1")
+            {
+                return false;
+            }
+            else
+            {
+                cmd.CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{sv.MaLop}'";
+                rd = cmd.ExecuteScalar();
+                if (rd.ToString() == "0") return false;
+                else
+                {
+                    //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
+                    cmd.CommandText = "INSERT INTO SINHVIEN VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    cmd.Parameters.AddWithValue("?", sv.MaTV);
+                    cmd.Parameters.AddWithValue("?", sv.SoCMND);
+                    cmd.Parameters.AddWithValue("?", sv.HoTen);
+                    cmd.Parameters.AddWithValue("?", sv.MatKhau);
+                    cmd.Parameters.AddWithValue("?", sv.MaLop);
+                    //cmd.Parameters.AddWithValue("?", sv.NgaySinh);
+                    var ngsinh = sv.NgaySinh.Split('/');
+                    DateTime dob = new DateTime(int.Parse(ngsinh[2]), int.Parse(ngsinh[1]), int.Parse(ngsinh[0]));
+                    cmd.Parameters.AddWithValue("?", dob);
+                    cmd.Parameters.AddWithValue("?", sv.DiaChi);
+                    cmd.Parameters.AddWithValue("?", sv.GioiTinh);
+                    rd = cmd.ExecuteNonQuery();
+                    return rd.ToString() == "1";
+                }
+            }
+            cnn.Close();
         }
     }
 }

@@ -10,14 +10,14 @@ using BLL;
 
 namespace UI
 {
-    public partial class SinhVien : Form
+    public partial class SVStudent : Form
     {
         static public string MSSV;
-        public SinhVien()
+        public SVStudent()
         {
             InitializeComponent();
         }
-        public SinhVien(string mssv)
+        public SVStudent(string mssv)
         {
             MSSV = mssv;
             InitializeComponent();

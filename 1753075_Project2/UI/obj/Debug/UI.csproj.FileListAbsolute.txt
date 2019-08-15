@@ -11,7 +11,6 @@ D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\175307
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.csproj.CopyComplete
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.LoginApp.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.GiaoVu.resources
-D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.SinhVien.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\bin\Debug\DAL.dll
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\bin\Debug\DAL.pdb
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\bin\Debug\DTO.dll
@@ -19,3 +18,5 @@ D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\175307
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.ViewProfileForGV.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.ViewProfileForStudent.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.AddAClass.resources
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.AddAStudent.resources
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.SVStudent.resources

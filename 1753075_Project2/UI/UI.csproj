@@ -57,6 +57,12 @@
     <Compile Include="AddAClass.Designer.cs">
       <DependentUpon>AddAClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddAStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAStudent.Designer.cs">
+      <DependentUpon>AddAStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,11 +77,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SinhVien.cs">
+    <Compile Include="SVStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SinhVien.Designer.cs">
-      <DependentUpon>SinhVien.cs</DependentUpon>
+    <Compile Include="SVStudent.Designer.cs">
+      <DependentUpon>SVStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewProfileForGV.cs">
       <SubType>Form</SubType>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="AddAClass.resx">
       <DependentUpon>AddAClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddAStudent.resx">
+      <DependentUpon>AddAStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu.resx">
       <DependentUpon>GiaoVu.cs</DependentUpon>
@@ -108,8 +117,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SinhVien.resx">
-      <DependentUpon>SinhVien.cs</DependentUpon>
+    <EmbeddedResource Include="SVStudent.resx">
+      <DependentUpon>SVStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProfileForGV.resx">
       <DependentUpon>ViewProfileForGV.cs</DependentUpon>

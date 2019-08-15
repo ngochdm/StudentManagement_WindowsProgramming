@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProfileForStudent));
             this.tb_GTsv = new System.Windows.Forms.TextBox();
             this.tb_Dchisv = new System.Windows.Forms.TextBox();
             this.tb_ngsinhsv = new System.Windows.Forms.TextBox();
             this.tb_cmndsv = new System.Windows.Forms.TextBox();
             this.tb_hotensv = new System.Windows.Forms.TextBox();
             this.tb_Mssv = new System.Windows.Forms.TextBox();
-            this.btn_changePwdGv = new System.Windows.Forms.Button();
-            this.btn_editGv = new System.Windows.Forms.Button();
+            this.btn_changePwdsv = new System.Windows.Forms.Button();
+            this.btn_editsv = new System.Windows.Forms.Button();
             this.lb_hotensv = new System.Windows.Forms.Label();
             this.lb_gtsv = new System.Windows.Forms.Label();
             this.lb_ngsinhsv = new System.Windows.Forms.Label();
@@ -96,25 +97,25 @@
             this.tb_Mssv.Size = new System.Drawing.Size(489, 30);
             this.tb_Mssv.TabIndex = 3;
             // 
-            // btn_changePwdGv
+            // btn_changePwdsv
             // 
-            this.btn_changePwdGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_changePwdGv.Location = new System.Drawing.Point(99, 348);
-            this.btn_changePwdGv.Name = "btn_changePwdGv";
-            this.btn_changePwdGv.Size = new System.Drawing.Size(209, 48);
-            this.btn_changePwdGv.TabIndex = 10;
-            this.btn_changePwdGv.Text = "Change password";
-            this.btn_changePwdGv.UseVisualStyleBackColor = true;
+            this.btn_changePwdsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btn_changePwdsv.Location = new System.Drawing.Point(99, 348);
+            this.btn_changePwdsv.Name = "btn_changePwdsv";
+            this.btn_changePwdsv.Size = new System.Drawing.Size(209, 48);
+            this.btn_changePwdsv.TabIndex = 10;
+            this.btn_changePwdsv.Text = "Change password";
+            this.btn_changePwdsv.UseVisualStyleBackColor = true;
             // 
-            // btn_editGv
+            // btn_editsv
             // 
-            this.btn_editGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_editGv.Location = new System.Drawing.Point(592, 339);
-            this.btn_editGv.Name = "btn_editGv";
-            this.btn_editGv.Size = new System.Drawing.Size(114, 57);
-            this.btn_editGv.TabIndex = 11;
-            this.btn_editGv.Text = "EDIT";
-            this.btn_editGv.UseVisualStyleBackColor = true;
+            this.btn_editsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_editsv.Location = new System.Drawing.Point(592, 339);
+            this.btn_editsv.Name = "btn_editsv";
+            this.btn_editsv.Size = new System.Drawing.Size(114, 57);
+            this.btn_editsv.TabIndex = 11;
+            this.btn_editsv.Text = "EDIT";
+            this.btn_editsv.UseVisualStyleBackColor = true;
             // 
             // lb_hotensv
             // 
@@ -206,8 +207,8 @@
             this.Controls.Add(this.tb_cmndsv);
             this.Controls.Add(this.tb_hotensv);
             this.Controls.Add(this.tb_Mssv);
-            this.Controls.Add(this.btn_changePwdGv);
-            this.Controls.Add(this.btn_editGv);
+            this.Controls.Add(this.btn_changePwdsv);
+            this.Controls.Add(this.btn_editsv);
             this.Controls.Add(this.lb_hotensv);
             this.Controls.Add(this.lb_LopSv);
             this.Controls.Add(this.lb_gtsv);
@@ -215,8 +216,9 @@
             this.Controls.Add(this.lb_dchisv);
             this.Controls.Add(this.lb_SoCMNDsv);
             this.Controls.Add(this.lb_Masv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewProfileForStudent";
-            this.Text = "ViewProfileForStudent";
+            this.Text = "View profile";
             this.Load += new System.EventHandler(this.ViewProfileForStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -231,8 +233,8 @@
         private System.Windows.Forms.TextBox tb_cmndsv;
         private System.Windows.Forms.TextBox tb_hotensv;
         private System.Windows.Forms.TextBox tb_Mssv;
-        private System.Windows.Forms.Button btn_changePwdGv;
-        private System.Windows.Forms.Button btn_editGv;
+        private System.Windows.Forms.Button btn_changePwdsv;
+        private System.Windows.Forms.Button btn_editsv;
         private System.Windows.Forms.Label lb_hotensv;
         private System.Windows.Forms.Label lb_gtsv;
         private System.Windows.Forms.Label lb_ngsinhsv;

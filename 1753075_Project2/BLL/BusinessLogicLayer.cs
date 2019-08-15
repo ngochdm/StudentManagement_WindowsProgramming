@@ -32,5 +32,9 @@ namespace BLL
         {
             return new DAL.DataAccessLayer().importClass(lop);
         }
+        public bool insertAStudent(SinhVien sv)
+        {
+            return new DAL.DataAccessLayer().insertAStudent(sv);
+        }
     }
 }

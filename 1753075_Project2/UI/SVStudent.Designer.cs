@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class SinhVien
+    partial class SVStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinhVien));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SVStudent));
             this.btn_profile = new System.Windows.Forms.Button();
             this.btn_score = new System.Windows.Forms.Button();
             this.btn_timetable = new System.Windows.Forms.Button();

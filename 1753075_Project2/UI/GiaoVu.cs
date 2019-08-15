@@ -30,6 +30,65 @@ namespace UI
             this.Close();
         }
 
+        #region Thêm Lớp
+        private void AddingAClass()
+        {
+            AddAClass ac = new AddAClass();
+            ac.ShowDialog();
+            LopHoc lop = ac.getInfoNewClass();
+            if (lop.MaLop != string.Empty && lop.TenLop != string.Empty)
+            {
+                bool check = new BLL.BusinessLogicLayer().importClass(lop);
+                if (check == true)
+                {
+                    MessageBox.Show("Import successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Import UNsucessfully!");
+                }
+            }
+        }
+        private void btn_addClass_Click(object sender, EventArgs e)
+        {
+            AddingAClass();
+        }
+        private void thêmLớpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddingAClass();
+        }
+        #endregion
+
+        #region Thêm Sinh Viên
+        private void AddingAStudent()
+        {
+            AddAStudent aas = new AddAStudent();
+            var drl = aas.ShowDialog();
+            if (drl == DialogResult.OK)
+            {
+                var sv = aas.getInfoNewStd();
+                bool check = new BLL.BusinessLogicLayer().insertAStudent(sv);
+                if (check == true)
+                {
+                    MessageBox.Show("Insert successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Insert UNsucessfully!");
+                }
+            }
+        }
+        private void btn_addStd_Click(object sender, EventArgs e)
+        {
+            AddingAStudent();
+        }
+        private void thêmSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddingAStudent();
+        }
+        #endregion
+
+
         #region LogOut
         private void LogOut()
         {
@@ -84,23 +143,5 @@ namespace UI
             vp.ShowDialog();
         }
 
-        private void btn_addClass_Click(object sender, EventArgs e)
-        {
-            AddAClass ac = new AddAClass();
-            ac.ShowDialog();
-            LopHoc lop = ac.getInfoNewClass();
-            if (lop.MaLop != string.Empty && lop.TenLop != string.Empty) 
-            {
-                bool check = new BLL.BusinessLogicLayer().importClass(lop);
-                if(check==true)
-                {
-                    MessageBox.Show("Import successfully!");
-                }
-                else
-                {
-                    MessageBox.Show("Import UNsucessfully!");
-                }
-            }
-        }
     }
 }

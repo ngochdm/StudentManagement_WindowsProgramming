@@ -98,7 +98,7 @@
             this.btn_addTimeTable.Location = new System.Drawing.Point(221, 452);
             this.btn_addTimeTable.Name = "btn_addTimeTable";
             this.btn_addTimeTable.Size = new System.Drawing.Size(140, 165);
-            this.btn_addTimeTable.TabIndex = 2;
+            this.btn_addTimeTable.TabIndex = 9;
             this.btn_addTimeTable.Text = "Thêm TKB";
             this.btn_addTimeTable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addTimeTable.UseVisualStyleBackColor = true;
@@ -110,10 +110,11 @@
             this.btn_addStd.Location = new System.Drawing.Point(399, 70);
             this.btn_addStd.Name = "btn_addStd";
             this.btn_addStd.Size = new System.Drawing.Size(140, 165);
-            this.btn_addStd.TabIndex = 3;
+            this.btn_addStd.TabIndex = 2;
             this.btn_addStd.Text = "Thêm Sinh Viên";
             this.btn_addStd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addStd.UseVisualStyleBackColor = true;
+            this.btn_addStd.Click += new System.EventHandler(this.btn_addStd_Click);
             // 
             // btn_dslop
             // 
@@ -134,7 +135,7 @@
             this.btn_changeTT.Location = new System.Drawing.Point(399, 452);
             this.btn_changeTT.Name = "btn_changeTT";
             this.btn_changeTT.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeTT.TabIndex = 5;
+            this.btn_changeTT.TabIndex = 10;
             this.btn_changeTT.Text = "Sửa TKB";
             this.btn_changeTT.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeTT.UseVisualStyleBackColor = true;
@@ -146,7 +147,7 @@
             this.btn_changeDSLop.Location = new System.Drawing.Point(221, 259);
             this.btn_changeDSLop.Name = "btn_changeDSLop";
             this.btn_changeDSLop.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeDSLop.TabIndex = 6;
+            this.btn_changeDSLop.TabIndex = 5;
             this.btn_changeDSLop.Text = "Sửa DS Lớp";
             this.btn_changeDSLop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeDSLop.UseVisualStyleBackColor = true;
@@ -158,7 +159,7 @@
             this.btn_addScore.Location = new System.Drawing.Point(577, 70);
             this.btn_addScore.Name = "btn_addScore";
             this.btn_addScore.Size = new System.Drawing.Size(145, 165);
-            this.btn_addScore.TabIndex = 7;
+            this.btn_addScore.TabIndex = 3;
             this.btn_addScore.Text = "Thêm Bảng Điểm";
             this.btn_addScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addScore.UseVisualStyleBackColor = true;
@@ -170,7 +171,7 @@
             this.btn_changeScore.Location = new System.Drawing.Point(399, 259);
             this.btn_changeScore.Name = "btn_changeScore";
             this.btn_changeScore.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeScore.TabIndex = 8;
+            this.btn_changeScore.TabIndex = 6;
             this.btn_changeScore.Text = "Sửa Điểm";
             this.btn_changeScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeScore.UseVisualStyleBackColor = true;
@@ -182,7 +183,7 @@
             this.btn_viewScore.Location = new System.Drawing.Point(577, 259);
             this.btn_viewScore.Name = "btn_viewScore";
             this.btn_viewScore.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewScore.TabIndex = 9;
+            this.btn_viewScore.TabIndex = 7;
             this.btn_viewScore.Text = "Xem Bảng Điểm";
             this.btn_viewScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewScore.UseVisualStyleBackColor = true;
@@ -217,20 +218,22 @@
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.viewProfileToolStripMenuItem.Text = "View profile";
             // 
             // thêmLớpToolStripMenuItem
             // 
             this.thêmLớpToolStripMenuItem.Name = "thêmLớpToolStripMenuItem";
-            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thêmLớpToolStripMenuItem.Text = "Thêm Lớp";
+            this.thêmLớpToolStripMenuItem.Click += new System.EventHandler(this.thêmLớpToolStripMenuItem_Click);
             // 
             // thêmSinhViênToolStripMenuItem
             // 
             this.thêmSinhViênToolStripMenuItem.Name = "thêmSinhViênToolStripMenuItem";
-            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thêmSinhViênToolStripMenuItem.Text = "Thêm Sinh Viên";
+            this.thêmSinhViênToolStripMenuItem.Click += new System.EventHandler(this.thêmSinhViênToolStripMenuItem_Click);
             // 
             // bảngĐiểmToolStripMenuItem
             // 
@@ -239,7 +242,7 @@
             this.thêmBảngĐiểmToolStripMenuItem,
             this.sửaĐiểmToolStripMenuItem});
             this.bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
-            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
             // 
             // xemBảngĐiểmToolStripMenuItem
@@ -266,7 +269,7 @@
             this.xemDanhSáchLớpToolStripMenuItem,
             this.sửaDanhSáchLớpToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
             // 
             // xemDanhSáchLớpToolStripMenuItem
@@ -288,7 +291,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
             // 
             // xemThờiKhóaBiểuToolStripMenuItem
@@ -312,14 +315,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -353,7 +356,7 @@
             this.btn_viewTKB.Location = new System.Drawing.Point(42, 452);
             this.btn_viewTKB.Name = "btn_viewTKB";
             this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewTKB.TabIndex = 11;
+            this.btn_viewTKB.TabIndex = 8;
             this.btn_viewTKB.Text = "Xem TKB";
             this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewTKB.UseVisualStyleBackColor = true;
@@ -365,7 +368,7 @@
             this.btn_logout.Location = new System.Drawing.Point(577, 452);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(140, 165);
-            this.btn_logout.TabIndex = 12;
+            this.btn_logout.TabIndex = 11;
             this.btn_logout.Text = "Log Out";
             this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_logout.UseVisualStyleBackColor = true;

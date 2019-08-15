@@ -37,7 +37,7 @@ namespace UI
 
         public LopHoc getInfoNewClass()
         {
-            LopHoc lop = new LopHoc(malop, tenlop);
+            LopHoc lop = new LopHoc(tb_Malop.Text, tb_Tenlop.Text);
             return lop;
         }
     }
