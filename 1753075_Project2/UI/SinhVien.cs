@@ -12,8 +12,14 @@ namespace UI
 {
     public partial class SinhVien : Form
     {
+        static public string MSSV;
         public SinhVien()
         {
+            InitializeComponent();
+        }
+        public SinhVien(string mssv)
+        {
+            MSSV = mssv;
             InitializeComponent();
         }
 
@@ -56,5 +62,11 @@ namespace UI
                 "5. Log Out: log out your account and login again if you want.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         #endregion
+
+        private void btn_profile_Click(object sender, EventArgs e)
+        {
+            ViewProfileForStudent vp = new ViewProfileForStudent(MSSV);
+            vp.ShowDialog();
+        }
     }
 }

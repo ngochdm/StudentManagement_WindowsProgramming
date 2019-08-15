@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using static DTO.DataTransferObject;
 
 namespace UI
 {
@@ -81,6 +82,25 @@ namespace UI
         {
             ViewProfileForGV vp = new ViewProfileForGV(MaGV);
             vp.ShowDialog();
+        }
+
+        private void btn_addClass_Click(object sender, EventArgs e)
+        {
+            AddAClass ac = new AddAClass();
+            ac.ShowDialog();
+            LopHoc lop = ac.getInfoNewClass();
+            if (lop.MaLop != string.Empty && lop.TenLop != string.Empty) 
+            {
+                bool check = new BLL.BusinessLogicLayer().importClass(lop);
+                if(check==true)
+                {
+                    MessageBox.Show("Import successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Import UNsucessfully!");
+                }
+            }
         }
     }
 }

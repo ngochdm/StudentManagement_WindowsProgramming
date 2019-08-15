@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAClass.Designer.cs">
+      <DependentUpon>AddAClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,15 @@
     <Compile Include="ViewProfileForGV.Designer.cs">
       <DependentUpon>ViewProfileForGV.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewProfileForStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProfileForStudent.Designer.cs">
+      <DependentUpon>ViewProfileForStudent.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddAClass.resx">
+      <DependentUpon>AddAClass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu.resx">
       <DependentUpon>GiaoVu.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProfileForGV.resx">
       <DependentUpon>ViewProfileForGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProfileForStudent.resx">
+      <DependentUpon>ViewProfileForStudent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

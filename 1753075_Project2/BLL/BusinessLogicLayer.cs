@@ -28,5 +28,9 @@ namespace BLL
             gv = new DAL.DataAccessLayer().getInfoOneGiaoVu(magv);
             return gv;
         }
+        public bool importClass(LopHoc lop)
+        {
+            return new DAL.DataAccessLayer().importClass(lop);
+        }
     }
 }

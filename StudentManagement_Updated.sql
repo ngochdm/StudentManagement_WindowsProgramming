@@ -11,7 +11,7 @@ create table GiaoVu (
     MaGiaoVu char(10) not null,
 	SoCMND char(11) not null,
 	HoTen nvarchar(100) not null,
-	MatKhau char(255) not null,
+	MatKhau varchar(255) not null,
 	NgaySinh Date not null,
 	DiaChi nvarchar(255) not null,
 	GioiTinh nchar(3) not null,
@@ -22,7 +22,7 @@ create table SinhVien (
 	MSSV char(10) not null,
 	SoCMND char(11) not null,
 	HoTen nchar(100) not null,
-	MatKhau char(255) not null,
+	MatKhau varchar(255) not null,
 	MaLop char(10),
 	NgaySinh Date,
 	DiaChi nvarchar(255),
@@ -104,3 +104,9 @@ SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '1753075' AND MATKHAU = '123'
 
 
 SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM GIAOVU WHERE MAGIAOVU = 'giaovu'
+
+SELECT COUNT(*)
+FROM SINHVIEN
+WHERE MSSV='1753075' AND MATKHAU='01011999'
+
+INSERT INTO LOPHOC VALUES ('17CLC2','17CLC2')

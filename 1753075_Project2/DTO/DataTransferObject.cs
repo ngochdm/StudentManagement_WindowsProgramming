@@ -12,7 +12,7 @@ namespace DTO
             public string MaTV { get; set; }
             public string SoCMND { get; set; }
             public string HoTen { get; set; }
-            //public string MatKhau { get; set; }
+            public string MatKhau { get; set; }
             public string NgaySinh { get; set; }
             public string DiaChi { get; set; }
             public string GioiTinh { get; set; }
@@ -44,18 +44,18 @@ namespace DTO
             #endregion*/
 
             public GiaoVu() { }
-            /* public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
-             {
-                 MaGV = gv_id;
-                 SoCMND = cmnd;
-                 HoTen = hoten;
-                 MatKhau = pwd;
-                 NgaySinh = ngsinh;
-                 DiaChi = dchi;
-                 GioiTinh = gt;
-             }*/
+             public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt) : base(gv_id, cmnd, hoten, ngsinh, dchi, gt)
+            {
+                MatKhau = pwd;
+                /*MaGV = gv_id;
+                SoCMND = cmnd;
+                HoTen = hoten;
+                NgaySinh = ngsinh;
+                DiaChi = dchi;
+                GioiTinh = gt;*/
+            }
 
-            public GiaoVu(string gv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt): base(gv_id, cmnd, hoten, ngsinh, dchi, gt) { }
+            public GiaoVu(string gv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt) : base(gv_id, cmnd, hoten, ngsinh, dchi, gt) { }
         }
 
         public class SinhVien:ThanhVienTruong
@@ -88,6 +88,11 @@ namespace DTO
             public SinhVien(string sv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt, string classId) : base(sv_id, cmnd, hoten, ngsinh, dchi, gt)
             {
                 MaLop = classId;
+                var nsinh = ngsinh.Split('/');
+                var day = int.Parse(nsinh[0]).ToString("00");
+                var month = int.Parse(nsinh[1]).ToString("00");
+                var year = nsinh[2];
+                MatKhau = $"{day}{month}{year}";
             }
         }
 
@@ -145,6 +150,19 @@ namespace DTO
                 DiemCK = ck;
                 DiemKhac = khac;
                 DiemTong = tong;
+            }
+        }
+
+        public class LopHoc
+        {
+            public string MaLop { get; set; }
+            public string TenLop { get; set; }
+
+            public LopHoc() { }
+            public LopHoc(string malop, string tenlop)
+            {
+                MaLop = malop;
+                TenLop = tenlop;
             }
         }
     }

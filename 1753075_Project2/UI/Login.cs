@@ -40,7 +40,7 @@ namespace UI
                 else
                 {
                     this.Hide();
-                    var sv = new SinhVien();
+                    var sv = new SinhVien(username);
                     sv.ShowDialog();
                     this.Close();
                 }

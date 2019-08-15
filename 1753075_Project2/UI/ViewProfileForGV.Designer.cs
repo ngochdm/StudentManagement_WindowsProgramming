@@ -120,9 +120,9 @@
             this.btn_changePwdGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btn_changePwdGv.Location = new System.Drawing.Point(57, 349);
             this.btn_changePwdGv.Name = "btn_changePwdGv";
-            this.btn_changePwdGv.Size = new System.Drawing.Size(251, 35);
+            this.btn_changePwdGv.Size = new System.Drawing.Size(223, 48);
             this.btn_changePwdGv.TabIndex = 1;
-            this.btn_changePwdGv.Text = "CHANGE PASSWORD";
+            this.btn_changePwdGv.Text = "Change password";
             this.btn_changePwdGv.UseVisualStyleBackColor = true;
             // 
             // tb_MaGV
