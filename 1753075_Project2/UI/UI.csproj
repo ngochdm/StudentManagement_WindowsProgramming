@@ -83,6 +83,12 @@
     <Compile Include="SVStudent.Designer.cs">
       <DependentUpon>SVStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewListStdsOfClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewListStdsOfClass.Designer.cs">
+      <DependentUpon>ViewListStdsOfClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewProfileForGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="SVStudent.resx">
       <DependentUpon>SVStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewListStdsOfClass.resx">
+      <DependentUpon>ViewListStdsOfClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProfileForGV.resx">
       <DependentUpon>ViewProfileForGV.cs</DependentUpon>

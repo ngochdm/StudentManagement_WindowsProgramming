@@ -336,6 +336,7 @@
             this.Controls.Add(this.lb_Note);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddAStudent";
             this.Text = "Adding One Student";
             this.Load += new System.EventHandler(this.AddAStudent_Load);

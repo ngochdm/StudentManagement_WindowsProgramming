@@ -143,5 +143,19 @@ namespace UI
             vp.ShowDialog();
         }
 
+        private void btn_AddingMembersOfClass_Click(object sender, EventArgs e)
+        {
+            var openFile = openCSVFile.ShowDialog();
+            string path = "";
+            if (openFile == DialogResult.OK)
+                path = openCSVFile.FileName;
+            var bll = new BLL.BusinessLogicLayer();
+            var students = bll.readListStdFromCsvFile(path);
+            var check = bll.addListMemsInClass(students);
+            if (check == true)
+                MessageBox.Show("Import successfully");
+            else
+                MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
+        }
     }
 }

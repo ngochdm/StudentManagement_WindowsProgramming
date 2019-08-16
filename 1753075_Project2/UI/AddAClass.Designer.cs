@@ -105,6 +105,8 @@
             this.Controls.Add(this.lb_malop);
             this.Controls.Add(this.btn_Add);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddAClass";
             this.Text = "AddAClass";
             this.ResumeLayout(false);

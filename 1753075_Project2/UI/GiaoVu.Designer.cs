@@ -62,6 +62,8 @@
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_viewTKB = new System.Windows.Forms.Button();
             this.btn_logout = new System.Windows.Forms.Button();
+            this.btn_AddingMembersOfClass = new System.Windows.Forms.Button();
+            this.openCSVFile = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             this.btn_addTimeTable.Location = new System.Drawing.Point(221, 452);
             this.btn_addTimeTable.Name = "btn_addTimeTable";
             this.btn_addTimeTable.Size = new System.Drawing.Size(140, 165);
-            this.btn_addTimeTable.TabIndex = 9;
+            this.btn_addTimeTable.TabIndex = 10;
             this.btn_addTimeTable.Text = "Thêm TKB";
             this.btn_addTimeTable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addTimeTable.UseVisualStyleBackColor = true;
@@ -123,7 +125,7 @@
             this.btn_dslop.Location = new System.Drawing.Point(42, 259);
             this.btn_dslop.Name = "btn_dslop";
             this.btn_dslop.Size = new System.Drawing.Size(140, 165);
-            this.btn_dslop.TabIndex = 4;
+            this.btn_dslop.TabIndex = 5;
             this.btn_dslop.Text = "Xem DS Lớp";
             this.btn_dslop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_dslop.UseVisualStyleBackColor = true;
@@ -135,7 +137,7 @@
             this.btn_changeTT.Location = new System.Drawing.Point(399, 452);
             this.btn_changeTT.Name = "btn_changeTT";
             this.btn_changeTT.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeTT.TabIndex = 10;
+            this.btn_changeTT.TabIndex = 11;
             this.btn_changeTT.Text = "Sửa TKB";
             this.btn_changeTT.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeTT.UseVisualStyleBackColor = true;
@@ -147,7 +149,7 @@
             this.btn_changeDSLop.Location = new System.Drawing.Point(221, 259);
             this.btn_changeDSLop.Name = "btn_changeDSLop";
             this.btn_changeDSLop.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeDSLop.TabIndex = 5;
+            this.btn_changeDSLop.TabIndex = 6;
             this.btn_changeDSLop.Text = "Sửa DS Lớp";
             this.btn_changeDSLop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeDSLop.UseVisualStyleBackColor = true;
@@ -171,7 +173,7 @@
             this.btn_changeScore.Location = new System.Drawing.Point(399, 259);
             this.btn_changeScore.Name = "btn_changeScore";
             this.btn_changeScore.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeScore.TabIndex = 6;
+            this.btn_changeScore.TabIndex = 7;
             this.btn_changeScore.Text = "Sửa Điểm";
             this.btn_changeScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeScore.UseVisualStyleBackColor = true;
@@ -183,7 +185,7 @@
             this.btn_viewScore.Location = new System.Drawing.Point(577, 259);
             this.btn_viewScore.Name = "btn_viewScore";
             this.btn_viewScore.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewScore.TabIndex = 7;
+            this.btn_viewScore.TabIndex = 8;
             this.btn_viewScore.Text = "Xem Bảng Điểm";
             this.btn_viewScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewScore.UseVisualStyleBackColor = true;
@@ -196,7 +198,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(762, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(934, 33);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -218,20 +220,20 @@
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.viewProfileToolStripMenuItem.Text = "View profile";
             // 
             // thêmLớpToolStripMenuItem
             // 
             this.thêmLớpToolStripMenuItem.Name = "thêmLớpToolStripMenuItem";
-            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmLớpToolStripMenuItem.Text = "Thêm Lớp";
             this.thêmLớpToolStripMenuItem.Click += new System.EventHandler(this.thêmLớpToolStripMenuItem_Click);
             // 
             // thêmSinhViênToolStripMenuItem
             // 
             this.thêmSinhViênToolStripMenuItem.Name = "thêmSinhViênToolStripMenuItem";
-            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmSinhViênToolStripMenuItem.Text = "Thêm Sinh Viên";
             this.thêmSinhViênToolStripMenuItem.Click += new System.EventHandler(this.thêmSinhViênToolStripMenuItem_Click);
             // 
@@ -242,7 +244,7 @@
             this.thêmBảngĐiểmToolStripMenuItem,
             this.sửaĐiểmToolStripMenuItem});
             this.bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
-            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
             // 
             // xemBảngĐiểmToolStripMenuItem
@@ -269,7 +271,7 @@
             this.xemDanhSáchLớpToolStripMenuItem,
             this.sửaDanhSáchLớpToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
             // 
             // xemDanhSáchLớpToolStripMenuItem
@@ -291,7 +293,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
             // 
             // xemThờiKhóaBiểuToolStripMenuItem
@@ -315,14 +317,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -356,7 +358,7 @@
             this.btn_viewTKB.Location = new System.Drawing.Point(42, 452);
             this.btn_viewTKB.Name = "btn_viewTKB";
             this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewTKB.TabIndex = 8;
+            this.btn_viewTKB.TabIndex = 9;
             this.btn_viewTKB.Text = "Xem TKB";
             this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewTKB.UseVisualStyleBackColor = true;
@@ -368,17 +370,36 @@
             this.btn_logout.Location = new System.Drawing.Point(577, 452);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(140, 165);
-            this.btn_logout.TabIndex = 11;
+            this.btn_logout.TabIndex = 12;
             this.btn_logout.Text = "Log Out";
             this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_logout.UseVisualStyleBackColor = true;
             this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
+            // btn_AddingMembersOfClass
+            // 
+            this.btn_AddingMembersOfClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.btn_AddingMembersOfClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_AddingMembersOfClass.Image")));
+            this.btn_AddingMembersOfClass.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_AddingMembersOfClass.Location = new System.Drawing.Point(752, 70);
+            this.btn_AddingMembersOfClass.Name = "btn_AddingMembersOfClass";
+            this.btn_AddingMembersOfClass.Size = new System.Drawing.Size(145, 165);
+            this.btn_AddingMembersOfClass.TabIndex = 4;
+            this.btn_AddingMembersOfClass.Text = "Thêm DSSV Lớp";
+            this.btn_AddingMembersOfClass.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_AddingMembersOfClass.UseVisualStyleBackColor = true;
+            this.btn_AddingMembersOfClass.Click += new System.EventHandler(this.btn_AddingMembersOfClass_Click);
+            // 
+            // openCSVFile
+            // 
+            this.openCSVFile.Filter = "CSV Files | *.csv";
+            // 
             // GiaoVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 641);
+            this.ClientSize = new System.Drawing.Size(934, 641);
+            this.Controls.Add(this.btn_AddingMembersOfClass);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.btn_viewTKB);
             this.Controls.Add(this.btn_viewScore);
@@ -439,5 +460,7 @@
         private System.Windows.Forms.Button btn_viewTKB;
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.Button btn_AddingMembersOfClass;
+        private System.Windows.Forms.OpenFileDialog openCSVFile;
     }
 }

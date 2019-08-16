@@ -217,6 +217,8 @@
             this.Controls.Add(this.lb_SoCMNDsv);
             this.Controls.Add(this.lb_Masv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewProfileForStudent";
             this.Text = "View profile";
             this.Load += new System.EventHandler(this.ViewProfileForStudent_Load);

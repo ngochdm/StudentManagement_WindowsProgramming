@@ -195,6 +195,8 @@
             this.Controls.Add(this.lb_SoCMNDgv);
             this.Controls.Add(this.lb_MaGV);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewProfileForGV";
             this.Text = "View Profile";
             this.Load += new System.EventHandler(this.ViewProfileForGV_Load);

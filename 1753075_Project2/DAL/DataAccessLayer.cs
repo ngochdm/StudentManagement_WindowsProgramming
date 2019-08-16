@@ -179,5 +179,62 @@ namespace DAL
             }
             cnn.Close();
         }
+        public List<LopHoc> getAllInfoOfClasses()
+        {
+            var classes = new List<LopHoc>();
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = $"SELECT MALOP, TENLOP FROM LOPHOC"
+            };
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string malop = "", tenlop = "";
+                if (!rd.IsDBNull(0)) malop = rd.GetString(0);
+                if (!rd.IsDBNull(1)) tenlop = rd.GetString(1);
+                else tenlop = malop;
+                var aClass = new LopHoc(malop, tenlop);
+                classes.Add(aClass);
+            }
+            cnn.Close();
+            return classes;
+        }
+        public List<SinhVien> getAllStdsInAClass(string lop)
+        {
+            var students = new List<SinhVien>();
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = $"SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = '{lop}'"
+            };
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+                if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
+                if (!rd.IsDBNull(1)) socmnd = rd.GetString(1);
+                if (!rd.IsDBNull(2)) hoten = rd.GetString(2);
+                if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
+                if (!rd.IsDBNull(4)) diachi = rd.GetString(4);
+                if (!rd.IsDBNull(5)) gioitinh = rd.GetString(5);
+                var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, lop);
+                students.Add(std);
+            }
+            cnn.Close();
+            return students;
+        }
     }
 }
