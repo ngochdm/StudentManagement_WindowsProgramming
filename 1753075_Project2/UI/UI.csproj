@@ -69,6 +69,12 @@
     <Compile Include="GiaoVu.Designer.cs">
       <DependentUpon>GiaoVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="InsertASubjectToDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertASubjectToDB.Designer.cs">
+      <DependentUpon>InsertASubjectToDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu.resx">
       <DependentUpon>GiaoVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertASubjectToDB.resx">
+      <DependentUpon>InsertASubjectToDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

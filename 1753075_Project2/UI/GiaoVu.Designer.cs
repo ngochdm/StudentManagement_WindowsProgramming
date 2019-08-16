@@ -67,6 +67,7 @@
             this.openCSVFile = new System.Windows.Forms.OpenFileDialog();
             this.btn_AddSubject = new System.Windows.Forms.Button();
             this.btn_ViewClassSubject = new System.Windows.Forms.Button();
+            this.thêmMônHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,6 +214,7 @@
             this.viewProfileToolStripMenuItem,
             this.thêmLớpToolStripMenuItem,
             this.thêmSinhViênToolStripMenuItem,
+            this.thêmMônHọcToolStripMenuItem,
             this.bảngĐiểmToolStripMenuItem,
             this.danhSáchLớpToolStripMenuItem,
             this.thờiKhóaBiểuToolStripMenuItem,
@@ -423,6 +425,7 @@
             this.btn_AddSubject.Text = "Thêm môn học";
             this.btn_AddSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_AddSubject.UseVisualStyleBackColor = true;
+            this.btn_AddSubject.Click += new System.EventHandler(this.btn_AddSubject_Click);
             // 
             // btn_ViewClassSubject
             // 
@@ -435,6 +438,13 @@
             this.btn_ViewClassSubject.Text = "Xem DS Lớp Từng Môn Học";
             this.btn_ViewClassSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_ViewClassSubject.UseVisualStyleBackColor = true;
+            // 
+            // thêmMônHọcToolStripMenuItem
+            // 
+            this.thêmMônHọcToolStripMenuItem.Name = "thêmMônHọcToolStripMenuItem";
+            this.thêmMônHọcToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmMônHọcToolStripMenuItem.Text = "Thêm Môn Học";
+            this.thêmMônHọcToolStripMenuItem.Click += new System.EventHandler(this.thêmMônHọcToolStripMenuItem_Click);
             // 
             // GiaoVu
             // 
@@ -509,5 +519,6 @@
         private System.Windows.Forms.ToolStripMenuItem thêmDSSVLớpToolStripMenuItem;
         private System.Windows.Forms.Button btn_AddSubject;
         private System.Windows.Forms.Button btn_ViewClassSubject;
+        private System.Windows.Forms.ToolStripMenuItem thêmMônHọcToolStripMenuItem;
     }
 }

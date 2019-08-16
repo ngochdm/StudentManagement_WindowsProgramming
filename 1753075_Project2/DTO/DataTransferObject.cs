@@ -165,5 +165,18 @@ namespace DTO
                 TenLop = tenlop;
             }
         }
+
+        public class MonHoc
+        {
+            public string MaMonHoc { get; set; }
+            public string TenMonHoc { get; set; }
+
+            public MonHoc() { }
+            public MonHoc(string mamon,string tenmon)
+            {
+                MaMonHoc = mamon;
+                TenMonHoc = tenmon;
+            }
+        }
     }
 }

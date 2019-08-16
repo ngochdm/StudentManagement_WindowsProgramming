@@ -139,5 +139,9 @@ namespace BLL
         {
             return new DAL.DataAccessLayer().getTimeTableOfAClass(lop);
         }
+        public bool insertASubject(MonHoc subject)
+        {
+            return new DAL.DataAccessLayer().addASubjectToDatabase(subject);
+        }
     }
 }

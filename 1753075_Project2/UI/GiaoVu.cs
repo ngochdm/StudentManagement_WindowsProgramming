@@ -186,6 +186,34 @@ namespace UI
         }
         #endregion
 
+        #region Thêm Môn Học
+        private void AddingASubject()
+        {
+            InsertASubjectToDB isub = new InsertASubjectToDB();
+            isub.ShowDialog();
+            MonHoc sub = isub.getInfoNewSubject();
+            if (sub.MaMonHoc != string.Empty && sub.TenMonHoc != string.Empty)
+            {
+                bool check = new BLL.BusinessLogicLayer().insertASubject(sub);
+                if (check == true)
+                {
+                    MessageBox.Show("Insert successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Insert UNsucessfully!");
+                }
+            }
+        }
+        private void btn_AddSubject_Click(object sender, EventArgs e)
+        {
+            AddingASubject();
+        }
+        private void thêmMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddingASubject();
+        }
+        #endregion
 
 
 
@@ -241,6 +269,7 @@ namespace UI
 
 
         #endregion
+
 
     }
 }

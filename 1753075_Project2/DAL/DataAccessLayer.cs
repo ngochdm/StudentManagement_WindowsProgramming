@@ -293,7 +293,10 @@ namespace DAL
                 cmd.CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?";
                 cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
                 rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "0") return false;
+                if (rd.ToString() == "0")
+                {
+                    return addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
+                }
 
                 cmd.Parameters.Clear();
                 cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
@@ -348,6 +351,35 @@ namespace DAL
             cnn.Close();
             return timetable;
 
+        }
+        public bool addASubjectToDatabase(MonHoc subject)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
+            var rd = cmd.ExecuteScalar();
+
+            if (rd.ToString() == "0")
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "INSERT INTO MONHOC VALUES (?, ?)";
+                cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
+                cmd.Parameters.AddWithValue("?", subject.TenMonHoc);
+                rd = cmd.ExecuteNonQuery();
+                return rd.ToString() == "1";
+            }
+            else
+                return false;
+            cnn.Close();
         }
     }
 }
