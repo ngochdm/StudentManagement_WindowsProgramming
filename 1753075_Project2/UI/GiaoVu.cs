@@ -111,13 +111,16 @@ namespace UI
             string path = "";
             if (openFile == DialogResult.OK)
                 path = openCSVFile.FileName;
-            var bll = new BLL.BusinessLogicLayer();
-            var students = bll.readListStdFromCsvFile(path);
-            var check = bll.addListMemsInClass(students);
-            if (check == true)
-                MessageBox.Show("Import successfully");
-            else
-                MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
+            if (path != "")
+            {
+                var bll = new BLL.BusinessLogicLayer();
+                var students = bll.readListStdFromCsvFile(path);
+                var check = bll.addListMemsInClass(students);
+                if (check == true)
+                    MessageBox.Show("Import successfully");
+                else
+                    MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
+            }
         }
         private void btn_AddingMembersOfClass_Click(object sender, EventArgs e)
         {
@@ -149,13 +152,16 @@ namespace UI
             string path = "";
             if (openFile == DialogResult.OK)
                 path = openCSVFile.FileName;
-            var bll = new BLL.BusinessLogicLayer();
-            var timetable = bll.readListTimeTableFromCSVFile(path);
-            var check = bll.addListTimeTable(timetable);
-            if (check == true)
-                MessageBox.Show("Import successfully");
-            else
-                MessageBox.Show("Import UNsuccessfully\n");
+            if (path != "")
+            {
+                var bll = new BLL.BusinessLogicLayer();
+                var timetable = bll.readListTimeTableFromCSVFile(path);
+                var check = bll.addListTimeTable(timetable);
+                if (check == true)
+                    MessageBox.Show("Import successfully");
+                else
+                    MessageBox.Show("Import UNsuccessfully\n");
+            }
         }
         private void btn_addTimeTable_Click(object sender, EventArgs e)
         {

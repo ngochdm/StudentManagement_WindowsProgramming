@@ -65,6 +65,8 @@
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_AddingMembersOfClass = new System.Windows.Forms.Button();
             this.openCSVFile = new System.Windows.Forms.OpenFileDialog();
+            this.btn_AddSubject = new System.Windows.Forms.Button();
+            this.btn_ViewClassSubject = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             // 
             this.btn_addTimeTable.Image = ((System.Drawing.Image)(resources.GetObject("btn_addTimeTable.Image")));
             this.btn_addTimeTable.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_addTimeTable.Location = new System.Drawing.Point(221, 452);
+            this.btn_addTimeTable.Location = new System.Drawing.Point(399, 447);
             this.btn_addTimeTable.Name = "btn_addTimeTable";
             this.btn_addTimeTable.Size = new System.Drawing.Size(140, 165);
             this.btn_addTimeTable.TabIndex = 10;
@@ -137,7 +139,7 @@
             // 
             this.btn_changeTT.Image = ((System.Drawing.Image)(resources.GetObject("btn_changeTT.Image")));
             this.btn_changeTT.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_changeTT.Location = new System.Drawing.Point(399, 452);
+            this.btn_changeTT.Location = new System.Drawing.Point(577, 447);
             this.btn_changeTT.Name = "btn_changeTT";
             this.btn_changeTT.Size = new System.Drawing.Size(140, 165);
             this.btn_changeTT.TabIndex = 11;
@@ -173,7 +175,7 @@
             // 
             this.btn_changeScore.Image = ((System.Drawing.Image)(resources.GetObject("btn_changeScore.Image")));
             this.btn_changeScore.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_changeScore.Location = new System.Drawing.Point(399, 259);
+            this.btn_changeScore.Location = new System.Drawing.Point(752, 259);
             this.btn_changeScore.Name = "btn_changeScore";
             this.btn_changeScore.Size = new System.Drawing.Size(140, 165);
             this.btn_changeScore.TabIndex = 7;
@@ -306,7 +308,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
             // 
             // xemThờiKhóaBiểuToolStripMenuItem
@@ -370,7 +372,7 @@
             // 
             this.btn_viewTKB.Image = ((System.Drawing.Image)(resources.GetObject("btn_viewTKB.Image")));
             this.btn_viewTKB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_viewTKB.Location = new System.Drawing.Point(42, 452);
+            this.btn_viewTKB.Location = new System.Drawing.Point(221, 447);
             this.btn_viewTKB.Name = "btn_viewTKB";
             this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
             this.btn_viewTKB.TabIndex = 9;
@@ -383,7 +385,7 @@
             // 
             this.btn_logout.Image = ((System.Drawing.Image)(resources.GetObject("btn_logout.Image")));
             this.btn_logout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_logout.Location = new System.Drawing.Point(577, 452);
+            this.btn_logout.Location = new System.Drawing.Point(752, 447);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(140, 165);
             this.btn_logout.TabIndex = 12;
@@ -397,7 +399,7 @@
             this.btn_AddingMembersOfClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.btn_AddingMembersOfClass.Image = ((System.Drawing.Image)(resources.GetObject("btn_AddingMembersOfClass.Image")));
             this.btn_AddingMembersOfClass.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_AddingMembersOfClass.Location = new System.Drawing.Point(752, 70);
+            this.btn_AddingMembersOfClass.Location = new System.Drawing.Point(42, 447);
             this.btn_AddingMembersOfClass.Name = "btn_AddingMembersOfClass";
             this.btn_AddingMembersOfClass.Size = new System.Drawing.Size(145, 165);
             this.btn_AddingMembersOfClass.TabIndex = 4;
@@ -410,11 +412,37 @@
             // 
             this.openCSVFile.Filter = "CSV Files | *.csv";
             // 
+            // btn_AddSubject
+            // 
+            this.btn_AddSubject.Image = ((System.Drawing.Image)(resources.GetObject("btn_AddSubject.Image")));
+            this.btn_AddSubject.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_AddSubject.Location = new System.Drawing.Point(752, 70);
+            this.btn_AddSubject.Name = "btn_AddSubject";
+            this.btn_AddSubject.Size = new System.Drawing.Size(140, 165);
+            this.btn_AddSubject.TabIndex = 13;
+            this.btn_AddSubject.Text = "Thêm môn học";
+            this.btn_AddSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_AddSubject.UseVisualStyleBackColor = true;
+            // 
+            // btn_ViewClassSubject
+            // 
+            this.btn_ViewClassSubject.Image = ((System.Drawing.Image)(resources.GetObject("btn_ViewClassSubject.Image")));
+            this.btn_ViewClassSubject.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_ViewClassSubject.Location = new System.Drawing.Point(399, 259);
+            this.btn_ViewClassSubject.Name = "btn_ViewClassSubject";
+            this.btn_ViewClassSubject.Size = new System.Drawing.Size(140, 165);
+            this.btn_ViewClassSubject.TabIndex = 14;
+            this.btn_ViewClassSubject.Text = "Xem DS Lớp Từng Môn Học";
+            this.btn_ViewClassSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_ViewClassSubject.UseVisualStyleBackColor = true;
+            // 
             // GiaoVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 641);
+            this.Controls.Add(this.btn_ViewClassSubject);
+            this.Controls.Add(this.btn_AddSubject);
             this.Controls.Add(this.btn_AddingMembersOfClass);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.btn_viewTKB);
@@ -479,5 +507,7 @@
         private System.Windows.Forms.Button btn_AddingMembersOfClass;
         private System.Windows.Forms.OpenFileDialog openCSVFile;
         private System.Windows.Forms.ToolStripMenuItem thêmDSSVLớpToolStripMenuItem;
+        private System.Windows.Forms.Button btn_AddSubject;
+        private System.Windows.Forms.Button btn_ViewClassSubject;
     }
 }

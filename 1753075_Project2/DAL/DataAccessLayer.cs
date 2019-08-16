@@ -21,11 +21,16 @@ namespace DAL
             {
                 Connection = cnn,
                 CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}'"
+                //CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '?'",
             };
+            //cmd.Parameters.AddWithValue("?", user);
             var rd = cmd.ExecuteScalar();
             if (rd.ToString() == "1")
             {
+                //cmd.Parameters.Clear();
                 cmd.CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}' AND MATKHAU = '{pwd}'";
+                //cmd.Parameters.AddWithValue("?", user);
+                //cmd.Parameters.AddWithValue("?", pwd);
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1") return 1;
                 else return 0;
@@ -33,10 +38,13 @@ namespace DAL
             else
             {
                 cmd.CommandText = $"SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '{user}'";
+                //cmd.Parameters.AddWithValue("?", user);
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1")
                 {
                     cmd.CommandText = $"SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '{user}' AND MATKHAU = '{pwd}'";
+                    //cmd.Parameters.AddWithValue("?", user);
+                    //cmd.Parameters.AddWithValue("?", pwd);
                     rd = cmd.ExecuteScalar();
                     if (rd.ToString() == "1") return -1;
                     else return 0;
@@ -107,7 +115,7 @@ namespace DAL
             gv.DiaChi = rd.GetString(4).ToString();
             gv.GioiTinh = rd.GetString(5).ToString();*/
 
-            cnn.Close();
+                cnn.Close();
             return gv;
         }
         public bool importClass(LopHoc lop)
