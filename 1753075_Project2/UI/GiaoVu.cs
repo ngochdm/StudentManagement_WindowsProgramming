@@ -215,6 +215,18 @@ namespace UI
         }
         #endregion
 
+        #region Xem bảng điểm
+        private void btn_viewScore_Click(object sender, EventArgs e)
+        {
+            var vsb = new ViewScoreBoard();
+            vsb.ShowDialog();
+        }
+        private void xemBảngĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vsb = new ViewScoreBoard();
+            vsb.ShowDialog();
+        }
+        #endregion
 
 
 
@@ -268,8 +280,8 @@ namespace UI
 
 
 
-        #endregion
 
+        #endregion
 
     }
 }

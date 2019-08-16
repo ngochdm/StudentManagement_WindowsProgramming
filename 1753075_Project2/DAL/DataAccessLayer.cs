@@ -381,5 +381,82 @@ namespace DAL
                 return false;
             cnn.Close();
         }
+        public List<BangDiem> getScoreBoardWithClassAndSubject(string malop,string mamon)
+        {
+            var scoreboard = new List<BangDiem>();
+
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT MH.TENMONHOC, BD.MSSV, BD.HOCKY, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG FROM BANGDIEM BD INNER JOIN MONHOC MH ON(BD.MAMONHOC = MH.MAMONHOC) WHERE BD.MAMONHOC = ? AND BD.MALOP = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", malop);
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string tenmon = "", mssv = "", hocky = "";
+                float diemgk = 0, diemkhac = 0, diemck = 0, diemtong = 0;
+
+                if (!rd.IsDBNull(0)) tenmon = rd.GetString(0);
+                if (!rd.IsDBNull(1)) mssv = rd.GetString(1);
+                if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
+
+                if (!rd.IsDBNull(3)) diemgk = rd.GetFloat(3);
+                if (!rd.IsDBNull(4)) diemck = rd.GetFloat(4);
+                if (!rd.IsDBNull(5)) diemkhac = rd.GetFloat(5);
+                if (!rd.IsDBNull(6)) diemtong = rd.GetFloat(6);
+
+                var score = new BangDiem(mssv, malop, mamon, hocky, tenmon, diemgk, diemck, diemkhac, diemtong);
+                scoreboard.Add(score);
+            }
+            cnn.Close();
+
+            return scoreboard;
+        }
+        public List<MonHoc> getInfoAllSubject()
+        {
+            var subjects = new List<MonHoc>();
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT MAMONHOC, TENMONHOC FROM MONHOC"
+            };
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string mamon = "", tenmon = "";
+                if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
+                if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
+                else tenmon = mamon;
+                var subject = new MonHoc(mamon, tenmon);
+                subjects.Add(subject);
+            }
+            cnn.Close();
+            return subjects;
+        }
+        public List<MonHoc> getAllSubjectOfClass(string malop)
+        {
+            var timetable = getTimeTableOfAClass(malop);
+            var subjects = new List<MonHoc>();
+            foreach (var tb in timetable)
+            {
+                subjects.Add(new MonHoc(tb.MaMonHoc, tb.TenMon));
+            }
+            return subjects;
+        }
     }
 }

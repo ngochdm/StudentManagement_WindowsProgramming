@@ -30,7 +30,6 @@ namespace UI
             InitializeComponent();
             cbb_lop.Hide();
             lb_ClassID.Text = $"Danh sách sinh viên lớp {lop}";
-            //lv.Items.Clear();
             BindListOfStdsIntoListView(lop);
         }
 

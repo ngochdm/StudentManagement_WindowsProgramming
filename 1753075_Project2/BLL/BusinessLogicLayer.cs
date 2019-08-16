@@ -143,5 +143,13 @@ namespace BLL
         {
             return new DAL.DataAccessLayer().addASubjectToDatabase(subject);
         }
+        public List<BangDiem> getAllScoreBoardWithClassAndSubject(string malop,string mamon)
+        {
+            return new DAL.DataAccessLayer().getScoreBoardWithClassAndSubject(malop, mamon);
+        }
+        public List<MonHoc> getSubjectsOfClass(string malop)
+        {
+            return new DAL.DataAccessLayer().getAllSubjectOfClass(malop);
+        }
     }
 }
