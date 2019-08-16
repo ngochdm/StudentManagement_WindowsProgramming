@@ -236,5 +236,47 @@ namespace DAL
             cnn.Close();
             return students;
         }
+        public bool importTimeTable(ThoiKhoaBieu tkb)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+                CommandText = $"SELECT COUNT(*) FROM TKB WHERE MALOP = '{tkb.MaLop}' AND MAMONHOC = '{tkb.MaMonHoc}' AND HOCKY = '{tkb.HocKy}'"
+            };
+            var rd = cmd.ExecuteScalar();
+            if (rd.ToString() == "0")
+            {
+                //Check Class is in database or not...
+                cmd.CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{tkb.MaLop}'";
+                rd = cmd.ExecuteScalar();
+                if (rd.ToString() == "0") return false;
+
+                //Check subject is in database or not...
+                cmd.CommandText = $"SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = '{tkb.MaMonHoc}'";
+                rd = cmd.ExecuteScalar();
+                if (rd.ToString() == "0") return false;
+
+                cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
+                cmd.Parameters.AddWithValue("?", tkb.MaLop);
+                cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
+                cmd.Parameters.AddWithValue("?", tkb.HocKy);
+                cmd.Parameters.AddWithValue("?", tkb.NamHoc);
+                cmd.Parameters.AddWithValue("?", tkb.PhongHoc);
+                cmd.Parameters.AddWithValue("?", tkb.CongKhaiBangDiem);
+
+                rd = cmd.ExecuteNonQuery();
+                return rd.ToString() == "1";
+            }
+            else
+                return false;
+            cnn.Close();
+
+        }
     }
 }

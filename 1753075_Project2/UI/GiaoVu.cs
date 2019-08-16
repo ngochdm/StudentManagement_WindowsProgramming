@@ -88,6 +88,87 @@ namespace UI
         }
         #endregion
 
+        #region View Profile
+        private void viewProfile()
+        {
+            ViewProfileForGV vp = new ViewProfileForGV(MaGV);
+            vp.ShowDialog();
+        }
+        private void btn_profile_Click(object sender, EventArgs e)
+        {
+            viewProfile();
+        }
+        private void viewProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewProfile();
+        }
+        #endregion
+
+        #region Thêm DSSV Lớp
+        private void AddingMembersOfClass()
+        {
+            var openFile = openCSVFile.ShowDialog();
+            string path = "";
+            if (openFile == DialogResult.OK)
+                path = openCSVFile.FileName;
+            var bll = new BLL.BusinessLogicLayer();
+            var students = bll.readListStdFromCsvFile(path);
+            var check = bll.addListMemsInClass(students);
+            if (check == true)
+                MessageBox.Show("Import successfully");
+            else
+                MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
+        }
+        private void btn_AddingMembersOfClass_Click(object sender, EventArgs e)
+        {
+            AddingMembersOfClass();
+        }
+        private void thêmDSSVLớpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddingMembersOfClass();
+        }
+        #endregion
+
+        #region Xem DS Lop
+        private void btn_dslop_Click(object sender, EventArgs e)
+        {
+            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass();
+            vlsoc.ShowDialog();
+        }
+        private void xemDanhSáchLớpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass();
+            vlsoc.ShowDialog();
+        }
+        #endregion
+
+        #region Thêm Thời Khóa Biểu
+        private void addTimeTable()
+        {
+            var openFile = openCSVFile.ShowDialog();
+            string path = "";
+            if (openFile == DialogResult.OK)
+                path = openCSVFile.FileName;
+            var bll = new BLL.BusinessLogicLayer();
+            var timetable = bll.readListTimeTableFromCSVFile(path);
+            var check = bll.addListTimeTable(timetable);
+            if (check == true)
+                MessageBox.Show("Import successfully");
+            else
+                MessageBox.Show("Import UNsuccessfully\n");
+        }
+        private void btn_addTimeTable_Click(object sender, EventArgs e)
+        {
+            addTimeTable();
+        }
+        private void thêmThờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addTimeTable();
+        }
+        #endregion
+
+
+
 
         #region LogOut
         private void LogOut()
@@ -137,31 +218,8 @@ namespace UI
 
         #endregion
 
-        private void btn_profile_Click(object sender, EventArgs e)
-        {
-            ViewProfileForGV vp = new ViewProfileForGV(MaGV);
-            vp.ShowDialog();
-        }
 
-        private void btn_AddingMembersOfClass_Click(object sender, EventArgs e)
-        {
-            var openFile = openCSVFile.ShowDialog();
-            string path = "";
-            if (openFile == DialogResult.OK)
-                path = openCSVFile.FileName;
-            var bll = new BLL.BusinessLogicLayer();
-            var students = bll.readListStdFromCsvFile(path);
-            var check = bll.addListMemsInClass(students);
-            if (check == true)
-                MessageBox.Show("Import successfully");
-            else
-                MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
-        }
 
-        private void btn_dslop_Click(object sender, EventArgs e)
-        {
-            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass();
-            vlsoc.ShowDialog();
-        }
+
     }
 }

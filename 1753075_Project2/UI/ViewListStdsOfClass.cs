@@ -18,25 +18,23 @@ namespace UI
         public ViewListStdsOfClass()
         {
             InitializeComponent();
+            classes = new BLL.BusinessLogicLayer().getAllInfoOfClasses();
+            foreach (var aClass in classes)
+            {
+                cbb_lop.Items.Add(aClass.MaLop);
+            }
+            cbb_lop.SelectedIndex = 0;
+
         }
         public ViewListStdsOfClass(string lop)
         {
             InitializeComponent();
             cbb_lop.Hide();
             lb_ClassID.Text = $"Danh sách sinh viên lớp {lop}";
-            lv.Items.Clear();
+            //lv.Items.Clear();
             BindListOfStdsIntoListView(lop);
         }
 
-        private void ViewListStdsOfClass_Load(object sender, EventArgs e)
-        {
-            classes = new BLL.BusinessLogicLayer().getAllInfoOfClasses();
-            foreach(var aClass in classes)
-            {
-                cbb_lop.Items.Add(aClass.MaLop);
-            }
-            cbb_lop.SelectedIndex = 0;
-        }
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -45,7 +43,7 @@ namespace UI
 
         private void BindListOfStdsIntoListView(string malop)
         {
-            lv.Items.Clear();
+            //lv.Items.Clear();
             lv.BeginUpdate();
             lv.Items.Clear();
             var stds = new BLL.BusinessLogicLayer().getAllStdsInAClass(malop);
@@ -62,12 +60,6 @@ namespace UI
                 lv.Items.Add(item);
             }
             lv.EndUpdate();
-        }
-
-        private void ViewListStdsOfClass_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //lv.Items.Clear();
-            //classes.Clear();
         }
     }
 }

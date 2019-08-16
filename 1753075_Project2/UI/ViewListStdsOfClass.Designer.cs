@@ -107,7 +107,7 @@
             // DiaChi
             // 
             this.DiaChi.Text = "Địa Chỉ";
-            this.DiaChi.Width = 120;
+            this.DiaChi.Width = 200;
             // 
             // ViewListStdsOfClass
             // 
@@ -122,8 +122,6 @@
             this.MinimizeBox = false;
             this.Name = "ViewListStdsOfClass";
             this.Text = "Xem Danh Sách Lớp";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewListStdsOfClass_FormClosing);
-            this.Load += new System.EventHandler(this.ViewListStdsOfClass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

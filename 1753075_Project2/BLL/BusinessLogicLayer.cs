@@ -11,7 +11,7 @@ namespace BLL
 {
     public class BusinessLogicLayer
     {
-        public int checkingUserPwd(string user,string pwd)
+        public int checkingUserPwd(string user, string pwd)
         {
             //-1: Student, 0: False, 1: GiaoVu
             int check = new DAL.DataAccessLayer().checkUserPwd(user, pwd);
@@ -49,7 +49,7 @@ namespace BLL
 
                 rd.ReadLine();
                 string aline;
-                while ((aline = rd.ReadLine()) != null) 
+                while ((aline = rd.ReadLine()) != null)
                 {
                     var arr = aline.Split(',');
                     //STT,MSSV,Họ tên,Giới tính,CMND,Ngày sinh,Địa chỉ
@@ -71,7 +71,7 @@ namespace BLL
             {
                 bool check = false;
                 var dal = new DAL.DataAccessLayer();
-                foreach(var std in students)
+                foreach (var std in students)
                 {
                     check = dal.insertAStudent(std);
                 }
@@ -89,6 +89,51 @@ namespace BLL
         public List<SinhVien> getAllStdsInAClass(string lop)
         {
             return new DAL.DataAccessLayer().getAllStdsInAClass(lop);
+        }
+        public List<ThoiKhoaBieu> readListTimeTableFromCSVFile(string path)
+        {
+            var tt = new List<ThoiKhoaBieu>();
+            using (var rd = new StreamReader(path))
+            {
+                var malop = rd.ReadLine();
+                rd.ReadLine();
+
+                string aline;
+                while ((aline = rd.ReadLine()) != null)
+                {
+                    var arr = aline.Split(',');
+                    //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+                    //STT,Mã môn,Tên môn,Học kỳ,Năm học,Phòng học,Công Khai Bảng Điểm
+                    var mamon = arr[1];
+                    var tenmon = arr[2];
+                    var hocky = arr[3];
+                    var namhoc = arr[4];
+                    var phonghoc = arr[5];
+                    var congkhaibangdiem = int.Parse(arr[6]);
+                    bool ckbd = false;
+                    if (congkhaibangdiem == 1) ckbd = true;
+                    var tkb = new ThoiKhoaBieu(malop, mamon, hocky, namhoc, phonghoc, ckbd, tenmon);
+                    tt.Add(tkb);
+                }
+            }
+            return tt;
+        }
+        public bool addListTimeTable(List<ThoiKhoaBieu> tt)
+        {
+            //try
+            {
+                bool check = false;
+                var dal = new DAL.DataAccessLayer();
+                foreach (var tkb in tt)
+                {
+                    check = dal.importTimeTable(tkb);
+                }
+                return check;
+            }
+           /* catch
+            {
+                return false;
+            }*/
         }
     }
 }

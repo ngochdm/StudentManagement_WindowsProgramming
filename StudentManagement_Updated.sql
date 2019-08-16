@@ -59,7 +59,7 @@ create table BangDiem (
 )
 create table MonHoc (
 	MaMonHoc char(10) not null,
-	TenMonHoc char (100) not null,
+	TenMonHoc nvarchar (100) not null,
 	primary key (MaMonHoc)
 )
 go
@@ -89,7 +89,11 @@ INSERT INTO MONHOC VALUES
     ('KTH001',N'Kinh tế đại cương'),
     ('TTH026',N'Giải tích B1'),
     ('CTT001',N'Những nguyên lí cơ bản của chủ nghĩa Mác-Lênin'),
-    ('CTT006',N'Phương pháp lập trình hướng đối tượng')
+    ('CTT006',N'Phương pháp lập trình hướng đối tượng'),
+    ('CTT303',N'Cơ sở trí tuệ nhân tạo'),
+    ('PHY005',N'Vật lý đại cương'),
+    ('CTT102',N'Cơ sở dữ liệu'),
+    ('CTT501',N'Lập trình Windows')
 
 
 SELECT COUNT(MAGIAOVU)
@@ -110,3 +114,24 @@ FROM SINHVIEN
 WHERE MSSV='1753075' AND MATKHAU='01011999'
 
 INSERT INTO LOPHOC VALUES ('17CLC2','17CLC2')
+
+
+--create table TKB (
+--	MaLop char(10) not null,	
+--	MaMonHoc char(10) not null,
+--	HocKy char(10) not null, --Fall/Spring/Summer
+--	NamHoc char(9) not null,
+--	PhongHoc char(10),
+--	CongKhaiBangDiem char(1),
+--	primary key (MaLop, MaMonHoc, HocKy)
+--)
+
+
+--TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+Insert into TKB values ('18apcs1','TTH063','Spring','2018','I44','0')
+
+select * from lophoc
+
+select *
+from sinhvien
+where malop='17clc2'

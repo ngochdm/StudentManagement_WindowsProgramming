@@ -49,6 +49,7 @@
             this.thêmBảngĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sửaĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thêmDSSVLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xemDanhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sửaDanhSáchLớpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thờiKhóaBiểuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,6 +105,7 @@
             this.btn_addTimeTable.Text = "Thêm TKB";
             this.btn_addTimeTable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addTimeTable.UseVisualStyleBackColor = true;
+            this.btn_addTimeTable.Click += new System.EventHandler(this.btn_addTimeTable_Click);
             // 
             // btn_addStd
             // 
@@ -221,20 +223,21 @@
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.viewProfileToolStripMenuItem.Text = "View profile";
+            this.viewProfileToolStripMenuItem.Click += new System.EventHandler(this.viewProfileToolStripMenuItem_Click);
             // 
             // thêmLớpToolStripMenuItem
             // 
             this.thêmLớpToolStripMenuItem.Name = "thêmLớpToolStripMenuItem";
-            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thêmLớpToolStripMenuItem.Text = "Thêm Lớp";
             this.thêmLớpToolStripMenuItem.Click += new System.EventHandler(this.thêmLớpToolStripMenuItem_Click);
             // 
             // thêmSinhViênToolStripMenuItem
             // 
             this.thêmSinhViênToolStripMenuItem.Name = "thêmSinhViênToolStripMenuItem";
-            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thêmSinhViênToolStripMenuItem.Text = "Thêm Sinh Viên";
             this.thêmSinhViênToolStripMenuItem.Click += new System.EventHandler(this.thêmSinhViênToolStripMenuItem_Click);
             // 
@@ -245,7 +248,7 @@
             this.thêmBảngĐiểmToolStripMenuItem,
             this.sửaĐiểmToolStripMenuItem});
             this.bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
-            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
             // 
             // xemBảngĐiểmToolStripMenuItem
@@ -269,17 +272,26 @@
             // danhSáchLớpToolStripMenuItem
             // 
             this.danhSáchLớpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thêmDSSVLớpToolStripMenuItem,
             this.xemDanhSáchLớpToolStripMenuItem,
             this.sửaDanhSáchLớpToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
+            // 
+            // thêmDSSVLớpToolStripMenuItem
+            // 
+            this.thêmDSSVLớpToolStripMenuItem.Name = "thêmDSSVLớpToolStripMenuItem";
+            this.thêmDSSVLớpToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
+            this.thêmDSSVLớpToolStripMenuItem.Text = "Thêm DSSV Lớp";
+            this.thêmDSSVLớpToolStripMenuItem.Click += new System.EventHandler(this.thêmDSSVLớpToolStripMenuItem_Click);
             // 
             // xemDanhSáchLớpToolStripMenuItem
             // 
             this.xemDanhSáchLớpToolStripMenuItem.Name = "xemDanhSáchLớpToolStripMenuItem";
             this.xemDanhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.xemDanhSáchLớpToolStripMenuItem.Text = "Xem Danh Sách Lớp";
+            this.xemDanhSáchLớpToolStripMenuItem.Click += new System.EventHandler(this.xemDanhSáchLớpToolStripMenuItem_Click);
             // 
             // sửaDanhSáchLớpToolStripMenuItem
             // 
@@ -294,7 +306,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
             // 
             // xemThờiKhóaBiểuToolStripMenuItem
@@ -308,6 +320,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem.Name = "thêmThờiKhóaBiểuToolStripMenuItem";
             this.thêmThờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
             this.thêmThờiKhóaBiểuToolStripMenuItem.Text = "Thêm Thời Khóa Biểu";
+            this.thêmThờiKhóaBiểuToolStripMenuItem.Click += new System.EventHandler(this.thêmThờiKhóaBiểuToolStripMenuItem_Click);
             // 
             // sửaThờiKhóaBiểuToolStripMenuItem
             // 
@@ -318,14 +331,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -463,5 +476,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Button btn_AddingMembersOfClass;
         private System.Windows.Forms.OpenFileDialog openCSVFile;
+        private System.Windows.Forms.ToolStripMenuItem thêmDSSVLớpToolStripMenuItem;
     }
 }
