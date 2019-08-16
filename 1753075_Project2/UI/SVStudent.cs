@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using DTO;
+using static DTO.DataTransferObject;
 
 namespace UI
 {
@@ -67,6 +69,13 @@ namespace UI
         {
             ViewProfileForStudent vp = new ViewProfileForStudent(MSSV);
             vp.ShowDialog();
+        }
+
+        private void btn_viewDSLop_Click(object sender, EventArgs e)
+        {
+            var sv = new BLL.BusinessLogicLayer().getInfoOneStd(MSSV);
+            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass(sv.MaLop);
+            vlsoc.ShowDialog();
         }
     }
 }

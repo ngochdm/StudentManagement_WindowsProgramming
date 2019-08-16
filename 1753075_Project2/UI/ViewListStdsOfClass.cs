@@ -19,6 +19,14 @@ namespace UI
         {
             InitializeComponent();
         }
+        public ViewListStdsOfClass(string lop)
+        {
+            InitializeComponent();
+            cbb_lop.Hide();
+            lb_ClassID.Text = $"Danh sách sinh viên lớp {lop}";
+            lv.Items.Clear();
+            BindListOfStdsIntoListView(lop);
+        }
 
         private void ViewListStdsOfClass_Load(object sender, EventArgs e)
         {
@@ -32,9 +40,14 @@ namespace UI
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BindListOfStdsIntoListView(cbb_lop.SelectedItem.ToString());
+        }
+
+        private void BindListOfStdsIntoListView(string malop)
+        {
+            lv.Items.Clear();
             lv.BeginUpdate();
             lv.Items.Clear();
-            string malop = cbb_lop.SelectedItem.ToString();
             var stds = new BLL.BusinessLogicLayer().getAllStdsInAClass(malop);
             foreach (var std in stds)
             {
@@ -49,6 +62,12 @@ namespace UI
                 lv.Items.Add(item);
             }
             lv.EndUpdate();
+        }
+
+        private void ViewListStdsOfClass_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //lv.Items.Clear();
+            //classes.Clear();
         }
     }
 }

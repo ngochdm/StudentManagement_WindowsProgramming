@@ -197,8 +197,9 @@
             this.btn_viewDSLop.Text = "Xem DS Lớp";
             this.btn_viewDSLop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewDSLop.UseVisualStyleBackColor = true;
+            this.btn_viewDSLop.Click += new System.EventHandler(this.btn_viewDSLop_Click);
             // 
-            // SinhVien
+            // SVStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +213,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "SinhVien";
+            this.Name = "SVStudent";
             this.Text = "Student Management - SinhVien";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
