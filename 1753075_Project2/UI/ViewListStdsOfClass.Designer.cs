@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewListStdsOfClass));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbb_lop = new System.Windows.Forms.ComboBox();
             this.lb_ClassID = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lv = new System.Windows.Forms.ListView();
             this.MSSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FullName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SoCmnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DoB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbb_lop
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(297, 22);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(136, 33);
-            this.comboBox1.TabIndex = 0;
+            this.cbb_lop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_lop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbb_lop.FormattingEnabled = true;
+            this.cbb_lop.Location = new System.Drawing.Point(350, 22);
+            this.cbb_lop.Name = "cbb_lop";
+            this.cbb_lop.Size = new System.Drawing.Size(136, 33);
+            this.cbb_lop.TabIndex = 0;
+            this.cbb_lop.SelectedIndexChanged += new System.EventHandler(this.cbb_lop_SelectedIndexChanged);
             // 
             // lb_ClassID
             // 
@@ -59,58 +61,68 @@
             this.lb_ClassID.TabIndex = 1;
             this.lb_ClassID.Text = "Chọn lớp để xem danh sách:";
             // 
-            // listView1
+            // lv
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.MSSV,
             this.FullName,
             this.SoCmnd,
             this.DoB,
-            this.Address});
-            this.listView1.Location = new System.Drawing.Point(12, 68);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(776, 587);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.Sex,
+            this.DiaChi});
+            this.lv.FullRowSelect = true;
+            this.lv.GridLines = true;
+            this.lv.Location = new System.Drawing.Point(12, 68);
+            this.lv.MultiSelect = false;
+            this.lv.Name = "lv";
+            this.lv.Size = new System.Drawing.Size(776, 587);
+            this.lv.TabIndex = 2;
+            this.lv.UseCompatibleStateImageBehavior = false;
+            this.lv.View = System.Windows.Forms.View.Details;
             // 
             // MSSV
             // 
             this.MSSV.Text = "MSSV";
-            this.MSSV.Width = 12;
             // 
             // FullName
             // 
             this.FullName.Text = "Họ Và Tên";
-            this.FullName.Width = 35;
+            this.FullName.Width = 160;
             // 
             // SoCmnd
             // 
             this.SoCmnd.Text = "Số CMND";
-            this.SoCmnd.Width = 12;
+            this.SoCmnd.Width = 80;
             // 
             // DoB
             // 
             this.DoB.Text = "Ngày Sinh";
-            this.DoB.Width = 15;
+            this.DoB.Width = 80;
             // 
-            // Address
+            // Sex
             // 
-            this.Address.Text = "Địa Chỉ";
+            this.Sex.Text = "GT";
+            this.Sex.Width = 50;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.Text = "Địa Chỉ";
+            this.DiaChi.Width = 120;
             // 
             // ViewListStdsOfClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 667);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lv);
             this.Controls.Add(this.lb_ClassID);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbb_lop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewListStdsOfClass";
             this.Text = "Xem Danh Sách Lớp";
+            this.Load += new System.EventHandler(this.ViewListStdsOfClass_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,13 +130,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbb_lop;
         private System.Windows.Forms.Label lb_ClassID;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lv;
         private System.Windows.Forms.ColumnHeader MSSV;
         private System.Windows.Forms.ColumnHeader FullName;
         private System.Windows.Forms.ColumnHeader SoCmnd;
         private System.Windows.Forms.ColumnHeader DoB;
-        private System.Windows.Forms.ColumnHeader Address;
+        private System.Windows.Forms.ColumnHeader Sex;
+        private System.Windows.Forms.ColumnHeader DiaChi;
     }
 }

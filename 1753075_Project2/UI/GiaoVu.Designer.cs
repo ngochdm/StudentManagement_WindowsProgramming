@@ -129,6 +129,7 @@
             this.btn_dslop.Text = "Xem DS Lớp";
             this.btn_dslop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_dslop.UseVisualStyleBackColor = true;
+            this.btn_dslop.Click += new System.EventHandler(this.btn_dslop_Click);
             // 
             // btn_changeTT
             // 

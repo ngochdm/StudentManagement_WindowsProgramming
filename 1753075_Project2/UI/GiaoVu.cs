@@ -157,5 +157,11 @@ namespace UI
             else
                 MessageBox.Show("Import UNsuccessfully\nThe class maybe exist in database.");
         }
+
+        private void btn_dslop_Click(object sender, EventArgs e)
+        {
+            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass();
+            vlsoc.ShowDialog();
+        }
     }
 }
