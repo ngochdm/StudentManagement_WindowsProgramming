@@ -152,6 +152,7 @@
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -197,7 +198,7 @@
             this.btn_viewDSLop.Location = new System.Drawing.Point(82, 292);
             this.btn_viewDSLop.Name = "btn_viewDSLop";
             this.btn_viewDSLop.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewDSLop.TabIndex = 5;
+            this.btn_viewDSLop.TabIndex = 3;
             this.btn_viewDSLop.Text = "Xem DS Lớp";
             this.btn_viewDSLop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewDSLop.UseVisualStyleBackColor = true;

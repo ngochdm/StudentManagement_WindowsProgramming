@@ -20,31 +20,32 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}'"
-                //CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '?'",
+                CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ?",
             };
-            //cmd.Parameters.AddWithValue("?", user);
+            cmd.Parameters.AddWithValue("?", user);
             var rd = cmd.ExecuteScalar();
             if (rd.ToString() == "1")
             {
-                //cmd.Parameters.Clear();
-                cmd.CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}' AND MATKHAU = '{pwd}'";
-                //cmd.Parameters.AddWithValue("?", user);
-                //cmd.Parameters.AddWithValue("?", pwd);
+                cmd.Parameters.Clear();
+                cmd.CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ? AND MATKHAU = ?";
+                cmd.Parameters.AddWithValue("?", user);
+                cmd.Parameters.AddWithValue("?", pwd);
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1") return 1;
                 else return 0;
             }
             else
             {
-                cmd.CommandText = $"SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '{user}'";
-                //cmd.Parameters.AddWithValue("?", user);
+                cmd.Parameters.Clear();
+                cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ?";
+                cmd.Parameters.AddWithValue("?", user);
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1")
                 {
-                    cmd.CommandText = $"SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = '{user}' AND MATKHAU = '{pwd}'";
-                    //cmd.Parameters.AddWithValue("?", user);
-                    //cmd.Parameters.AddWithValue("?", pwd);
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ? AND MATKHAU = ?";
+                    cmd.Parameters.AddWithValue("?", user);
+                    cmd.Parameters.AddWithValue("?", pwd);
                     rd = cmd.ExecuteScalar();
                     if (rd.ToString() == "1") return -1;
                     else return 0;
@@ -64,8 +65,9 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM SINHVIEN WHERE MSSV = '{mssv}'"
+                CommandText = "SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM SINHVIEN WHERE MSSV = ?"
             };
+            cmd.Parameters.AddWithValue("?", mssv);
             var rd = cmd.ExecuteReader();
 
             while (rd.Read())
@@ -93,8 +95,10 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM GIAOVU WHERE MAGIAOVU = '{MaGV}'"
+                CommandText = "SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM GIAOVU WHERE MAGIAOVU = ?"
             };
+
+            cmd.Parameters.AddWithValue("?", MaGV);
             var rd = cmd.ExecuteReader();
 
             while (rd.Read())
@@ -107,15 +111,7 @@ namespace DAL
                 if (!rd.IsDBNull(5)) gv.GioiTinh = rd.GetString(5);
                 if (!rd.IsDBNull(6)) gv.MatKhau = rd.GetString(6).ToString();
             }
-
-            /*gv.MaTV = rd.GetString(0).ToString();
-            gv.SoCMND = rd.GetString(1).ToString();
-            gv.HoTen = rd.GetString(2).ToString();
-            gv.NgaySinh = rd.GetString(3).ToString();
-            gv.DiaChi = rd.GetString(4).ToString();
-            gv.GioiTinh = rd.GetString(5).ToString();*/
-
-                cnn.Close();
+            cnn.Close();
             return gv;
         }
         public bool importClass(LopHoc lop)
@@ -128,12 +124,15 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                //
-                CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{lop.MaLop}'"
+                CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?"
             };
+
+            cmd.Parameters.AddWithValue("?", lop.MaLop);
             var rd = cmd.ExecuteScalar();
+
             if (rd.ToString() == "0")
             {
+                cmd.Parameters.Clear();
                 cmd.CommandText = "INSERT INTO LOPHOC VALUES (?, ?)";
                 cmd.Parameters.AddWithValue("?", lop.MaLop);
                 cmd.Parameters.AddWithValue("?", lop.TenLop);
@@ -154,33 +153,44 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = '{sv.MaTV}'"
+                CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ?"
             };
+
+            cmd.Parameters.AddWithValue("?", sv.MaTV);
             var rd = cmd.ExecuteScalar();
+
             if (rd.ToString() == "1")
             {
                 return false;
             }
             else
             {
-                cmd.CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{sv.MaLop}'";
+                cmd.Parameters.Clear();
+                cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
+                cmd.Parameters.AddWithValue("?", sv.MaLop);
+
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "0") return false;
                 else
                 {
                     //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
+                    cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO SINHVIEN VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
                     cmd.Parameters.AddWithValue("?", sv.MaTV);
                     cmd.Parameters.AddWithValue("?", sv.SoCMND);
                     cmd.Parameters.AddWithValue("?", sv.HoTen);
                     cmd.Parameters.AddWithValue("?", sv.MatKhau);
                     cmd.Parameters.AddWithValue("?", sv.MaLop);
+
                     //cmd.Parameters.AddWithValue("?", sv.NgaySinh);
                     var ngsinh = sv.NgaySinh.Split('/');
                     DateTime dob = new DateTime(int.Parse(ngsinh[2]), int.Parse(ngsinh[1]), int.Parse(ngsinh[0]));
                     cmd.Parameters.AddWithValue("?", dob);
+
                     cmd.Parameters.AddWithValue("?", sv.DiaChi);
                     cmd.Parameters.AddWithValue("?", sv.GioiTinh);
+
                     rd = cmd.ExecuteNonQuery();
                     return rd.ToString() == "1";
                 }
@@ -198,7 +208,7 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT MALOP, TENLOP FROM LOPHOC"
+                CommandText = "SELECT MALOP, TENLOP FROM LOPHOC"
             };
             var rd = cmd.ExecuteReader();
 
@@ -225,8 +235,9 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = '{lop}'"
+                CommandText = "SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = ?"
             };
+            cmd.Parameters.AddWithValue("?", lop);
             var rd = cmd.ExecuteReader();
 
             while (rd.Read())
@@ -255,21 +266,36 @@ namespace DAL
             {
                 Connection = cnn,
                 //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
-                CommandText = $"SELECT COUNT(*) FROM TKB WHERE MALOP = '{tkb.MaLop}' AND MAMONHOC = '{tkb.MaMonHoc}' AND HOCKY = '{tkb.HocKy}'"
+                CommandText = "SELECT COUNT(*) FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
             };
+
+            cmd.Parameters.AddWithValue("?", tkb.MaLop);
+            cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
+            cmd.Parameters.AddWithValue("?", tkb.HocKy);
             var rd = cmd.ExecuteScalar();
+
             if (rd.ToString() == "0")
             {
+                cmd.Parameters.Clear();
+
                 //Check Class is in database or not...
-                cmd.CommandText = $"SELECT COUNT(*) FROM LOPHOC WHERE MALOP = '{tkb.MaLop}'";
+                cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
+                cmd.Parameters.AddWithValue("?", tkb.MaLop);
                 rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "0") return false;
+                if (rd.ToString() == "0")
+                {
+                    return importClass(new LopHoc(tkb.MaLop, tkb.MaLop));
+                }
+
+                cmd.Parameters.Clear();
 
                 //Check subject is in database or not...
-                cmd.CommandText = $"SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = '{tkb.MaMonHoc}'";
+                cmd.CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?";
+                cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
                 rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "0") return false;
 
+                cmd.Parameters.Clear();
                 cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
                 cmd.Parameters.AddWithValue("?", tkb.MaLop);
                 cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
@@ -297,9 +323,12 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = $"SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM FROM TKB T INNER JOIN MONHOC MH ON(T.MaMonHoc = MH.MaMonHoc) WHERE T.MALOP = '{lop}'"
+                CommandText = "SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM FROM TKB T INNER JOIN MONHOC MH ON(T.MaMonHoc = MH.MaMonHoc) WHERE T.MALOP = ?"
             };
+
+            cmd.Parameters.AddWithValue("?", lop);
             var rd = cmd.ExecuteReader();
+
             while (rd.Read())
             {
                 string mamon = "", tenmon = "", hocky = "", namhoc = "", phonghoc = "", ckbd = "";
@@ -309,9 +338,11 @@ namespace DAL
                 if (!rd.IsDBNull(3)) namhoc = rd.GetString(3);
                 if (!rd.IsDBNull(4)) phonghoc = rd.GetString(4);
                 if (!rd.IsDBNull(5)) ckbd = rd.GetString(5);
+
                 bool ckhaibd = false;
                 if (ckbd == "1") ckhaibd = true;
                 var tt = new ThoiKhoaBieu(lop, mamon, hocky, namhoc, phonghoc, ckhaibd, tenmon);
+
                 timetable.Add(tt);
             }
             cnn.Close();

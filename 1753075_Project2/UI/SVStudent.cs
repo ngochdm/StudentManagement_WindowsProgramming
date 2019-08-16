@@ -104,9 +104,13 @@ namespace UI
             ViewTimeTable vtt = new ViewTimeTable(sv.MaLop);
             vtt.ShowDialog();
         }
+
+
         #endregion
 
-
-
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

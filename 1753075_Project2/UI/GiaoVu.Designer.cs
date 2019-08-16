@@ -103,7 +103,7 @@
             this.btn_addTimeTable.Location = new System.Drawing.Point(399, 447);
             this.btn_addTimeTable.Name = "btn_addTimeTable";
             this.btn_addTimeTable.Size = new System.Drawing.Size(140, 165);
-            this.btn_addTimeTable.TabIndex = 10;
+            this.btn_addTimeTable.TabIndex = 12;
             this.btn_addTimeTable.Text = "Thêm TKB";
             this.btn_addTimeTable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_addTimeTable.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@
             this.btn_changeTT.Location = new System.Drawing.Point(577, 447);
             this.btn_changeTT.Name = "btn_changeTT";
             this.btn_changeTT.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeTT.TabIndex = 11;
+            this.btn_changeTT.TabIndex = 13;
             this.btn_changeTT.Text = "Sửa TKB";
             this.btn_changeTT.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeTT.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             this.btn_changeScore.Location = new System.Drawing.Point(752, 259);
             this.btn_changeScore.Name = "btn_changeScore";
             this.btn_changeScore.Size = new System.Drawing.Size(140, 165);
-            this.btn_changeScore.TabIndex = 7;
+            this.btn_changeScore.TabIndex = 9;
             this.btn_changeScore.Text = "Sửa Điểm";
             this.btn_changeScore.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeScore.UseVisualStyleBackColor = true;
@@ -375,7 +375,7 @@
             this.btn_viewTKB.Location = new System.Drawing.Point(221, 447);
             this.btn_viewTKB.Name = "btn_viewTKB";
             this.btn_viewTKB.Size = new System.Drawing.Size(140, 165);
-            this.btn_viewTKB.TabIndex = 9;
+            this.btn_viewTKB.TabIndex = 11;
             this.btn_viewTKB.Text = "Xem TKB";
             this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewTKB.UseVisualStyleBackColor = true;
@@ -388,7 +388,7 @@
             this.btn_logout.Location = new System.Drawing.Point(752, 447);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(140, 165);
-            this.btn_logout.TabIndex = 12;
+            this.btn_logout.TabIndex = 14;
             this.btn_logout.Text = "Log Out";
             this.btn_logout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_logout.UseVisualStyleBackColor = true;
@@ -402,7 +402,7 @@
             this.btn_AddingMembersOfClass.Location = new System.Drawing.Point(42, 447);
             this.btn_AddingMembersOfClass.Name = "btn_AddingMembersOfClass";
             this.btn_AddingMembersOfClass.Size = new System.Drawing.Size(145, 165);
-            this.btn_AddingMembersOfClass.TabIndex = 4;
+            this.btn_AddingMembersOfClass.TabIndex = 10;
             this.btn_AddingMembersOfClass.Text = "Thêm DSSV Lớp";
             this.btn_AddingMembersOfClass.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_AddingMembersOfClass.UseVisualStyleBackColor = true;
@@ -419,7 +419,7 @@
             this.btn_AddSubject.Location = new System.Drawing.Point(752, 70);
             this.btn_AddSubject.Name = "btn_AddSubject";
             this.btn_AddSubject.Size = new System.Drawing.Size(140, 165);
-            this.btn_AddSubject.TabIndex = 13;
+            this.btn_AddSubject.TabIndex = 4;
             this.btn_AddSubject.Text = "Thêm môn học";
             this.btn_AddSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_AddSubject.UseVisualStyleBackColor = true;
@@ -431,7 +431,7 @@
             this.btn_ViewClassSubject.Location = new System.Drawing.Point(399, 259);
             this.btn_ViewClassSubject.Name = "btn_ViewClassSubject";
             this.btn_ViewClassSubject.Size = new System.Drawing.Size(140, 165);
-            this.btn_ViewClassSubject.TabIndex = 14;
+            this.btn_ViewClassSubject.TabIndex = 7;
             this.btn_ViewClassSubject.Text = "Xem DS Lớp Từng Môn Học";
             this.btn_ViewClassSubject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_ViewClassSubject.UseVisualStyleBackColor = true;
