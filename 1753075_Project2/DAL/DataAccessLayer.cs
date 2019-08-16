@@ -23,7 +23,7 @@ namespace DAL
                 CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}'"
             };
             var rd = cmd.ExecuteScalar();
-            if (rd.ToString() == "1") 
+            if (rd.ToString() == "1")
             {
                 cmd.CommandText = $"SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = '{user}' AND MATKHAU = '{pwd}'";
                 rd = cmd.ExecuteScalar();
@@ -276,6 +276,38 @@ namespace DAL
             else
                 return false;
             cnn.Close();
+
+        }
+        public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
+        {
+            var timetable = new List<ThoiKhoaBieu>();
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = $"SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM FROM TKB T INNER JOIN MONHOC MH ON(T.MaMonHoc = MH.MaMonHoc) WHERE T.MALOP = '{lop}'"
+            };
+            var rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                string mamon = "", tenmon = "", hocky = "", namhoc = "", phonghoc = "", ckbd = "";
+                if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
+                if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
+                if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
+                if (!rd.IsDBNull(3)) namhoc = rd.GetString(3);
+                if (!rd.IsDBNull(4)) phonghoc = rd.GetString(4);
+                if (!rd.IsDBNull(5)) ckbd = rd.GetString(5);
+                bool ckhaibd = false;
+                if (ckbd == "1") ckhaibd = true;
+                var tt = new ThoiKhoaBieu(lop, mamon, hocky, namhoc, phonghoc, ckhaibd, tenmon);
+                timetable.Add(tt);
+            }
+            cnn.Close();
+            return timetable;
 
         }
     }

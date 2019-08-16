@@ -135,5 +135,9 @@ namespace BLL
                 return false;
             }*/
         }
+        public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
+        {
+            return new DAL.DataAccessLayer().getTimeTableOfAClass(lop);
+        }
     }
 }

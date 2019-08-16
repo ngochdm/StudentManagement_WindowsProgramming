@@ -167,6 +167,21 @@ namespace UI
         }
         #endregion
 
+        #region Xem TKB
+        private void btn_viewTKB_Click(object sender, EventArgs e)
+        {
+            ViewTimeTable vtt = new ViewTimeTable();
+            vtt.ShowDialog();
+        }
+        private void xemThờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewTimeTable vtt = new ViewTimeTable();
+            vtt.ShowDialog();
+        }
+        #endregion
+
+
+
 
 
 
@@ -216,10 +231,10 @@ namespace UI
                 "12. Log Out: log out your account and login again if you want.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
+
+
+
         #endregion
-
-
-
 
     }
 }

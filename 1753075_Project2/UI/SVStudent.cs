@@ -15,6 +15,7 @@ namespace UI
     public partial class SVStudent : Form
     {
         static public string MSSV;
+        static public SinhVien sv;
         public SVStudent()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace UI
         {
             MSSV = mssv;
             InitializeComponent();
+            sv = new BLL.BusinessLogicLayer().getInfoOneStd(MSSV);
         }
 
         #region LogOut
@@ -65,17 +67,46 @@ namespace UI
         }
         #endregion
 
+        #region View Profile
         private void btn_profile_Click(object sender, EventArgs e)
         {
             ViewProfileForStudent vp = new ViewProfileForStudent(MSSV);
             vp.ShowDialog();
         }
+        private void viewProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewProfileForStudent vp = new ViewProfileForStudent(MSSV);
+            vp.ShowDialog();
+        }
+        #endregion
 
+        #region Xem DS Lớp
         private void btn_viewDSLop_Click(object sender, EventArgs e)
         {
-            var sv = new BLL.BusinessLogicLayer().getInfoOneStd(MSSV);
             ViewListStdsOfClass vlsoc = new ViewListStdsOfClass(sv.MaLop);
             vlsoc.ShowDialog();
         }
+        private void xemDanhSáchLớpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewListStdsOfClass vlsoc = new ViewListStdsOfClass(sv.MaLop);
+            vlsoc.ShowDialog();
+        }
+        #endregion
+
+        #region Xem TKB
+        private void btn_timetable_Click(object sender, EventArgs e)
+        {
+            ViewTimeTable vtt = new ViewTimeTable(sv.MaLop);
+            vtt.ShowDialog();
+        }
+        private void thờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewTimeTable vtt = new ViewTimeTable(sv.MaLop);
+            vtt.ShowDialog();
+        }
+        #endregion
+
+
+
     }
 }

@@ -130,8 +130,8 @@ INSERT INTO LOPHOC VALUES ('17CLC2','17CLC2')
 --TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
 Insert into TKB values ('18apcs1','TTH063','Spring','2018','I44','0')
 
-select * from lophoc
-
-select *
-from sinhvien
-where malop='17clc2'
+--MaMonHoc,TENMON,HocKy,NamHoc,PhongHoc
+SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM
+FROM TKB T INNER JOIN MONHOC MH
+ON (T.MaMonHoc = MH.MaMonHoc)
+WHERE T.MALOP = '17CLC2'

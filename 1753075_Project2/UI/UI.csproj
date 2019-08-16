@@ -101,6 +101,12 @@
     <Compile Include="ViewProfileForStudent.Designer.cs">
       <DependentUpon>ViewProfileForStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewTimeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewTimeTable.Designer.cs">
+      <DependentUpon>ViewTimeTable.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddAClass.resx">
       <DependentUpon>AddAClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProfileForStudent.resx">
       <DependentUpon>ViewProfileForStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewTimeTable.resx">
+      <DependentUpon>ViewTimeTable.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -223,21 +223,21 @@
             // viewProfileToolStripMenuItem
             // 
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.viewProfileToolStripMenuItem.Text = "View profile";
             this.viewProfileToolStripMenuItem.Click += new System.EventHandler(this.viewProfileToolStripMenuItem_Click);
             // 
             // thêmLớpToolStripMenuItem
             // 
             this.thêmLớpToolStripMenuItem.Name = "thêmLớpToolStripMenuItem";
-            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmLớpToolStripMenuItem.Text = "Thêm Lớp";
             this.thêmLớpToolStripMenuItem.Click += new System.EventHandler(this.thêmLớpToolStripMenuItem_Click);
             // 
             // thêmSinhViênToolStripMenuItem
             // 
             this.thêmSinhViênToolStripMenuItem.Name = "thêmSinhViênToolStripMenuItem";
-            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thêmSinhViênToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.thêmSinhViênToolStripMenuItem.Text = "Thêm Sinh Viên";
             this.thêmSinhViênToolStripMenuItem.Click += new System.EventHandler(this.thêmSinhViênToolStripMenuItem_Click);
             // 
@@ -248,7 +248,7 @@
             this.thêmBảngĐiểmToolStripMenuItem,
             this.sửaĐiểmToolStripMenuItem});
             this.bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
-            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.bảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
             // 
             // xemBảngĐiểmToolStripMenuItem
@@ -276,7 +276,7 @@
             this.xemDanhSáchLớpToolStripMenuItem,
             this.sửaDanhSáchLớpToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
             // 
             // thêmDSSVLớpToolStripMenuItem
@@ -314,6 +314,7 @@
             this.xemThờiKhóaBiểuToolStripMenuItem.Name = "xemThờiKhóaBiểuToolStripMenuItem";
             this.xemThờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(262, 30);
             this.xemThờiKhóaBiểuToolStripMenuItem.Text = "Xem Thời Khóa Biểu";
+            this.xemThờiKhóaBiểuToolStripMenuItem.Click += new System.EventHandler(this.xemThờiKhóaBiểuToolStripMenuItem_Click);
             // 
             // thêmThờiKhóaBiểuToolStripMenuItem
             // 
@@ -331,14 +332,14 @@
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -376,6 +377,7 @@
             this.btn_viewTKB.Text = "Xem TKB";
             this.btn_viewTKB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_viewTKB.UseVisualStyleBackColor = true;
+            this.btn_viewTKB.Click += new System.EventHandler(this.btn_viewTKB_Click);
             // 
             // btn_logout
             // 

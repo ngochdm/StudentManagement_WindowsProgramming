@@ -24,7 +24,6 @@ namespace UI
                 cbb_lop.Items.Add(aClass.MaLop);
             }
             cbb_lop.SelectedIndex = 0;
-
         }
         public ViewListStdsOfClass(string lop)
         {

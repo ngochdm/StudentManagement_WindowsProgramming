@@ -84,6 +84,7 @@
             this.btn_timetable.Text = "Thời Khóa Biểu";
             this.btn_timetable.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_timetable.UseVisualStyleBackColor = true;
+            this.btn_timetable.Click += new System.EventHandler(this.btn_timetable_Click);
             // 
             // menuStrip1
             // 
@@ -116,6 +117,7 @@
             this.viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
             this.viewProfileToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.viewProfileToolStripMenuItem.Text = "View Profile";
+            this.viewProfileToolStripMenuItem.Click += new System.EventHandler(this.viewProfileToolStripMenuItem_Click);
             // 
             // kếtQuảHọcTậpToolStripMenuItem
             // 
@@ -128,12 +130,14 @@
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
             this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
+            this.thờiKhóaBiểuToolStripMenuItem.Click += new System.EventHandler(this.thờiKhóaBiểuToolStripMenuItem_Click);
             // 
             // xemDanhSáchLớpToolStripMenuItem
             // 
             this.xemDanhSáchLớpToolStripMenuItem.Name = "xemDanhSáchLớpToolStripMenuItem";
             this.xemDanhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.xemDanhSáchLớpToolStripMenuItem.Text = "Xem Danh Sách Lớp";
+            this.xemDanhSáchLớpToolStripMenuItem.Click += new System.EventHandler(this.xemDanhSáchLớpToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
