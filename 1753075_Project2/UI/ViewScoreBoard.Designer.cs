@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewScoreBoard));
             this.lv = new System.Windows.Forms.ListView();
             this.MSSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.semester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.midterm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.final = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.others = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,7 +49,6 @@
             // 
             this.lv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.MSSV,
-            this.semester,
             this.midterm,
             this.final,
             this.others,
@@ -70,44 +68,38 @@
             // 
             this.MSSV.DisplayIndex = 1;
             this.MSSV.Text = "MSSV";
-            this.MSSV.Width = 90;
-            // 
-            // semester
-            // 
-            this.semester.DisplayIndex = 2;
-            this.semester.Text = "Học Kỳ";
-            this.semester.Width = 80;
+            this.MSSV.Width = 100;
             // 
             // midterm
             // 
-            this.midterm.DisplayIndex = 3;
+            this.midterm.DisplayIndex = 2;
             this.midterm.Text = "Giữa Kỳ";
-            this.midterm.Width = 70;
+            this.midterm.Width = 80;
             // 
             // final
             // 
-            this.final.DisplayIndex = 4;
+            this.final.DisplayIndex = 3;
             this.final.Text = "Cuối Kỳ";
-            this.final.Width = 70;
+            this.final.Width = 80;
             // 
             // others
             // 
-            this.others.DisplayIndex = 5;
+            this.others.DisplayIndex = 4;
             this.others.Text = "Điểm khác";
-            this.others.Width = 70;
+            this.others.Width = 80;
             // 
             // average
             // 
-            this.average.DisplayIndex = 6;
+            this.average.DisplayIndex = 5;
             this.average.Text = "Điểm Tổng";
-            this.average.Width = 70;
+            this.average.Width = 80;
             // 
             // STT
             // 
             this.STT.DisplayIndex = 0;
             this.STT.Text = "STT";
             this.STT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.STT.Width = 40;
+            this.STT.Width = 50;
             // 
             // lb_ClassID
             // 
@@ -212,7 +204,6 @@
         private System.Windows.Forms.ColumnHeader MSSV;
         private System.Windows.Forms.Label lb_ClassID;
         private System.Windows.Forms.ComboBox cbb_lop;
-        private System.Windows.Forms.ColumnHeader semester;
         private System.Windows.Forms.ColumnHeader midterm;
         private System.Windows.Forms.ColumnHeader final;
         private System.Windows.Forms.ColumnHeader others;

@@ -79,7 +79,6 @@ namespace UI
                 //MSSV,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong
                 ListViewItem item = new ListViewItem(score.MaSV);
 
-                item.SubItems.Add(score.HocKy);
                 item.SubItems.Add(score.DiemGK.ToString());
                 item.SubItems.Add(score.DiemCK.ToString());
                 item.SubItems.Add(score.DiemKhac.ToString());

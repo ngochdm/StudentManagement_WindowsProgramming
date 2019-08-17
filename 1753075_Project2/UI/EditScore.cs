@@ -15,6 +15,7 @@ namespace UI
         public static BangDiem scoreboard;
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
+        public static List<string> semesters;
 
         public static string MaLop = "";
         public static string MaMon = "";
@@ -29,7 +30,7 @@ namespace UI
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
-            cbb_hocky.SelectedIndex = 0;
+            cbb_hocky.Items.Clear();
 
             classes = new BLL.BusinessLogicLayer().getAllInfoOfClasses();
             foreach (var aClass in classes)
@@ -49,6 +50,14 @@ namespace UI
                 cbb_MonHoc.SelectedIndex = 0;
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
+
+                semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+                foreach (var semester in semesters)
+                {
+                    cbb_hocky.Items.Add(semester);
+                }
+                cbb_hocky.SelectedIndex = 0;
+                HocKy = cbb_hocky.SelectedItem.ToString();
             }
             else lb_tenmon.Text = "This class didn't have any subject";
         }
@@ -57,6 +66,7 @@ namespace UI
         {
             MaLop = cbb_lop.SelectedItem.ToString();
             cbb_MonHoc.Items.Clear();
+            cbb_hocky.Items.Clear();
 
             subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
             foreach (var subject in subjects)
@@ -68,6 +78,14 @@ namespace UI
                 cbb_MonHoc.SelectedIndex = 0;
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
+
+                semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+                foreach (var semester in semesters)
+                {
+                    cbb_hocky.Items.Add(semester);
+                }
+                cbb_hocky.SelectedIndex = 0;
+                HocKy = cbb_hocky.SelectedItem.ToString();
             }
             else lb_tenmon.Text = "This class didn't have any subject";
         }
@@ -76,6 +94,15 @@ namespace UI
         {
             MaMon = cbb_MonHoc.SelectedItem.ToString();
             lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
+            cbb_hocky.Items.Clear();
+
+            semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+            foreach (var semester in semesters)
+            {
+                cbb_hocky.Items.Add(semester);
+            }
+            cbb_hocky.SelectedIndex = 0;
+            HocKy = cbb_hocky.SelectedItem.ToString();
         }
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)

@@ -685,8 +685,9 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", scoreboard.MaMonHoc);
                     cmd.Parameters.AddWithValue("?", scoreboard.HocKy);
 
+                    rd = cmd.ExecuteNonQuery();
                     cnn.Close();
-                    return cmd.ExecuteNonQuery() == 1;
+                    return rd.ToString() == "1";
                 }
                 else
                 {
