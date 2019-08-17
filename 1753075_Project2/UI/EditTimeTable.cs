@@ -10,9 +10,9 @@ using static DTO.DataTransferObject;
 
 namespace UI
 {
-    public partial class EditScore : Form
+    public partial class EditTimeTable : Form
     {
-        public static BangDiem scoreboard;
+        public static ThoiKhoaBieu timetable;
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
 
@@ -20,12 +20,12 @@ namespace UI
         public static string MaMon = "";
         public static string HocKy = "";
 
-        public EditScore()
+        public EditTimeTable()
         {
             InitializeComponent();
         }
 
-        private void EditScore_Load(object sender, EventArgs e)
+        private void EditTimeTable_Load(object sender, EventArgs e)
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
@@ -85,28 +85,41 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_ck.Text.Trim() == string.Empty || tb_gk.Text.Trim() == string.Empty || tb_khac.Text.Trim() == string.Empty || tb_MSSV.Text.Trim() == string.Empty || tb_tong.Text.Trim() == string.Empty)
+            if (tb_ckbd.Text.Trim() == string.Empty || tb_phong.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Vui lòng điền đầy đủ nội dung để cập nhật điểm", "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng điền đầy đủ nội dung để cập nhật", "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             else
             {
-                var mssv = tb_MSSV.Text;
+                if (tb_ckbd.Text.Length > 1)
+                {
+                    MessageBox.Show("Công khai bảng điểm chỉ được nhập MỘT kí tự 0 hoặc 1", "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                var gk = (float)double.Parse(tb_gk.Text);
-                var ck = (float)double.Parse(tb_ck.Text);
-                var khac = (float)double.Parse(tb_khac.Text);
-                var tong = (float)double.Parse(tb_tong.Text);
-
-                scoreboard = new BangDiem(mssv, MaLop, MaMon, HocKy, "", gk, ck, khac, tong);
-                var check = new BLL.BusinessLogicLayer().updateScoreBoard(scoreboard);
-
-                if (check == true)
-                    MessageBox.Show("Edit scoreboard successfully");
+                bool ckbd = false;
+                if (tb_ckbd.Text == "1")
+                    ckbd = true;
+                else if (tb_ckbd.Text == "0")
+                    ckbd = false;
                 else
-                    MessageBox.Show("Edit scoreboard UNsuccessfully");
+                {
+                    MessageBox.Show("Công khai bảng điểm chỉ nhận giá trị 0 hoặc 1");
+                }
+
+                if (tb_ckbd.Text == "1" || tb_ckbd.Text == "0")
+                {
+                    var phong = tb_phong.Text;
+
+                    timetable = new ThoiKhoaBieu(MaLop, MaMon, HocKy, "", phong, ckbd, "");
+                    var check = new BLL.BusinessLogicLayer().editTimeTable(timetable);
+
+                    if (check == true)
+                        MessageBox.Show("Edit successfully");
+                    else
+                        MessageBox.Show("Edit UNsuccessfully");
+                }
             }
-            //this.DialogResult = DialogResult.OK;
         }
     }
 }

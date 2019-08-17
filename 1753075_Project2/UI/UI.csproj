@@ -69,6 +69,12 @@
     <Compile Include="EditScore.Designer.cs">
       <DependentUpon>EditScore.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditTimeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTimeTable.Designer.cs">
+      <DependentUpon>EditTimeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiaoVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditScore.resx">
       <DependentUpon>EditScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTimeTable.resx">
+      <DependentUpon>EditTimeTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GiaoVu.resx">
       <DependentUpon>GiaoVu.cs</DependentUpon>

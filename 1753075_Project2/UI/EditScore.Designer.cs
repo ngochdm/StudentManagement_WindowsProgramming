@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditScore));
             this.lb_tenmon = new System.Windows.Forms.Label();
             this.lb_mamon = new System.Windows.Forms.Label();
             this.lb_ClassID = new System.Windows.Forms.Label();
@@ -261,8 +262,11 @@
             this.Controls.Add(this.cbb_hocky);
             this.Controls.Add(this.cbb_MonHoc);
             this.Controls.Add(this.cbb_lop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditScore";
-            this.Text = "EditScore";
+            this.Text = "Sửa Điểm";
             this.Load += new System.EventHandler(this.EditScore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

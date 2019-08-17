@@ -271,6 +271,32 @@ namespace UI
         }
         #endregion
 
+        #region Sửa điểm
+        private void btn_changeScore_Click(object sender, EventArgs e)
+        {
+            var editS = new EditScore();
+            editS.ShowDialog();
+        }
+        private void sửaĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var editS = new EditScore();
+            editS.ShowDialog();
+        }
+        #endregion
+
+        #region Sửa Thời Khóa Biểu
+        private void btn_changeTT_Click(object sender, EventArgs e)
+        {
+            var editTT = new EditTimeTable();
+            editTT.ShowDialog();
+        }
+        private void sửaThờiKhóaBiểuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var editTT = new EditTimeTable();
+            editTT.ShowDialog();
+        }
+        #endregion
+
 
 
         #region LogOut
@@ -326,17 +352,5 @@ namespace UI
         #endregion
 
 
-        
-        private void btn_changeScore_Click(object sender, EventArgs e)
-        {
-            var editS = new EditScore();
-            editS.ShowDialog();
-        }
-
-        private void sửaĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var editS = new EditScore();
-            editS.ShowDialog();
-        }
     }
 }

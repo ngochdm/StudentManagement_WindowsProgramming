@@ -647,5 +647,39 @@ namespace DAL
                 return false;
             }
         }
+        public bool updateTimeTable(ThoiKhoaBieu timetable)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT COUNT(*) FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", timetable.MaLop);
+            cmd.Parameters.AddWithValue("?", timetable.MaMonHoc);
+            cmd.Parameters.AddWithValue("?", timetable.HocKy);
+            var rd = cmd.ExecuteScalar();
+
+            if (rd.ToString() == "1")
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "UPDATE TKB SET PHONGHOC = ?, CONGKHAIBANGDIEM = ? WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?";
+
+                cmd.Parameters.AddWithValue("?", timetable.PhongHoc);
+                cmd.Parameters.AddWithValue("?", timetable.CongKhaiBangDiem);
+                cmd.Parameters.AddWithValue("?", timetable.MaLop);
+                cmd.Parameters.AddWithValue("?", timetable.MaMonHoc);
+                cmd.Parameters.AddWithValue("?", timetable.HocKy);
+
+                return cmd.ExecuteNonQuery() == 1;
+            }
+            else return false;
+        }
     }
 }

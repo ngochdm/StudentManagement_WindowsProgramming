@@ -225,5 +225,10 @@ namespace BLL
             }
             return scoreboard;
         }
+        public bool editTimeTable(ThoiKhoaBieu timetable)
+        {
+            if (timetable.PhongHoc.Length > 10) return false;
+            else return new DAL.DataAccessLayer().updateTimeTable(timetable);
+        }
     }
 }

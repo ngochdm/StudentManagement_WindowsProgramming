@@ -26,3 +26,4 @@ D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\175307
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.ViewScoreBoard.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.ViewListStdInClassSubject.resources
 D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.EditScore.resources
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\UI\obj\Debug\UI.EditTimeTable.resources
