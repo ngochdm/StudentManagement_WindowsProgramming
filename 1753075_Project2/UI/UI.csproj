@@ -69,6 +69,12 @@
     <Compile Include="EditListStdsInClassAndSubject.Designer.cs">
       <DependentUpon>EditListStdsInClassAndSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditLSiCaSSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLSiCaSSubForm.Designer.cs">
+      <DependentUpon>EditLSiCaSSubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditScore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditListStdsInClassAndSubject.resx">
       <DependentUpon>EditListStdsInClassAndSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditLSiCaSSubForm.resx">
+      <DependentUpon>EditLSiCaSSubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditScore.resx">
       <DependentUpon>EditScore.cs</DependentUpon>

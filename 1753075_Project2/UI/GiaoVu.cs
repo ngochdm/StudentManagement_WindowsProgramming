@@ -349,8 +349,19 @@ namespace UI
 
 
 
+
         #endregion
 
+        private void btn_changeDSLop_Click(object sender, EventArgs e)
+        {
+            var editLSICAS = new EditListStdsInClassAndSubject();
+            editLSICAS.ShowDialog();
+        }
 
+        private void sửaDanhSáchLớpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var editLSICAS = new EditListStdsInClassAndSubject();
+            editLSICAS.ShowDialog();
+        }
     }
 }

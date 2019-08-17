@@ -73,7 +73,7 @@
             this.lv.Location = new System.Drawing.Point(12, 106);
             this.lv.MultiSelect = false;
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(776, 583);
+            this.lv.Size = new System.Drawing.Size(776, 519);
             this.lv.TabIndex = 17;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
@@ -86,6 +86,7 @@
             // MSSV
             // 
             this.MSSV.Text = "MSSV";
+            this.MSSV.Width = 70;
             // 
             // FullName
             // 
@@ -156,16 +157,17 @@
             // 
             // btn_Add
             // 
-            this.btn_Add.Location = new System.Drawing.Point(94, 698);
+            this.btn_Add.Location = new System.Drawing.Point(92, 638);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(131, 39);
             this.btn_Add.TabIndex = 19;
             this.btn_Add.Text = "Thêm SV";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(573, 698);
+            this.btn_Delete.Location = new System.Drawing.Point(580, 638);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(131, 39);
             this.btn_Delete.TabIndex = 19;
@@ -198,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 746);
+            this.ClientSize = new System.Drawing.Size(800, 684);
             this.Controls.Add(this.lb_Hocky);
             this.Controls.Add(this.cbb_hocky);
             this.Controls.Add(this.btn_Delete);

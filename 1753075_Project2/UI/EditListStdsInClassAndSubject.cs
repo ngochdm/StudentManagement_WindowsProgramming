@@ -147,13 +147,43 @@ namespace UI
             {
                 ListViewItem item = lv.SelectedItems[0];
                 //var student = students.Find(x => x.MaTV.Contains(item.SubItems[1].Text));
-                var check = new BLL.BusinessLogicLayer().deleteAStdFromListStdInClassAndSubject(item.SubItems[1].Text, MaLop, MaMon, "");
+                var check = new BLL.BusinessLogicLayer().deleteAStdFromListStdInClassAndSubject(item.SubItems[1].Text, MaLop, MaMon, HocKy);
+                if(check==true)
+                {
+                    MessageBox.Show("Delete successfully");
+                    BindListStdsInClassSubject(MaLop, MaMon, HocKy);
+                }
+                else
+                {
+                    MessageBox.Show("Delete UNsuccessfully");
+                }
             }
         }
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
         {
             HocKy = cbb_hocky.SelectedItem.ToString();
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            var subform = new EditLSiCaSSubForm();
+            var drl = subform.ShowDialog();
+
+            if(drl==DialogResult.OK)
+            {
+                string mssv = subform.getMSSV();
+                var check = new BLL.BusinessLogicLayer().insertAStdToListStdInClassAndSubject(mssv, MaLop, MaMon, HocKy);
+                if (check == true) 
+                {
+                    MessageBox.Show("Insert successfully");
+                    BindListStdsInClassSubject(MaLop, MaMon, HocKy);
+                }
+                else
+                {
+                    MessageBox.Show("Insert UNsuccessfully");
+                }
+            }
         }
     }
 }

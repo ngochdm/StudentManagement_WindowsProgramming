@@ -728,8 +728,9 @@ namespace DAL
                 cmd.Parameters.AddWithValue("?", timetable.MaMonHoc);
                 cmd.Parameters.AddWithValue("?", timetable.HocKy);
 
+                rd = cmd.ExecuteNonQuery();
                 cnn.Close();
-                return cmd.ExecuteNonQuery() == 1;
+                return rd.ToString() == "1";
             }
             else
             {
@@ -739,70 +740,82 @@ namespace DAL
         }
         public bool insertAStdToListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
         {
-            //MSSV,MaLop,MaMonHoc,HocKy
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
+                //MSSV,MaLop,MaMonHoc,HocKy
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
-            };
-
-            cmd.Parameters.AddWithValue("?", mssv);
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "0")
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "INSERT INTO BANGDIEM(MSSV, MALOP, MAMONHOC, HOCKY) VALUES (?, ?, ?, ?)";
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+                };
 
                 cmd.Parameters.AddWithValue("?", mssv);
                 cmd.Parameters.AddWithValue("?", malop);
                 cmd.Parameters.AddWithValue("?", mamon);
                 cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteScalar();
 
-                rd = cmd.ExecuteNonQuery();
+                if (rd.ToString() == "0")
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO BANGDIEM(MSSV, MALOP, MAMONHOC, HOCKY) VALUES (?, ?, ?, ?)";
+
+                    cmd.Parameters.AddWithValue("?", mssv);
+                    cmd.Parameters.AddWithValue("?", malop);
+                    cmd.Parameters.AddWithValue("?", mamon);
+                    cmd.Parameters.AddWithValue("?", hocky);
+
+                    rd = cmd.ExecuteNonQuery();
+
+                    cnn.Close();
+                    return rd.ToString() == "1";
+                }
+                else
+                {
+                    cnn.Close();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool deleteAStdFromListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
+        {
+            try
+            {
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "DELETE FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+                };
+
+                cmd.Parameters.AddWithValue("?", mssv);
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteNonQuery();
 
                 cnn.Close();
                 return rd.ToString() == "1";
             }
-            else
+            catch
             {
-                cnn.Close();
                 return false;
             }
-
-            //return false;
-        }
-        public bool deleteAStdFromListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
-        {
-            var cnn = new OleDbConnection()
-            {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "DELETE FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
-            };
-
-            cmd.Parameters.AddWithValue("?", mssv);
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteNonQuery();
-
-            cnn.Close();
-            return rd.ToString() == "1";
         }
         public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
         {

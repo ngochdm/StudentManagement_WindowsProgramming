@@ -167,7 +167,7 @@
             this.sửaDanhSáchLớpToolStripMenuItem,
             this.xemDanhSáchLớpTừngMônHọcToolStripMenuItem});
             this.danhSáchLớpToolStripMenuItem.Name = "danhSáchLớpToolStripMenuItem";
-            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
+            this.danhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.danhSáchLớpToolStripMenuItem.Text = "Danh Sách Lớp";
             // 
             // thêmDSSVLớpToolStripMenuItem
@@ -188,7 +188,8 @@
             // 
             this.sửaDanhSáchLớpToolStripMenuItem.Name = "sửaDanhSáchLớpToolStripMenuItem";
             this.sửaDanhSáchLớpToolStripMenuItem.Size = new System.Drawing.Size(381, 30);
-            this.sửaDanhSáchLớpToolStripMenuItem.Text = "Sửa Danh Sách Lớp";
+            this.sửaDanhSáchLớpToolStripMenuItem.Text = "Sửa Danh Sách Lớp Từng Môn Học";
+            this.sửaDanhSáchLớpToolStripMenuItem.Click += new System.EventHandler(this.sửaDanhSáchLớpToolStripMenuItem_Click);
             // 
             // xemDanhSáchLớpTừngMônHọcToolStripMenuItem
             // 
@@ -204,7 +205,7 @@
             this.thêmThờiKhóaBiểuToolStripMenuItem,
             this.sửaThờiKhóaBiểuToolStripMenuItem});
             this.thờiKhóaBiểuToolStripMenuItem.Name = "thờiKhóaBiểuToolStripMenuItem";
-            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
+            this.thờiKhóaBiểuToolStripMenuItem.Size = new System.Drawing.Size(219, 30);
             this.thờiKhóaBiểuToolStripMenuItem.Text = "Thời Khóa Biểu";
             // 
             // xemThờiKhóaBiểuToolStripMenuItem
@@ -385,6 +386,7 @@
             this.btn_changeDSLop.Text = "Sửa DS Lớp Từng Môn Học";
             this.btn_changeDSLop.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_changeDSLop.UseVisualStyleBackColor = true;
+            this.btn_changeDSLop.Click += new System.EventHandler(this.btn_changeDSLop_Click);
             // 
             // btn_changeTT
             // 
