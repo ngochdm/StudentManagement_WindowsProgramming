@@ -125,10 +125,6 @@
             this.cbb_hocky.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_hocky.FormattingEnabled = true;
-            this.cbb_hocky.Items.AddRange(new object[] {
-            "Spring",
-            "Summer",
-            "Fall"});
             this.cbb_hocky.Location = new System.Drawing.Point(497, 34);
             this.cbb_hocky.Name = "cbb_hocky";
             this.cbb_hocky.Size = new System.Drawing.Size(136, 33);

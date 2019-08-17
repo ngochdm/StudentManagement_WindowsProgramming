@@ -33,8 +33,16 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", user);
                     cmd.Parameters.AddWithValue("?", pwd);
                     rd = cmd.ExecuteScalar();
-                    if (rd.ToString() == "1") return 1;
-                    else return 0;
+                    if (rd.ToString() == "1")
+                    {
+                        cnn.Close();
+                        return 1;
+                    }
+                    else
+                    {
+                        cnn.Close();
+                        return 0;
+                    }
                 }
                 else
                 {
@@ -49,8 +57,16 @@ namespace DAL
                         cmd.Parameters.AddWithValue("?", user);
                         cmd.Parameters.AddWithValue("?", pwd);
                         rd = cmd.ExecuteScalar();
-                        if (rd.ToString() == "1") return -1;
-                        else return 0;
+                        if (rd.ToString() == "1")
+                        {
+                            cnn.Close();
+                            return -1;
+                        }
+                        else
+                        {
+                            cnn.Close();
+                            return 0;
+                        }
                     }
                 }
                 cnn.Close();
@@ -88,6 +104,7 @@ namespace DAL
                 if (!rd.IsDBNull(6)) sv.GioiTinh = rd.GetString(6);
                 if (!rd.IsDBNull(7)) sv.MatKhau = rd.GetString(7);
             }
+
             cnn.Close();
             return sv;
         }
@@ -99,6 +116,7 @@ namespace DAL
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -143,14 +161,19 @@ namespace DAL
                 {
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO LOPHOC VALUES (?, ?)";
+
                     cmd.Parameters.AddWithValue("?", lop.MaLop);
                     cmd.Parameters.AddWithValue("?", lop.TenLop);
                     rd = cmd.ExecuteNonQuery();
+
+                    cnn.Close();
                     return rd.ToString() == "1";
                 }
                 else
+                {
+                    cnn.Close();
                     return false;
-                cnn.Close();
+                }
             }
             catch
             {
@@ -177,6 +200,7 @@ namespace DAL
 
                 if (rd.ToString() == "1")
                 {
+                    cnn.Close();
                     return false;
                 }
                 else
@@ -186,7 +210,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", sv.MaLop);
 
                     rd = cmd.ExecuteScalar();
-                    if (rd.ToString() == "0") return false;
+                    if (rd.ToString() == "0") { cnn.Close(); return false; }
                     else
                     {
                         //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
@@ -208,10 +232,10 @@ namespace DAL
                         cmd.Parameters.AddWithValue("?", sv.GioiTinh);
 
                         rd = cmd.ExecuteNonQuery();
+                        cnn.Close();
                         return rd.ToString() == "1";
                     }
                 }
-                cnn.Close();
             }
             catch
             {
@@ -267,12 +291,14 @@ namespace DAL
             while (rd.Read())
             {
                 string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+
                 if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
                 if (!rd.IsDBNull(1)) socmnd = rd.GetString(1);
                 if (!rd.IsDBNull(2)) hoten = rd.GetString(2);
                 if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
                 if (!rd.IsDBNull(4)) diachi = rd.GetString(4);
                 if (!rd.IsDBNull(5)) gioitinh = rd.GetString(5);
+
                 var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, lop);
                 students.Add(std);
             }
@@ -310,7 +336,8 @@ namespace DAL
                     rd = cmd.ExecuteScalar();
                     if (rd.ToString() == "0")
                     {
-                        return importClass(new LopHoc(tkb.MaLop, tkb.MaLop));
+                        cnn.Close();
+                        return false;
                     }
 
                     cmd.Parameters.Clear();
@@ -321,11 +348,13 @@ namespace DAL
                     rd = cmd.ExecuteScalar();
                     if (rd.ToString() == "0")
                     {
+                        cnn.Close();
                         return addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
                     }
 
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
+
                     cmd.Parameters.AddWithValue("?", tkb.MaLop);
                     cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
                     cmd.Parameters.AddWithValue("?", tkb.HocKy);
@@ -334,11 +363,11 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", tkb.CongKhaiBangDiem);
 
                     rd = cmd.ExecuteNonQuery();
+                    cnn.Close();
                     return rd.ToString() == "1";
                 }
                 else
-                    return false;
-                cnn.Close();
+                { cnn.Close(); return false; }
             }
             catch
             {
@@ -353,6 +382,7 @@ namespace DAL
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -378,9 +408,9 @@ namespace DAL
 
                 timetable.Add(tt);
             }
+
             cnn.Close();
             return timetable;
-
         }
         public bool addASubjectToDatabase(MonHoc subject)
         {
@@ -391,6 +421,7 @@ namespace DAL
                     ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
                 };
                 cnn.Open();
+
                 var cmd = new OleDbCommand()
                 {
                     Connection = cnn,
@@ -407,18 +438,21 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
                     cmd.Parameters.AddWithValue("?", subject.TenMonHoc);
                     rd = cmd.ExecuteNonQuery();
+                    cnn.Close();
                     return rd.ToString() == "1";
                 }
                 else
+                {
+                    cnn.Close();
                     return false;
-                cnn.Close();
+                }
             }
             catch
             {
                 return false;
             }
         }
-        public List<BangDiem> getScoreBoardWithClassAndSubject(string malop, string mamon)
+        public List<BangDiem> getScoreBoardWithClassAndSubject(string malop, string mamon, string hocky)
         {
             var scoreboard = new List<BangDiem>();
 
@@ -431,34 +465,34 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = "SELECT MH.TENMONHOC, BD.MSSV, BD.HOCKY, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG FROM BANGDIEM BD INNER JOIN MONHOC MH ON(BD.MAMONHOC = MH.MAMONHOC) WHERE BD.MAMONHOC = ? AND BD.MALOP = ?"
+                CommandText = "SELECT MH.TENMONHOC, BD.MSSV, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG FROM BANGDIEM BD INNER JOIN MONHOC MH ON(BD.MAMONHOC = MH.MAMONHOC) WHERE BD.MAMONHOC = ? AND BD.MALOP = ? AND BD.HOCKY = ?"
             };
 
             cmd.Parameters.AddWithValue("?", mamon);
             cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", hocky);
             var rd = cmd.ExecuteReader();
 
             while (rd.Read())
             {
-                string tenmon = "", mssv = "", hocky = "";
+                string tenmon = "", mssv = "";
                 float diemgk = 0, diemkhac = 0, diemck = 0, diemtong = 0;
 
                 if (!rd.IsDBNull(0)) tenmon = rd.GetString(0);
                 if (!rd.IsDBNull(1)) mssv = rd.GetString(1);
-                if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
 
-                if (!rd.IsDBNull(3))
+                if (!rd.IsDBNull(2))
                     //diemgk = rd.GetFloat(3);
-                    diemgk = (float)rd.GetDouble(3);
-                if (!rd.IsDBNull(4))
+                    diemgk = (float)rd.GetDouble(2);
+                if (!rd.IsDBNull(3))
                     //diemck = rd.GetFloat(4);
-                    diemck = (float)rd.GetDouble(4);
-                if (!rd.IsDBNull(5))
+                    diemck = (float)rd.GetDouble(3);
+                if (!rd.IsDBNull(4))
                     //diemkhac = rd.GetFloat(5);
-                    diemkhac = (float)rd.GetDouble(5);
-                if (!rd.IsDBNull(6))
+                    diemkhac = (float)rd.GetDouble(4);
+                if (!rd.IsDBNull(5))
                     //diemtong = rd.GetFloat(6);
-                    diemtong = (float)rd.GetDouble(6);
+                    diemtong = (float)rd.GetDouble(5);
 
                 var score = new BangDiem(mssv, malop, mamon, hocky, tenmon, diemgk, diemck, diemkhac, diemtong);
                 scoreboard.Add(score);
@@ -470,11 +504,13 @@ namespace DAL
         public List<MonHoc> getInfoAllSubject()
         {
             var subjects = new List<MonHoc>();
+
             var cnn = new OleDbConnection()
             {
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -485,10 +521,13 @@ namespace DAL
             while (rd.Read())
             {
                 string mamon = "", tenmon = "";
+
                 if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
                 if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
+
                 else tenmon = mamon;
                 var subject = new MonHoc(mamon, tenmon);
+
                 subjects.Add(subject);
             }
             cnn.Close();
@@ -497,16 +536,19 @@ namespace DAL
         public List<MonHoc> getAllSubjectOfClass(string malop)
         {
             var timetable = getTimeTableOfAClass(malop);
+
             var subjects = new List<MonHoc>();
             foreach (var tb in timetable)
             {
                 subjects.Add(new MonHoc(tb.MaMonHoc, tb.TenMon));
             }
+
             return subjects;
         }
-        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon)
+        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon, string hocky)
         {
             var students = new List<SinhVien>();
+
             var cnn = new OleDbConnection()
             {
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
@@ -516,22 +558,25 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = "SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI FROM SINHVIEN SV INNER JOIN BANGDIEM BD ON(BD.MSSV = SV.MSSV) WHERE BD.MALOP = ? AND BD.MaMonHoc = ?"
+                CommandText = "SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI FROM SINHVIEN SV INNER JOIN BANGDIEM BD ON(BD.MSSV = SV.MSSV) WHERE BD.MALOP = ? AND BD.MaMonHoc = ? AND BD.HOCKY = ?"
             };
 
             cmd.Parameters.AddWithValue("?", malop);
             cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", hocky);
             var rd = cmd.ExecuteReader();
 
             while (rd.Read())
             {
                 string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+
                 if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
                 if (!rd.IsDBNull(2)) socmnd = rd.GetString(2);
                 if (!rd.IsDBNull(1)) hoten = rd.GetString(1);
                 if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
                 if (!rd.IsDBNull(5)) diachi = rd.GetString(5);
                 if (!rd.IsDBNull(4)) gioitinh = rd.GetString(4);
+
                 var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, malop);
                 students.Add(std);
             }
@@ -594,8 +639,8 @@ namespace DAL
 
                 var rd = cmd.ExecuteNonQuery();
 
-                return rd == 1;
                 cnn.Close();
+                return rd == 1;
             }
             catch
             {
@@ -622,6 +667,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("?", scoreboard.MaLop);
                 cmd.Parameters.AddWithValue("?", scoreboard.MaMonHoc);
                 cmd.Parameters.AddWithValue("?", scoreboard.HocKy);
+
                 var rd = cmd.ExecuteScalar();
 
                 if (rd.ToString() == "1")
@@ -638,9 +684,14 @@ namespace DAL
                     cmd.Parameters.AddWithValue("?", scoreboard.MaMonHoc);
                     cmd.Parameters.AddWithValue("?", scoreboard.HocKy);
 
+                    cnn.Close();
                     return cmd.ExecuteNonQuery() == 1;
                 }
-                else return false;
+                else
+                {
+                    cnn.Close();
+                    return false;
+                }
             }
             catch
             {
@@ -677,9 +728,114 @@ namespace DAL
                 cmd.Parameters.AddWithValue("?", timetable.MaMonHoc);
                 cmd.Parameters.AddWithValue("?", timetable.HocKy);
 
+                cnn.Close();
                 return cmd.ExecuteNonQuery() == 1;
             }
-            else return false;
+            else
+            {
+                cnn.Close();
+                return false;
+            }
+        }
+        public bool insertAStdToListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
+        {
+            //MSSV,MaLop,MaMonHoc,HocKy
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT COUNT(*) FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", mssv);
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", hocky);
+            var rd = cmd.ExecuteScalar();
+
+            if (rd.ToString() == "0")
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "INSERT INTO BANGDIEM(MSSV, MALOP, MAMONHOC, HOCKY) VALUES (?, ?, ?, ?)";
+
+                cmd.Parameters.AddWithValue("?", mssv);
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", hocky);
+
+                rd = cmd.ExecuteNonQuery();
+
+                cnn.Close();
+                return rd.ToString() == "1";
+            }
+            else
+            {
+                cnn.Close();
+                return false;
+            }
+
+            //return false;
+        }
+        public bool deleteAStdFromListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "DELETE FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", mssv);
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", hocky);
+            var rd = cmd.ExecuteNonQuery();
+
+            cnn.Close();
+            return rd.ToString() == "1";
+        }
+        public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
+        {
+            var semesters = new List<string>();
+
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT HOCKY FROM TKB WHERE MALOP = ? AND MAMONHOC = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+
+            var rd = cmd.ExecuteReader();
+
+            while(rd.Read())
+            {
+                if (!rd.IsDBNull(0)) 
+                {
+                    var semester = rd.GetString(0);
+                    semesters.Add(semester);
+                }
+            }
+
+            cnn.Close();
+            return semesters;
         }
     }
 }

@@ -14,8 +14,15 @@ namespace BLL
         public int checkingUserPwd(string user, string pwd)
         {
             //-1: Student, 0: False, 1: GiaoVu
-            int check = new DAL.DataAccessLayer().checkUserPwd(user, pwd);
-            return check;
+            try
+            {
+                int check = new DAL.DataAccessLayer().checkUserPwd(user, pwd);
+                return check;
+            }
+            catch
+            {
+                return 0;
+            }
         }
         public SinhVien getInfoOneStd(string mssv)
         {
@@ -31,11 +38,25 @@ namespace BLL
         }
         public bool importClass(LopHoc lop)
         {
-            return new DAL.DataAccessLayer().importClass(lop);
+            try
+            {
+                return new DAL.DataAccessLayer().importClass(lop);
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool insertAStudent(SinhVien sv)
         {
-            return new DAL.DataAccessLayer().insertAStudent(sv);
+            try
+            {
+                return new DAL.DataAccessLayer().insertAStudent(sv);
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<SinhVien> readListStdFromCsvFile(string path)
         {
@@ -120,7 +141,7 @@ namespace BLL
         }
         public bool addListTimeTable(List<ThoiKhoaBieu> tt)
         {
-            //try
+            try
             {
                 bool check = false;
                 var dal = new DAL.DataAccessLayer();
@@ -130,10 +151,10 @@ namespace BLL
                 }
                 return check;
             }
-           /* catch
+           catch
             {
                 return false;
-            }*/
+            }
         }
         public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
         {
@@ -141,53 +162,81 @@ namespace BLL
         }
         public bool insertASubject(MonHoc subject)
         {
-            return new DAL.DataAccessLayer().addASubjectToDatabase(subject);
+            try
+            {
+                return new DAL.DataAccessLayer().addASubjectToDatabase(subject);
+            }
+            catch
+            {
+                return false;
+            }
         }
-        public List<BangDiem> getAllScoreBoardWithClassAndSubject(string malop,string mamon)
+        public List<BangDiem> getAllScoreBoardWithClassAndSubject(string malop,string mamon, string hocky)
         {
-            return new DAL.DataAccessLayer().getScoreBoardWithClassAndSubject(malop, mamon);
+            return new DAL.DataAccessLayer().getScoreBoardWithClassAndSubject(malop, mamon, hocky);
         }
         public List<MonHoc> getSubjectsOfClass(string malop)
         {
             return new DAL.DataAccessLayer().getAllSubjectOfClass(malop);
         }
-        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon)
+        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon, string hocky)
         {
-            return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon);
+            return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon, hocky);
         }
         public bool addAStdIntoScoreBoard(List<ThoiKhoaBieu> timetable)
         {
-            bool check = false;
-            foreach (var tkb in timetable)
+            try
             {
-                var dal = new DAL.DataAccessLayer();
-                List<string> stdID = dal.getAllStdIDinAClass(tkb.MaLop);
-                foreach(var std in stdID)
+                bool check = false;
+                foreach (var tkb in timetable)
                 {
-                    check = dal.addAStdToScoreBoardWhenImportTimeTable(std, tkb);
+                    var dal = new DAL.DataAccessLayer();
+                    List<string> stdID = dal.getAllStdIDinAClass(tkb.MaLop);
+                    foreach (var std in stdID)
+                    {
+                        check = dal.addAStdToScoreBoardWhenImportTimeTable(std, tkb);
+                    }
                 }
+                return check;
             }
-            return check;
+            catch
+            {
+                return false;
+            }
         }
         public bool updateScoreBoard(BangDiem scoreboard)
         {
-            if (scoreboard.MaSV.Length > 10)
-                return false;
-            if ((scoreboard.DiemCK > 10 && scoreboard.DiemCK < 0) || (scoreboard.DiemGK > 10 && scoreboard.DiemGK < 0) || (scoreboard.DiemKhac > 10 && scoreboard.DiemKhac < 0) || (scoreboard.DiemTong > 10 && scoreboard.DiemTong < 10)) 
+            try
+            {
+                if (scoreboard.MaSV.Length > 10)
+                    return false;
+                if ((scoreboard.DiemCK > 10 && scoreboard.DiemCK < 0) || (scoreboard.DiemGK > 10 && scoreboard.DiemGK < 0) || (scoreboard.DiemKhac > 10 && scoreboard.DiemKhac < 0) || (scoreboard.DiemTong > 10 && scoreboard.DiemTong < 10))
+                {
+                    return false;
+                }
+                else
+                    return new DAL.DataAccessLayer().updateScoreBoard(scoreboard);
+            }
+            catch
             {
                 return false;
             }
-            else
-                return new DAL.DataAccessLayer().updateScoreBoard(scoreboard);
         }
         public bool updateListScoreBoard(List<BangDiem> scoreboard)
         {
-            bool check = false;
-            foreach (var sc in scoreboard)
+            try
             {
-                check = updateScoreBoard(sc);
+                bool check = false;
+                foreach (var sc in scoreboard)
+                {
+                    check = updateScoreBoard(sc);
+                }
+                return check;
             }
-            return check;
+            catch
+            {
+                return false;
+            }
         }
         public List<BangDiem> readScoreBoardFromCSVFile(string path)
         {
@@ -227,8 +276,33 @@ namespace BLL
         }
         public bool editTimeTable(ThoiKhoaBieu timetable)
         {
-            if (timetable.PhongHoc.Length > 10) return false;
-            else return new DAL.DataAccessLayer().updateTimeTable(timetable);
+            try
+            {
+                if (timetable.PhongHoc.Length > 10) return false;
+                else return new DAL.DataAccessLayer().updateTimeTable(timetable);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool insertAStdToListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
+        {
+            if (mssv.Length > 10)
+                return false;
+            else
+                return new DAL.DataAccessLayer().insertAStdToListStdInClassAndSubject(mssv, malop, mamon, hocky);
+        }
+        public bool deleteAStdFromListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
+        {
+            if (mssv.Length > 10)
+                return false;
+            else
+                return new DAL.DataAccessLayer().deleteAStdFromListStdInClassAndSubject(mssv, malop, mamon, hocky);
+        }
+        public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
+        {
+            return new DAL.DataAccessLayer().getAllSemesterOfSubjectInClass(malop, mamon);
         }
     }
 }

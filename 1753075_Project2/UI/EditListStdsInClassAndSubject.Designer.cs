@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class ViewListStdInClassSubject
+    partial class EditListStdsInClassAndSubject
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewListStdInClassSubject));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditListStdsInClassAndSubject));
             this.lb_tenmon = new System.Windows.Forms.Label();
             this.lv = new System.Windows.Forms.ListView();
             this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +42,8 @@
             this.lb_ClassID = new System.Windows.Forms.Label();
             this.cbb_MonHoc = new System.Windows.Forms.ComboBox();
             this.cbb_lop = new System.Windows.Forms.ComboBox();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.lb_Hocky = new System.Windows.Forms.Label();
             this.cbb_hocky = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -50,10 +52,10 @@
             // 
             this.lb_tenmon.AutoSize = true;
             this.lb_tenmon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lb_tenmon.Location = new System.Drawing.Point(390, 67);
+            this.lb_tenmon.Location = new System.Drawing.Point(390, 66);
             this.lb_tenmon.Name = "lb_tenmon";
             this.lb_tenmon.Size = new System.Drawing.Size(91, 25);
-            this.lb_tenmon.TabIndex = 12;
+            this.lb_tenmon.TabIndex = 18;
             this.lb_tenmon.Text = "Tên Môn";
             // 
             // lv
@@ -68,11 +70,11 @@
             this.Address});
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
-            this.lv.Location = new System.Drawing.Point(12, 110);
+            this.lv.Location = new System.Drawing.Point(12, 106);
             this.lv.MultiSelect = false;
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(776, 566);
-            this.lv.TabIndex = 11;
+            this.lv.Size = new System.Drawing.Size(776, 583);
+            this.lv.TabIndex = 17;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
             // 
@@ -114,31 +116,31 @@
             // 
             this.lb_mamon.AutoSize = true;
             this.lb_mamon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lb_mamon.Location = new System.Drawing.Point(23, 67);
+            this.lb_mamon.Location = new System.Drawing.Point(23, 66);
             this.lb_mamon.Name = "lb_mamon";
             this.lb_mamon.Size = new System.Drawing.Size(146, 25);
-            this.lb_mamon.TabIndex = 9;
+            this.lb_mamon.TabIndex = 15;
             this.lb_mamon.Text = "Chọn môn học:";
             // 
             // lb_ClassID
             // 
             this.lb_ClassID.AutoSize = true;
             this.lb_ClassID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lb_ClassID.Location = new System.Drawing.Point(23, 19);
+            this.lb_ClassID.Location = new System.Drawing.Point(23, 18);
             this.lb_ClassID.Name = "lb_ClassID";
             this.lb_ClassID.Size = new System.Drawing.Size(262, 25);
-            this.lb_ClassID.TabIndex = 10;
-            this.lb_ClassID.Text = "Chọn lớp để xem danh sách:";
+            this.lb_ClassID.TabIndex = 16;
+            this.lb_ClassID.Text = "Chọn lớp để xem bảng điểm:";
             // 
             // cbb_MonHoc
             // 
             this.cbb_MonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_MonHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_MonHoc.FormattingEnabled = true;
-            this.cbb_MonHoc.Location = new System.Drawing.Point(223, 64);
+            this.cbb_MonHoc.Location = new System.Drawing.Point(223, 63);
             this.cbb_MonHoc.Name = "cbb_MonHoc";
             this.cbb_MonHoc.Size = new System.Drawing.Size(136, 33);
-            this.cbb_MonHoc.TabIndex = 7;
+            this.cbb_MonHoc.TabIndex = 13;
             this.cbb_MonHoc.SelectedIndexChanged += new System.EventHandler(this.cbb_MonHoc_SelectedIndexChanged);
             // 
             // cbb_lop
@@ -146,20 +148,39 @@
             this.cbb_lop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_lop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_lop.FormattingEnabled = true;
-            this.cbb_lop.Location = new System.Drawing.Point(328, 16);
+            this.cbb_lop.Location = new System.Drawing.Point(337, 15);
             this.cbb_lop.Name = "cbb_lop";
             this.cbb_lop.Size = new System.Drawing.Size(136, 33);
-            this.cbb_lop.TabIndex = 8;
+            this.cbb_lop.TabIndex = 14;
             this.cbb_lop.SelectedIndexChanged += new System.EventHandler(this.cbb_lop_SelectedIndexChanged);
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Location = new System.Drawing.Point(94, 698);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(131, 39);
+            this.btn_Add.TabIndex = 19;
+            this.btn_Add.Text = "Thêm SV";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(573, 698);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(131, 39);
+            this.btn_Delete.TabIndex = 19;
+            this.btn_Delete.Text = "Xóa";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // lb_Hocky
             // 
             this.lb_Hocky.AutoSize = true;
             this.lb_Hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lb_Hocky.Location = new System.Drawing.Point(486, 24);
+            this.lb_Hocky.Location = new System.Drawing.Point(515, 18);
             this.lb_Hocky.Name = "lb_Hocky";
             this.lb_Hocky.Size = new System.Drawing.Size(78, 25);
-            this.lb_Hocky.TabIndex = 26;
+            this.lb_Hocky.TabIndex = 28;
             this.lb_Hocky.Text = "Học kỳ:";
             // 
             // cbb_hocky
@@ -167,19 +188,21 @@
             this.cbb_hocky.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_hocky.FormattingEnabled = true;
-            this.cbb_hocky.Location = new System.Drawing.Point(589, 21);
+            this.cbb_hocky.Location = new System.Drawing.Point(618, 15);
             this.cbb_hocky.Name = "cbb_hocky";
             this.cbb_hocky.Size = new System.Drawing.Size(136, 33);
-            this.cbb_hocky.TabIndex = 25;
+            this.cbb_hocky.TabIndex = 27;
             this.cbb_hocky.SelectedIndexChanged += new System.EventHandler(this.cbb_hocky_SelectedIndexChanged);
             // 
-            // ViewListStdInClassSubject
+            // EditListStdsInClassAndSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 693);
+            this.ClientSize = new System.Drawing.Size(800, 746);
             this.Controls.Add(this.lb_Hocky);
             this.Controls.Add(this.cbb_hocky);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.lb_tenmon);
             this.Controls.Add(this.lv);
             this.Controls.Add(this.lb_mamon);
@@ -187,11 +210,9 @@
             this.Controls.Add(this.cbb_MonHoc);
             this.Controls.Add(this.cbb_lop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ViewListStdInClassSubject";
-            this.Text = "Xem Danh Sách Lớp Từng Môn";
-            this.Load += new System.EventHandler(this.ViewListStdInClassSubject_Load);
+            this.Name = "EditListStdsInClassAndSubject";
+            this.Text = "Sửa danh sách lớp cho từng môn học";
+            this.Load += new System.EventHandler(this.EditListStdsInClassAndSubject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,17 +222,19 @@
 
         private System.Windows.Forms.Label lb_tenmon;
         private System.Windows.Forms.ListView lv;
+        private System.Windows.Forms.ColumnHeader STT;
         private System.Windows.Forms.ColumnHeader MSSV;
-        private System.Windows.Forms.Label lb_mamon;
-        private System.Windows.Forms.Label lb_ClassID;
-        private System.Windows.Forms.ComboBox cbb_MonHoc;
-        private System.Windows.Forms.ComboBox cbb_lop;
         private System.Windows.Forms.ColumnHeader FullName;
         private System.Windows.Forms.ColumnHeader SoCmnd;
         private System.Windows.Forms.ColumnHeader DoB;
         private System.Windows.Forms.ColumnHeader Sex;
         private System.Windows.Forms.ColumnHeader Address;
-        private System.Windows.Forms.ColumnHeader STT;
+        private System.Windows.Forms.Label lb_mamon;
+        private System.Windows.Forms.Label lb_ClassID;
+        private System.Windows.Forms.ComboBox cbb_MonHoc;
+        private System.Windows.Forms.ComboBox cbb_lop;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Label lb_Hocky;
         private System.Windows.Forms.ComboBox cbb_hocky;
     }

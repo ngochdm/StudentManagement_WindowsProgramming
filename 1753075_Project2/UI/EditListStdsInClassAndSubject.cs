@@ -10,22 +10,23 @@ using static DTO.DataTransferObject;
 
 namespace UI
 {
-    public partial class ViewListStdInClassSubject : Form
+    public partial class EditListStdsInClassAndSubject : Form
     {
         public static string MaLop = "";
         public static string MaMon = "";
         public static string HocKy = "";
 
-        public static List<string> semesters;
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
+        public static List<SinhVien> students;
+        public static List<string> semesters;
 
-        public ViewListStdInClassSubject()
+        public EditListStdsInClassAndSubject()
         {
             InitializeComponent();
         }
 
-        private void ViewListStdInClassSubject_Load(object sender, EventArgs e)
+        private void EditListStdsInClassAndSubject_Load(object sender, EventArgs e)
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
@@ -114,7 +115,7 @@ namespace UI
         {
             lv.BeginUpdate();
             lv.Items.Clear();
-            var students = new BLL.BusinessLogicLayer().getAllStdsInClassAndSubject(malop, mamon, hocky);
+            students = new BLL.BusinessLogicLayer().getAllStdsInClassAndSubject(malop, mamon, hocky);
 
             int count = 1;
             foreach (var std in students)
@@ -134,6 +135,20 @@ namespace UI
                 lv.Items.Add(item);
             }
             lv.EndUpdate();
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (lv.SelectedItems.Count == 0) 
+            {
+                MessageBox.Show("Chọn một dòng để xóa");
+            }
+            else
+            {
+                ListViewItem item = lv.SelectedItems[0];
+                //var student = students.Find(x => x.MaTV.Contains(item.SubItems[1].Text));
+                var check = new BLL.BusinessLogicLayer().deleteAStdFromListStdInClassAndSubject(item.SubItems[1].Text, MaLop, MaMon, "");
+            }
         }
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)

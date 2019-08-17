@@ -42,6 +42,8 @@
             this.lb_mamon = new System.Windows.Forms.Label();
             this.cbb_MonHoc = new System.Windows.Forms.ComboBox();
             this.lb_tenmon = new System.Windows.Forms.Label();
+            this.lb_Hocky = new System.Windows.Forms.Label();
+            this.cbb_hocky = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lv
@@ -159,11 +161,34 @@
             this.lb_tenmon.TabIndex = 6;
             this.lb_tenmon.Text = "Tên Môn";
             // 
+            // lb_Hocky
+            // 
+            this.lb_Hocky.AutoSize = true;
+            this.lb_Hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lb_Hocky.Location = new System.Drawing.Point(512, 19);
+            this.lb_Hocky.Name = "lb_Hocky";
+            this.lb_Hocky.Size = new System.Drawing.Size(78, 25);
+            this.lb_Hocky.TabIndex = 28;
+            this.lb_Hocky.Text = "Học kỳ:";
+            // 
+            // cbb_hocky
+            // 
+            this.cbb_hocky.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbb_hocky.FormattingEnabled = true;
+            this.cbb_hocky.Location = new System.Drawing.Point(615, 16);
+            this.cbb_hocky.Name = "cbb_hocky";
+            this.cbb_hocky.Size = new System.Drawing.Size(136, 33);
+            this.cbb_hocky.TabIndex = 27;
+            this.cbb_hocky.SelectedIndexChanged += new System.EventHandler(this.cbb_hocky_SelectedIndexChanged);
+            // 
             // ViewScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 706);
+            this.Controls.Add(this.lb_Hocky);
+            this.Controls.Add(this.cbb_hocky);
             this.Controls.Add(this.lb_tenmon);
             this.Controls.Add(this.lv);
             this.Controls.Add(this.lb_mamon);
@@ -196,5 +221,7 @@
         private System.Windows.Forms.ComboBox cbb_MonHoc;
         private System.Windows.Forms.Label lb_tenmon;
         private System.Windows.Forms.ColumnHeader STT;
+        private System.Windows.Forms.Label lb_Hocky;
+        private System.Windows.Forms.ComboBox cbb_hocky;
     }
 }

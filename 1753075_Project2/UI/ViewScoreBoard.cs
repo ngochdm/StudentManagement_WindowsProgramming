@@ -16,8 +16,12 @@ namespace UI
     {
         public static string MaLop = "";
         public static string MaMon = "";
+        public static string HocKy = "";
+
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
+        public static List<string> semesters;
+
         //public static BLL.BusinessLogicLayer bll = new BLL.BusinessLogicLayer();
 
         public ViewScoreBoard()
@@ -29,6 +33,7 @@ namespace UI
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
+            cbb_hocky.Items.Clear();
 
             classes = new BLL.BusinessLogicLayer().getAllInfoOfClasses();
             foreach (var aClass in classes)
@@ -39,7 +44,7 @@ namespace UI
             MaLop = cbb_lop.SelectedItem.ToString();
 
             subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
-            foreach(var subject in subjects)
+            foreach (var subject in subjects)
             {
                 cbb_MonHoc.Items.Add(subject.MaMonHoc);
             }
@@ -49,16 +54,24 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+                semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+                foreach (var semester in semesters)
+                {
+                    cbb_hocky.Items.Add(semester);
+                }
+                cbb_hocky.SelectedIndex = 0;
+                HocKy = cbb_hocky.SelectedItem.ToString();
+
+                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon, HocKy);
             }
-            else lb_tenmon.Text = "This class didn't learn any subject";
+            else lb_tenmon.Text = "This class didn't have any subject";
         }
 
-        private void BindListOfScoreBoardStdsIntoListView(string malop, string mamon)
+        private void BindListOfScoreBoardStdsIntoListView(string malop, string mamon, string hocky)
         {
             lv.BeginUpdate();
             lv.Items.Clear();
-            var scores = new BLL.BusinessLogicLayer().getAllScoreBoardWithClassAndSubject(malop, mamon) ;
+            var scores = new BLL.BusinessLogicLayer().getAllScoreBoardWithClassAndSubject(malop, mamon, hocky) ;
 
             int count = 1;
             foreach (var score in scores)
@@ -82,6 +95,7 @@ namespace UI
         {
             MaLop = cbb_lop.SelectedItem.ToString();
             cbb_MonHoc.Items.Clear();
+            cbb_hocky.Items.Clear();
 
             subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
             foreach (var subject in subjects)
@@ -94,21 +108,39 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+                semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+                foreach (var semester in semesters)
+                {
+                    cbb_hocky.Items.Add(semester);
+                }
+                cbb_hocky.SelectedIndex = 0;
+                HocKy = cbb_hocky.SelectedItem.ToString();
+
+                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon, HocKy);
             }
-            else lb_tenmon.Text = "This class didn't learn any subject";
+            else lb_tenmon.Text = "This class didn't have any subject";
         }
 
         private void cbb_MonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbb_MonHoc.Items.Count > 0)
-            {
-                MaMon = cbb_MonHoc.SelectedItem.ToString();
-                lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
+            MaMon = cbb_MonHoc.SelectedItem.ToString();
+            lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
+            cbb_hocky.Items.Clear();
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+            semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+            foreach (var semester in semesters)
+            {
+                cbb_hocky.Items.Add(semester);
             }
-            else lb_tenmon.Text = "This class didn't learn any subject";
+            cbb_hocky.SelectedIndex = 0;
+            HocKy = cbb_hocky.SelectedItem.ToString();
+
+            BindListOfScoreBoardStdsIntoListView(MaLop, MaMon, HocKy);
+        }
+
+        private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HocKy = cbb_hocky.SelectedItem.ToString();
         }
     }
 }
