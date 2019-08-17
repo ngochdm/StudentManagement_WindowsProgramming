@@ -298,5 +298,26 @@ namespace UI
 
         #endregion
 
+        private void addScoreBoard()
+        {
+            var openFile = openCSVFile.ShowDialog();
+            string path = "";
+            if (openFile == DialogResult.OK)
+                path = openCSVFile.FileName;
+            if (path != "")
+            {
+                var bll = new BLL.BusinessLogicLayer();
+                var scoreboard = bll.readScoreBoardFromCSVFile(path);
+                var check = bll.updateListScoreBoard(scoreboard);
+                if (check == true)
+                    MessageBox.Show("Import scoreboard successfully");
+                else
+                    MessageBox.Show("Import scoreboard UNsuccessfully\n");
+            }
+        }
+        private void btn_addScore_Click(object sender, EventArgs e)
+        {
+            addScoreBoard();
+        }
     }
 }

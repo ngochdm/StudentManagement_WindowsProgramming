@@ -213,7 +213,7 @@ namespace DAL
                 }
                 cnn.Close();
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -418,7 +418,7 @@ namespace DAL
                 return false;
             }
         }
-        public List<BangDiem> getScoreBoardWithClassAndSubject(string malop,string mamon)
+        public List<BangDiem> getScoreBoardWithClassAndSubject(string malop, string mamon)
         {
             var scoreboard = new List<BangDiem>();
 
@@ -601,6 +601,32 @@ namespace DAL
             {
                 return false;
             }
+        }
+        public bool updateScoreBoard(BangDiem scoreboard)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "UPDATE BANGDIEM SET DIEMGIUAKY = ?, DIEMCUOIKY = ?, DIEMKHAC = ?, DIEMTONG = ? WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", scoreboard.DiemGK);
+            cmd.Parameters.AddWithValue("?", scoreboard.DiemCK);
+            cmd.Parameters.AddWithValue("?", scoreboard.DiemKhac);
+            cmd.Parameters.AddWithValue("?", scoreboard.DiemTong);
+            cmd.Parameters.AddWithValue("?", scoreboard.MaSV);
+            cmd.Parameters.AddWithValue("?", scoreboard.MaLop);
+            cmd.Parameters.AddWithValue("?", scoreboard.MaMonHoc);
+            cmd.Parameters.AddWithValue("?", scoreboard.HocKy);
+
+            return cmd.ExecuteNonQuery() == 1;
+
         }
     }
 }

@@ -169,5 +169,59 @@ namespace BLL
             }
             return check;
         }
+        public bool updateScoreBoard(BangDiem scoreboard)
+        {
+            if ((scoreboard.DiemCK > 10 && scoreboard.DiemCK < 0) || (scoreboard.DiemGK > 10 && scoreboard.DiemGK < 0) || (scoreboard.DiemKhac > 10 && scoreboard.DiemKhac < 0) || (scoreboard.DiemTong > 10 && scoreboard.DiemTong < 10)) 
+            {
+                return false;
+            }
+            else
+                return new DAL.DataAccessLayer().updateScoreBoard(scoreboard);
+        }
+        public bool updateListScoreBoard(List<BangDiem> scoreboard)
+        {
+            bool check = false;
+            foreach (var sc in scoreboard)
+            {
+                check = updateScoreBoard(sc);
+            }
+            return check;
+        }
+        public List<BangDiem> readScoreBoardFromCSVFile(string path)
+        {
+            var scoreboard = new List<BangDiem>();
+            using (var rd = new StreamReader(path))
+            {
+                //malop,mamon,hocky
+                var firstline = rd.ReadLine();
+                var fl = firstline.Split(',');
+
+                var malop = fl[0];
+                var mamon = fl[1];
+                var hocky = fl[2];
+
+                rd.ReadLine();
+
+                string aline;
+
+                while ((aline = rd.ReadLine()) != null)
+                {
+                    var arr = aline.Split(',');
+
+                    //BangDiem(MSSV,MaLop,MaMonHoc,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong)
+                    //STT,MSSV,Họ tên,Điểm giữa kỳ,Điểm cuối kỳ,Điểm khác,Điểm tổng
+
+                    var mssv = arr[1];
+                    var diemgk = (float) double.Parse(arr[3]);
+                    var diemck = (float) double.Parse(arr[4]);
+                    var diemkhac = (float) double.Parse(arr[5]);
+                    var diemtong = (float) double.Parse(arr[6]);
+
+                    var sc = new BangDiem(mssv, malop, mamon, hocky, "", diemgk, diemck, diemkhac, diemtong);
+                    scoreboard.Add(sc);
+                }
+            }
+            return scoreboard;
+        }
     }
 }
