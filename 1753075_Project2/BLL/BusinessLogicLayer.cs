@@ -151,5 +151,9 @@ namespace BLL
         {
             return new DAL.DataAccessLayer().getAllSubjectOfClass(malop);
         }
+        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon)
+        {
+            return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon);
+        }
     }
 }

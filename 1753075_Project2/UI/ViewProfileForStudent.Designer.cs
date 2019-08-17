@@ -50,7 +50,7 @@
             // tb_GTsv
             // 
             this.tb_GTsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_GTsv.Location = new System.Drawing.Point(575, 192);
+            this.tb_GTsv.Location = new System.Drawing.Point(526, 171);
             this.tb_GTsv.Name = "tb_GTsv";
             this.tb_GTsv.Size = new System.Drawing.Size(131, 30);
             this.tb_GTsv.TabIndex = 12;
@@ -58,7 +58,7 @@
             // tb_Dchisv
             // 
             this.tb_Dchisv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_Dchisv.Location = new System.Drawing.Point(217, 242);
+            this.tb_Dchisv.Location = new System.Drawing.Point(168, 221);
             this.tb_Dchisv.Multiline = true;
             this.tb_Dchisv.Name = "tb_Dchisv";
             this.tb_Dchisv.Size = new System.Drawing.Size(489, 73);
@@ -67,7 +67,7 @@
             // tb_ngsinhsv
             // 
             this.tb_ngsinhsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_ngsinhsv.Location = new System.Drawing.Point(217, 192);
+            this.tb_ngsinhsv.Location = new System.Drawing.Point(168, 171);
             this.tb_ngsinhsv.Name = "tb_ngsinhsv";
             this.tb_ngsinhsv.Size = new System.Drawing.Size(230, 30);
             this.tb_ngsinhsv.TabIndex = 14;
@@ -75,7 +75,7 @@
             // tb_cmndsv
             // 
             this.tb_cmndsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_cmndsv.Location = new System.Drawing.Point(217, 146);
+            this.tb_cmndsv.Location = new System.Drawing.Point(168, 125);
             this.tb_cmndsv.Name = "tb_cmndsv";
             this.tb_cmndsv.Size = new System.Drawing.Size(230, 30);
             this.tb_cmndsv.TabIndex = 15;
@@ -83,7 +83,7 @@
             // tb_hotensv
             // 
             this.tb_hotensv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_hotensv.Location = new System.Drawing.Point(217, 99);
+            this.tb_hotensv.Location = new System.Drawing.Point(168, 78);
             this.tb_hotensv.Name = "tb_hotensv";
             this.tb_hotensv.Size = new System.Drawing.Size(489, 30);
             this.tb_hotensv.TabIndex = 16;
@@ -91,7 +91,7 @@
             // tb_Mssv
             // 
             this.tb_Mssv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_Mssv.Location = new System.Drawing.Point(217, 54);
+            this.tb_Mssv.Location = new System.Drawing.Point(168, 33);
             this.tb_Mssv.Name = "tb_Mssv";
             this.tb_Mssv.ReadOnly = true;
             this.tb_Mssv.Size = new System.Drawing.Size(489, 30);
@@ -100,7 +100,7 @@
             // btn_changePwdsv
             // 
             this.btn_changePwdsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_changePwdsv.Location = new System.Drawing.Point(99, 348);
+            this.btn_changePwdsv.Location = new System.Drawing.Point(50, 327);
             this.btn_changePwdsv.Name = "btn_changePwdsv";
             this.btn_changePwdsv.Size = new System.Drawing.Size(209, 48);
             this.btn_changePwdsv.TabIndex = 10;
@@ -110,7 +110,7 @@
             // btn_editsv
             // 
             this.btn_editsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_editsv.Location = new System.Drawing.Point(592, 339);
+            this.btn_editsv.Location = new System.Drawing.Point(543, 318);
             this.btn_editsv.Name = "btn_editsv";
             this.btn_editsv.Size = new System.Drawing.Size(114, 57);
             this.btn_editsv.TabIndex = 11;
@@ -121,7 +121,7 @@
             // 
             this.lb_hotensv.AutoSize = true;
             this.lb_hotensv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_hotensv.Location = new System.Drawing.Point(95, 106);
+            this.lb_hotensv.Location = new System.Drawing.Point(46, 85);
             this.lb_hotensv.Name = "lb_hotensv";
             this.lb_hotensv.Size = new System.Drawing.Size(85, 20);
             this.lb_hotensv.TabIndex = 4;
@@ -131,7 +131,7 @@
             // 
             this.lb_gtsv.AutoSize = true;
             this.lb_gtsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_gtsv.Location = new System.Drawing.Point(494, 202);
+            this.lb_gtsv.Location = new System.Drawing.Point(445, 181);
             this.lb_gtsv.Name = "lb_gtsv";
             this.lb_gtsv.Size = new System.Drawing.Size(75, 20);
             this.lb_gtsv.TabIndex = 5;
@@ -141,7 +141,7 @@
             // 
             this.lb_ngsinhsv.AutoSize = true;
             this.lb_ngsinhsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_ngsinhsv.Location = new System.Drawing.Point(95, 202);
+            this.lb_ngsinhsv.Location = new System.Drawing.Point(46, 181);
             this.lb_ngsinhsv.Name = "lb_ngsinhsv";
             this.lb_ngsinhsv.Size = new System.Drawing.Size(85, 20);
             this.lb_ngsinhsv.TabIndex = 6;
@@ -151,7 +151,7 @@
             // 
             this.lb_dchisv.AutoSize = true;
             this.lb_dchisv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_dchisv.Location = new System.Drawing.Point(95, 249);
+            this.lb_dchisv.Location = new System.Drawing.Point(46, 228);
             this.lb_dchisv.Name = "lb_dchisv";
             this.lb_dchisv.Size = new System.Drawing.Size(64, 20);
             this.lb_dchisv.TabIndex = 7;
@@ -161,7 +161,7 @@
             // 
             this.lb_SoCMNDsv.AutoSize = true;
             this.lb_SoCMNDsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_SoCMNDsv.Location = new System.Drawing.Point(95, 153);
+            this.lb_SoCMNDsv.Location = new System.Drawing.Point(46, 132);
             this.lb_SoCMNDsv.Name = "lb_SoCMNDsv";
             this.lb_SoCMNDsv.Size = new System.Drawing.Size(84, 20);
             this.lb_SoCMNDsv.TabIndex = 8;
@@ -171,7 +171,7 @@
             // 
             this.lb_Masv.AutoSize = true;
             this.lb_Masv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_Masv.Location = new System.Drawing.Point(95, 61);
+            this.lb_Masv.Location = new System.Drawing.Point(46, 40);
             this.lb_Masv.Name = "lb_Masv";
             this.lb_Masv.Size = new System.Drawing.Size(59, 20);
             this.lb_Masv.TabIndex = 9;
@@ -181,7 +181,7 @@
             // 
             this.lb_LopSv.AutoSize = true;
             this.lb_LopSv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.lb_LopSv.Location = new System.Drawing.Point(494, 153);
+            this.lb_LopSv.Location = new System.Drawing.Point(445, 132);
             this.lb_LopSv.Name = "lb_LopSv";
             this.lb_LopSv.Size = new System.Drawing.Size(40, 20);
             this.lb_LopSv.TabIndex = 5;
@@ -190,7 +190,7 @@
             // tb_lopsv
             // 
             this.tb_lopsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tb_lopsv.Location = new System.Drawing.Point(575, 146);
+            this.tb_lopsv.Location = new System.Drawing.Point(526, 125);
             this.tb_lopsv.Name = "tb_lopsv";
             this.tb_lopsv.Size = new System.Drawing.Size(131, 30);
             this.tb_lopsv.TabIndex = 12;
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(721, 403);
             this.Controls.Add(this.tb_lopsv);
             this.Controls.Add(this.tb_GTsv);
             this.Controls.Add(this.tb_Dchisv);

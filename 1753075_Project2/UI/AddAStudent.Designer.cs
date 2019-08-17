@@ -274,7 +274,7 @@
             "29",
             "30",
             "31"});
-            this.cbb_day.Location = new System.Drawing.Point(170, 186);
+            this.cbb_day.Location = new System.Drawing.Point(170, 185);
             this.cbb_day.Name = "cbb_day";
             this.cbb_day.Size = new System.Drawing.Size(57, 28);
             this.cbb_day.TabIndex = 4;

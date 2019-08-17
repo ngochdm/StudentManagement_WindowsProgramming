@@ -45,9 +45,11 @@ namespace UI
             lv.BeginUpdate();
             lv.Items.Clear();
             var stds = new BLL.BusinessLogicLayer().getAllStdsInAClass(malop);
+            int count = 1;
             foreach (var std in stds)
             {
                 ListViewItem item = new ListViewItem(std.MaTV);
+                //count++;
                 //mssv,hoten,cmnd,ngaysinh,gt,diachi
                 //item.SubItems.Add(std.MaTV);
                 item.SubItems.Add(std.HoTen);
@@ -55,6 +57,7 @@ namespace UI
                 item.SubItems.Add(std.NgaySinh);
                 item.SubItems.Add(std.GioiTinh);
                 item.SubItems.Add(std.DiaChi);
+                item.SubItems.Add(count.ToString()); count++;
                 lv.Items.Add(item);
             }
             lv.EndUpdate();

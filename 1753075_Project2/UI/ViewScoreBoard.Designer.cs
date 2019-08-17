@@ -36,6 +36,7 @@
             this.final = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.others = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.average = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lb_ClassID = new System.Windows.Forms.Label();
             this.cbb_lop = new System.Windows.Forms.ComboBox();
             this.lb_mamon = new System.Windows.Forms.Label();
@@ -51,46 +52,60 @@
             this.midterm,
             this.final,
             this.others,
-            this.average});
+            this.average,
+            this.STT});
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
             this.lv.Location = new System.Drawing.Point(12, 110);
             this.lv.MultiSelect = false;
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(776, 566);
+            this.lv.Size = new System.Drawing.Size(776, 584);
             this.lv.TabIndex = 5;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
             // 
             // MSSV
             // 
+            this.MSSV.DisplayIndex = 1;
             this.MSSV.Text = "MSSV";
-            this.MSSV.Width = 100;
+            this.MSSV.Width = 90;
             // 
             // semester
             // 
+            this.semester.DisplayIndex = 2;
             this.semester.Text = "Học Kỳ";
             this.semester.Width = 80;
             // 
             // midterm
             // 
+            this.midterm.DisplayIndex = 3;
             this.midterm.Text = "Giữa Kỳ";
-            this.midterm.Width = 80;
+            this.midterm.Width = 70;
             // 
             // final
             // 
+            this.final.DisplayIndex = 4;
             this.final.Text = "Cuối Kỳ";
-            this.final.Width = 80;
+            this.final.Width = 70;
             // 
             // others
             // 
+            this.others.DisplayIndex = 5;
             this.others.Text = "Điểm khác";
-            this.others.Width = 80;
+            this.others.Width = 70;
             // 
             // average
             // 
+            this.average.DisplayIndex = 6;
             this.average.Text = "Điểm Tổng";
-            this.average.Width = 80;
+            this.average.Width = 70;
+            // 
+            // STT
+            // 
+            this.STT.DisplayIndex = 0;
+            this.STT.Text = "STT";
+            this.STT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STT.Width = 40;
             // 
             // lb_ClassID
             // 
@@ -148,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 688);
+            this.ClientSize = new System.Drawing.Size(800, 706);
             this.Controls.Add(this.lb_tenmon);
             this.Controls.Add(this.lv);
             this.Controls.Add(this.lb_mamon);
@@ -180,5 +195,6 @@
         private System.Windows.Forms.Label lb_mamon;
         private System.Windows.Forms.ComboBox cbb_MonHoc;
         private System.Windows.Forms.Label lb_tenmon;
+        private System.Windows.Forms.ColumnHeader STT;
     }
 }

@@ -228,6 +228,20 @@ namespace UI
         }
         #endregion
 
+        #region Xem DS Lớp từng Môn
+        private void btn_ViewClassSubject_Click(object sender, EventArgs e)
+        {
+            var vlsics = new ViewListStdInClassSubject();
+            vlsics.ShowDialog();
+        }
+
+        private void xemDanhSáchLớpTừngMônHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vlsics = new ViewListStdInClassSubject();
+            vlsics.ShowDialog();
+        }
+        #endregion
+
 
 
 

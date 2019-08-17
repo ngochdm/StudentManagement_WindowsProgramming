@@ -135,3 +135,27 @@ SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDI
 FROM TKB T INNER JOIN MONHOC MH
 ON (T.MaMonHoc = MH.MaMonHoc)
 WHERE T.MALOP = '17CLC2'
+
+--TenMon,MSSV,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong
+SELECT MH.TENMONHOC, BD.MSSV, BD.HOCKY, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG
+FROM BangDiem BD INNER JOIN MONHOC MH
+ON (BD.MAMONHOC = MH.MAMONHOC)
+WHERE BD.MAMONHOC = 'TTH063' AND BD.MALOP = '17CLC2'
+
+
+--create table BangDiem (
+--	MSSV char(10) not null,
+--	MaLop char(10) not null,
+--	MaMonHoc char(10) not null,
+--	HocKy char(10) not null, --Fall/Spring/Summer
+--	DiemGiuaKy float,
+--	DiemCuoiKy float,
+--	DiemKhac float,
+--	DiemTong float,
+--	primary key (MSSV, MaLop, MaMonHoc, HocKy)
+--)
+
+SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI
+FROM SINHVIEN SV INNER JOIN BANGDIEM BD 
+ON (BD.MSSV = SV.MSSV)
+WHERE BD.MALOP = '18CLC5' AND BD.MaMonHoc = 'TTH063'

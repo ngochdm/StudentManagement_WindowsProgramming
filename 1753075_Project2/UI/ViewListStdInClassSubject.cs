@@ -6,26 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BLL;
-using DTO;
 using static DTO.DataTransferObject;
 
 namespace UI
 {
-    public partial class ViewScoreBoard : Form
+    public partial class ViewListStdInClassSubject : Form
     {
         public static string MaLop = "";
         public static string MaMon = "";
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
-        //public static BLL.BusinessLogicLayer bll = new BLL.BusinessLogicLayer();
 
-        public ViewScoreBoard()
+        public ViewListStdInClassSubject()
         {
             InitializeComponent();
         }
 
-        private void ViewScoreBoard_Load(object sender, EventArgs e)
+        private void ViewListStdInClassSubject_Load(object sender, EventArgs e)
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
@@ -39,7 +36,7 @@ namespace UI
             MaLop = cbb_lop.SelectedItem.ToString();
 
             subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
-            foreach(var subject in subjects)
+            foreach (var subject in subjects)
             {
                 cbb_MonHoc.Items.Add(subject.MaMonHoc);
             }
@@ -49,33 +46,9 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+                BindListStdsInClassSubject(MaLop, MaMon);
             }
-            else lb_tenmon.Text = "This class didn't learn any subject";
-        }
-
-        private void BindListOfScoreBoardStdsIntoListView(string malop, string mamon)
-        {
-            lv.BeginUpdate();
-            lv.Items.Clear();
-            var scores = new BLL.BusinessLogicLayer().getAllScoreBoardWithClassAndSubject(malop, mamon) ;
-
-            int count = 1;
-            foreach (var score in scores)
-            {
-                //MSSV,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong
-                ListViewItem item = new ListViewItem(score.MaSV);
-
-                item.SubItems.Add(score.HocKy);
-                item.SubItems.Add(score.DiemGK.ToString());
-                item.SubItems.Add(score.DiemCK.ToString());
-                item.SubItems.Add(score.DiemKhac.ToString());
-                item.SubItems.Add(score.DiemTong.ToString());
-                item.SubItems.Add(count.ToString());
-
-                lv.Items.Add(item);
-            }
-            lv.EndUpdate();
+            else lb_tenmon.Text = "This class didn't have any subject";
         }
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,9 +67,9 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+                BindListStdsInClassSubject(MaLop, MaMon);
             }
-            else lb_tenmon.Text = "This class didn't learn any subject";
+            else lb_tenmon.Text = "This class didn't have any subject";
         }
 
         private void cbb_MonHoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,9 +79,35 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
 
-                BindListOfScoreBoardStdsIntoListView(MaLop, MaMon);
+                BindListStdsInClassSubject(MaLop, MaMon);
             }
             else lb_tenmon.Text = "This class didn't learn any subject";
+        }
+
+        private void BindListStdsInClassSubject(string malop, string mamon)
+        {
+            lv.BeginUpdate();
+            lv.Items.Clear();
+            var students = new BLL.BusinessLogicLayer().getAllStdsInClassAndSubject(malop, mamon);
+
+            int count = 1;
+            foreach (var std in students)
+            {
+                ListViewItem item = new ListViewItem(count.ToString());
+                count++;
+
+                //stt,mssv,hoten,socmnd,ngaysinh,gioitinh,diachi
+
+                item.SubItems.Add(std.MaTV);
+                item.SubItems.Add(std.HoTen);
+                item.SubItems.Add(std.SoCMND);
+                item.SubItems.Add(std.NgaySinh);
+                item.SubItems.Add(std.GioiTinh);
+                item.SubItems.Add(std.DiaChi);
+
+                lv.Items.Add(item);
+            }
+            lv.EndUpdate();
         }
     }
 }

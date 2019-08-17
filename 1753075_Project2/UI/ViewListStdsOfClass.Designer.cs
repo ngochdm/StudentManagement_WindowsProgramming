@@ -38,6 +38,7 @@
             this.DoB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Sex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cbb_lop
@@ -69,7 +70,8 @@
             this.SoCmnd,
             this.DoB,
             this.Sex,
-            this.DiaChi});
+            this.DiaChi,
+            this.STT});
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
             this.lv.Location = new System.Drawing.Point(12, 68);
@@ -82,32 +84,45 @@
             // 
             // MSSV
             // 
+            this.MSSV.DisplayIndex = 1;
             this.MSSV.Text = "MSSV";
             // 
             // FullName
             // 
+            this.FullName.DisplayIndex = 2;
             this.FullName.Text = "Họ Và Tên";
             this.FullName.Width = 160;
             // 
             // SoCmnd
             // 
+            this.SoCmnd.DisplayIndex = 3;
             this.SoCmnd.Text = "Số CMND";
             this.SoCmnd.Width = 80;
             // 
             // DoB
             // 
+            this.DoB.DisplayIndex = 4;
             this.DoB.Text = "Ngày Sinh";
             this.DoB.Width = 80;
             // 
             // Sex
             // 
+            this.Sex.DisplayIndex = 5;
             this.Sex.Text = "GT";
             this.Sex.Width = 50;
             // 
             // DiaChi
             // 
+            this.DiaChi.DisplayIndex = 6;
             this.DiaChi.Text = "Địa Chỉ";
             this.DiaChi.Width = 200;
+            // 
+            // STT
+            // 
+            this.STT.DisplayIndex = 0;
+            this.STT.Text = "STT";
+            this.STT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STT.Width = 30;
             // 
             // ViewListStdsOfClass
             // 
@@ -138,5 +153,6 @@
         private System.Windows.Forms.ColumnHeader DoB;
         private System.Windows.Forms.ColumnHeader Sex;
         private System.Windows.Forms.ColumnHeader DiaChi;
+        private System.Windows.Forms.ColumnHeader STT;
     }
 }

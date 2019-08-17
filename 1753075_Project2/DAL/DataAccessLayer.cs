@@ -145,57 +145,64 @@ namespace DAL
         }
         public bool insertAStudent(SinhVien sv)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ?"
-            };
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", sv.MaTV);
-            var rd = cmd.ExecuteScalar();
+                cmd.Parameters.AddWithValue("?", sv.MaTV);
+                var rd = cmd.ExecuteScalar();
 
-            if (rd.ToString() == "1")
+                if (rd.ToString() == "1")
+                {
+                    return false;
+                }
+                else
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
+                    cmd.Parameters.AddWithValue("?", sv.MaLop);
+
+                    rd = cmd.ExecuteScalar();
+                    if (rd.ToString() == "0") return false;
+                    else
+                    {
+                        //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "INSERT INTO SINHVIEN VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+                        cmd.Parameters.AddWithValue("?", sv.MaTV);
+                        cmd.Parameters.AddWithValue("?", sv.SoCMND);
+                        cmd.Parameters.AddWithValue("?", sv.HoTen);
+                        cmd.Parameters.AddWithValue("?", sv.MatKhau);
+                        cmd.Parameters.AddWithValue("?", sv.MaLop);
+
+                        //cmd.Parameters.AddWithValue("?", sv.NgaySinh);
+                        var ngsinh = sv.NgaySinh.Split('/');
+                        DateTime dob = new DateTime(int.Parse(ngsinh[2]), int.Parse(ngsinh[1]), int.Parse(ngsinh[0]));
+                        cmd.Parameters.AddWithValue("?", dob);
+
+                        cmd.Parameters.AddWithValue("?", sv.DiaChi);
+                        cmd.Parameters.AddWithValue("?", sv.GioiTinh);
+
+                        rd = cmd.ExecuteNonQuery();
+                        return rd.ToString() == "1";
+                    }
+                }
+                cnn.Close();
+            }
+            catch 
             {
                 return false;
             }
-            else
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
-                cmd.Parameters.AddWithValue("?", sv.MaLop);
-
-                rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "0") return false;
-                else
-                {
-                    //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = "INSERT INTO SINHVIEN VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-                    cmd.Parameters.AddWithValue("?", sv.MaTV);
-                    cmd.Parameters.AddWithValue("?", sv.SoCMND);
-                    cmd.Parameters.AddWithValue("?", sv.HoTen);
-                    cmd.Parameters.AddWithValue("?", sv.MatKhau);
-                    cmd.Parameters.AddWithValue("?", sv.MaLop);
-
-                    //cmd.Parameters.AddWithValue("?", sv.NgaySinh);
-                    var ngsinh = sv.NgaySinh.Split('/');
-                    DateTime dob = new DateTime(int.Parse(ngsinh[2]), int.Parse(ngsinh[1]), int.Parse(ngsinh[0]));
-                    cmd.Parameters.AddWithValue("?", dob);
-
-                    cmd.Parameters.AddWithValue("?", sv.DiaChi);
-                    cmd.Parameters.AddWithValue("?", sv.GioiTinh);
-
-                    rd = cmd.ExecuteNonQuery();
-                    return rd.ToString() == "1";
-                }
-            }
-            cnn.Close();
         }
         public List<LopHoc> getAllInfoOfClasses()
         {
@@ -205,6 +212,7 @@ namespace DAL
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -232,11 +240,13 @@ namespace DAL
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
                 CommandText = "SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = ?"
             };
+
             cmd.Parameters.AddWithValue("?", lop);
             var rd = cmd.ExecuteReader();
 
@@ -390,6 +400,7 @@ namespace DAL
                 ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -409,10 +420,18 @@ namespace DAL
                 if (!rd.IsDBNull(1)) mssv = rd.GetString(1);
                 if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
 
-                if (!rd.IsDBNull(3)) diemgk = rd.GetFloat(3);
-                if (!rd.IsDBNull(4)) diemck = rd.GetFloat(4);
-                if (!rd.IsDBNull(5)) diemkhac = rd.GetFloat(5);
-                if (!rd.IsDBNull(6)) diemtong = rd.GetFloat(6);
+                if (!rd.IsDBNull(3))
+                    //diemgk = rd.GetFloat(3);
+                    diemgk = (float)rd.GetDouble(3);
+                if (!rd.IsDBNull(4))
+                    //diemck = rd.GetFloat(4);
+                    diemck = (float)rd.GetDouble(4);
+                if (!rd.IsDBNull(5))
+                    //diemkhac = rd.GetFloat(5);
+                    diemkhac = (float)rd.GetDouble(5);
+                if (!rd.IsDBNull(6))
+                    //diemtong = rd.GetFloat(6);
+                    diemtong = (float)rd.GetDouble(6);
 
                 var score = new BangDiem(mssv, malop, mamon, hocky, tenmon, diemgk, diemck, diemkhac, diemtong);
                 scoreboard.Add(score);
@@ -457,6 +476,40 @@ namespace DAL
                 subjects.Add(new MonHoc(tb.MaMonHoc, tb.TenMon));
             }
             return subjects;
+        }
+        public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon)
+        {
+            var students = new List<SinhVien>();
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI FROM SINHVIEN SV INNER JOIN BANGDIEM BD ON(BD.MSSV = SV.MSSV) WHERE BD.MALOP = ? AND BD.MaMonHoc = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+                if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
+                if (!rd.IsDBNull(2)) socmnd = rd.GetString(2);
+                if (!rd.IsDBNull(1)) hoten = rd.GetString(1);
+                if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
+                if (!rd.IsDBNull(5)) diachi = rd.GetString(5);
+                if (!rd.IsDBNull(4)) gioitinh = rd.GetString(4);
+                var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, malop);
+                students.Add(std);
+            }
+            cnn.Close();
+            return students;
         }
     }
 }
