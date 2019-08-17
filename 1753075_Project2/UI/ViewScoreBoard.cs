@@ -85,6 +85,7 @@ namespace UI
                 item.SubItems.Add(score.DiemKhac.ToString());
                 item.SubItems.Add(score.DiemTong.ToString());
                 item.SubItems.Add(count.ToString());
+                count++;
 
                 lv.Items.Add(item);
             }

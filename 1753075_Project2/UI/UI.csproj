@@ -143,6 +143,12 @@
     <Compile Include="ViewScoreBoard.Designer.cs">
       <DependentUpon>ViewScoreBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewScoreBoardFromStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewScoreBoardFromStudent.Designer.cs">
+      <DependentUpon>ViewScoreBoardFromStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewTimeTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewScoreBoard.resx">
       <DependentUpon>ViewScoreBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewScoreBoardFromStudent.resx">
+      <DependentUpon>ViewScoreBoardFromStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewTimeTable.resx">
       <DependentUpon>ViewTimeTable.cs</DependentUpon>

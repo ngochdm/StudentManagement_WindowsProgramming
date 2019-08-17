@@ -139,7 +139,10 @@ namespace DTO
             #endregion
 
             //cid:class id, sid: subject id, sname: school name
-            public BangDiem() { }
+            public BangDiem()
+            {
+                MaSV = "0";
+            }
             public BangDiem(string stdid, string cid, string sid, string semester, string sname, float gk, float ck, float khac, float tong)
             {
                 MaSV = stdid;

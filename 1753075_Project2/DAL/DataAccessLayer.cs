@@ -349,7 +349,7 @@ namespace DAL
                     if (rd.ToString() == "0")
                     {
                         cnn.Close();
-                        return addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
+                        addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
                     }
 
                     cmd.Parameters.Clear();
@@ -404,6 +404,7 @@ namespace DAL
 
                 bool ckhaibd = false;
                 if (ckbd == "1") ckhaibd = true;
+
                 var tt = new ThoiKhoaBieu(lop, mamon, hocky, namhoc, phonghoc, ckhaibd, tenmon);
 
                 timetable.Add(tt);
@@ -849,6 +850,78 @@ namespace DAL
 
             cnn.Close();
             return semesters;
+        }
+        public bool checkScoreBoardIsPublicOrNot(string malop, string mamon, string hocky)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT CONGKHAIBANGDIEM FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+            
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", hocky);
+            var rd = cmd.ExecuteReader();
+
+            string ckbd = "0";
+            while(rd.Read())
+            {
+                ckbd = rd.GetString(0);
+            }
+            cnn.Close();
+
+            if (ckbd == "1") return true;
+            else return false;
+        }
+        public BangDiem getScoreFromDatabase(string mssv, string malop, string mamon, string hocky)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT DIEMGIUAKY, DIEMCUOIKY, DIEMKHAC, DIEMTONG FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", mssv);
+            cmd.Parameters.AddWithValue("?", malop);
+            cmd.Parameters.AddWithValue("?", mamon);
+            cmd.Parameters.AddWithValue("?", hocky);
+            var rd = cmd.ExecuteReader();
+
+            BangDiem scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", 0, 0, 0, 0);
+            while (rd.Read())
+            {
+                float gk = 0, ck = 0, khac = 0, tong = 0;
+                if (!rd.IsDBNull(0))
+                    gk = (float) rd.GetDouble(0);
+                if (!rd.IsDBNull(1))
+                    ck = (float) rd.GetDouble(1);
+                if (!rd.IsDBNull(2))
+                    khac = (float) rd.GetDouble(2);
+                if (!rd.IsDBNull(3))
+                    tong = (float) rd.GetDouble(3);
+
+                //scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", gk, ck, khac, tong);
+                scoreboard.DiemGK = gk;
+                scoreboard.DiemCK = ck;
+                scoreboard.DiemKhac = khac;
+                scoreboard.DiemTong = tong;
+            }
+            cnn.Close();
+
+            return scoreboard;
         }
     }
 }

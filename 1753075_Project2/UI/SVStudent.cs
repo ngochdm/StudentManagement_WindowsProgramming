@@ -108,9 +108,25 @@ namespace UI
 
         #endregion
 
+        #region Kết quả học tập
+        private void btn_score_Click(object sender, EventArgs e)
+        {
+            var vsb = new ViewScoreBoardFromStudent(MSSV);
+            vsb.ShowDialog();
+        }
+
+        private void kếtQuảHọcTậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vsb = new ViewScoreBoardFromStudent(MSSV);
+            vsb.ShowDialog();
+        }
+        #endregion
+
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

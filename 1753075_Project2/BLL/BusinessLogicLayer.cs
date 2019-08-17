@@ -192,6 +192,7 @@ namespace BLL
                 {
                     var dal = new DAL.DataAccessLayer();
                     List<string> stdID = dal.getAllStdIDinAClass(tkb.MaLop);
+                    
                     foreach (var std in stdID)
                     {
                         check = dal.addAStdToScoreBoardWhenImportTimeTable(std, tkb);
@@ -288,21 +289,52 @@ namespace BLL
         }
         public bool insertAStdToListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
         {
-            if (mssv.Length > 10)
+            try
+            {
+                if (mssv.Length > 10)
+                    return false;
+                else
+                    return new DAL.DataAccessLayer().insertAStdToListStdInClassAndSubject(mssv, malop, mamon, hocky);
+            }
+            catch
+            {
                 return false;
-            else
-                return new DAL.DataAccessLayer().insertAStdToListStdInClassAndSubject(mssv, malop, mamon, hocky);
+            }
         }
         public bool deleteAStdFromListStdInClassAndSubject(string mssv, string malop, string mamon, string hocky)
         {
-            if (mssv.Length > 10)
+            try
+            {
+                if (mssv.Length > 10)
+                    return false;
+                else
+                    return new DAL.DataAccessLayer().deleteAStdFromListStdInClassAndSubject(mssv, malop, mamon, hocky);
+            }
+            catch
+            {
                 return false;
-            else
-                return new DAL.DataAccessLayer().deleteAStdFromListStdInClassAndSubject(mssv, malop, mamon, hocky);
+            }
         }
         public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
         {
             return new DAL.DataAccessLayer().getAllSemesterOfSubjectInClass(malop, mamon);
+        }
+        public bool checkScorePublic(string malop,string mamon,string hocky)
+        {
+            return new DAL.DataAccessLayer().checkScoreBoardIsPublicOrNot(malop, mamon, hocky);
+        }
+        public BangDiem getScoreBoardForStudent(string mssv,string malop,string mamon,string hocky)
+        {
+            var dal = new DAL.DataAccessLayer();
+            var congkhai = checkScorePublic(malop, mamon, hocky);
+            if (congkhai == true) 
+            {
+                return dal.getScoreFromDatabase(mssv, malop, mamon, hocky);
+            }
+            else
+            {
+                return new BangDiem();
+            }
         }
     }
 }

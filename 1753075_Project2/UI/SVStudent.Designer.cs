@@ -72,6 +72,7 @@
             this.btn_score.Text = "Kết Quả Học Tập";
             this.btn_score.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_score.UseVisualStyleBackColor = true;
+            this.btn_score.Click += new System.EventHandler(this.btn_score_Click);
             // 
             // btn_timetable
             // 
@@ -124,6 +125,7 @@
             this.kếtQuảHọcTậpToolStripMenuItem.Name = "kếtQuảHọcTậpToolStripMenuItem";
             this.kếtQuảHọcTậpToolStripMenuItem.Size = new System.Drawing.Size(256, 30);
             this.kếtQuảHọcTậpToolStripMenuItem.Text = "Kết Quả Học Tập";
+            this.kếtQuảHọcTậpToolStripMenuItem.Click += new System.EventHandler(this.kếtQuảHọcTậpToolStripMenuItem_Click);
             // 
             // thờiKhóaBiểuToolStripMenuItem
             // 
