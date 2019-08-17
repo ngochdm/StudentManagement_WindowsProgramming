@@ -157,10 +157,11 @@ namespace UI
                 var bll = new BLL.BusinessLogicLayer();
                 var timetable = bll.readListTimeTableFromCSVFile(path);
                 var check = bll.addListTimeTable(timetable);
-                if (check == true)
-                    MessageBox.Show("Import successfully");
+                var check1 = bll.addAStdIntoScoreBoard(timetable);
+                if (check == true && check1 == true) 
+                    MessageBox.Show("Import timetable successfully");
                 else
-                    MessageBox.Show("Import UNsuccessfully\n");
+                    MessageBox.Show("Import timetable UNsuccessfully\n");
             }
         }
         private void btn_addTimeTable_Click(object sender, EventArgs e)

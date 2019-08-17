@@ -12,47 +12,54 @@ namespace DAL
     {
         public int checkUserPwd(string user, string pwd)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ?",
-            };
-            cmd.Parameters.AddWithValue("?", user);
-            var rd = cmd.ExecuteScalar();
-            if (rd.ToString() == "1")
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ? AND MATKHAU = ?";
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ?",
+                };
                 cmd.Parameters.AddWithValue("?", user);
-                cmd.Parameters.AddWithValue("?", pwd);
-                rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "1") return 1;
-                else return 0;
-            }
-            else
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ?";
-                cmd.Parameters.AddWithValue("?", user);
-                rd = cmd.ExecuteScalar();
+                var rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1")
                 {
                     cmd.Parameters.Clear();
-                    cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ? AND MATKHAU = ?";
+                    cmd.CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ? AND MATKHAU = ?";
                     cmd.Parameters.AddWithValue("?", user);
                     cmd.Parameters.AddWithValue("?", pwd);
                     rd = cmd.ExecuteScalar();
-                    if (rd.ToString() == "1") return -1;
+                    if (rd.ToString() == "1") return 1;
                     else return 0;
                 }
+                else
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ?";
+                    cmd.Parameters.AddWithValue("?", user);
+                    rd = cmd.ExecuteScalar();
+                    if (rd.ToString() == "1")
+                    {
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ? AND MATKHAU = ?";
+                        cmd.Parameters.AddWithValue("?", user);
+                        cmd.Parameters.AddWithValue("?", pwd);
+                        rd = cmd.ExecuteScalar();
+                        if (rd.ToString() == "1") return -1;
+                        else return 0;
+                    }
+                }
+                cnn.Close();
+                return 0;
             }
-            cnn.Close();
-            return 0;
+            catch
+            {
+                return 0;
+            }
         }
         public SinhVien getInfoOneStudent(string mssv)
         {
@@ -116,32 +123,39 @@ namespace DAL
         }
         public bool importClass(LopHoc lop)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?"
-            };
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", lop.MaLop);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "0")
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "INSERT INTO LOPHOC VALUES (?, ?)";
                 cmd.Parameters.AddWithValue("?", lop.MaLop);
-                cmd.Parameters.AddWithValue("?", lop.TenLop);
-                rd = cmd.ExecuteNonQuery();
-                return rd.ToString() == "1";
+                var rd = cmd.ExecuteScalar();
+
+                if (rd.ToString() == "0")
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO LOPHOC VALUES (?, ?)";
+                    cmd.Parameters.AddWithValue("?", lop.MaLop);
+                    cmd.Parameters.AddWithValue("?", lop.TenLop);
+                    rd = cmd.ExecuteNonQuery();
+                    return rd.ToString() == "1";
+                }
+                else
+                    return false;
+                cnn.Close();
             }
-            else
+            catch
+            {
                 return false;
-            cnn.Close();
+            }
         }
         public bool insertAStudent(SinhVien sv)
         {
@@ -267,63 +281,69 @@ namespace DAL
         }
         public bool importTimeTable(ThoiKhoaBieu tkb)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
-                CommandText = "SELECT COUNT(*) FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
-            };
-
-            cmd.Parameters.AddWithValue("?", tkb.MaLop);
-            cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
-            cmd.Parameters.AddWithValue("?", tkb.HocKy);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "0")
-            {
-                cmd.Parameters.Clear();
-
-                //Check Class is in database or not...
-                cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
-                cmd.Parameters.AddWithValue("?", tkb.MaLop);
-                rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "0")
+                var cnn = new OleDbConnection()
                 {
-                    return importClass(new LopHoc(tkb.MaLop, tkb.MaLop));
-                }
-
-                cmd.Parameters.Clear();
-
-                //Check subject is in database or not...
-                cmd.CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?";
-                cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
-                rd = cmd.ExecuteScalar();
-                if (rd.ToString() == "0")
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+                var cmd = new OleDbCommand()
                 {
-                    return addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
-                }
+                    Connection = cnn,
+                    //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+                    CommandText = "SELECT COUNT(*) FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+                };
 
-                cmd.Parameters.Clear();
-                cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
                 cmd.Parameters.AddWithValue("?", tkb.MaLop);
                 cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
                 cmd.Parameters.AddWithValue("?", tkb.HocKy);
-                cmd.Parameters.AddWithValue("?", tkb.NamHoc);
-                cmd.Parameters.AddWithValue("?", tkb.PhongHoc);
-                cmd.Parameters.AddWithValue("?", tkb.CongKhaiBangDiem);
+                var rd = cmd.ExecuteScalar();
 
-                rd = cmd.ExecuteNonQuery();
-                return rd.ToString() == "1";
+                if (rd.ToString() == "0")
+                {
+                    cmd.Parameters.Clear();
+
+                    //Check Class is in database or not...
+                    cmd.CommandText = "SELECT COUNT(*) FROM LOPHOC WHERE MALOP = ?";
+                    cmd.Parameters.AddWithValue("?", tkb.MaLop);
+                    rd = cmd.ExecuteScalar();
+                    if (rd.ToString() == "0")
+                    {
+                        return importClass(new LopHoc(tkb.MaLop, tkb.MaLop));
+                    }
+
+                    cmd.Parameters.Clear();
+
+                    //Check subject is in database or not...
+                    cmd.CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?";
+                    cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
+                    rd = cmd.ExecuteScalar();
+                    if (rd.ToString() == "0")
+                    {
+                        return addASubjectToDatabase(new MonHoc(tkb.MaMonHoc, tkb.TenMon));
+                    }
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO TKB VALUES (?, ?, ?, ?, ?, ?)";
+                    cmd.Parameters.AddWithValue("?", tkb.MaLop);
+                    cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
+                    cmd.Parameters.AddWithValue("?", tkb.HocKy);
+                    cmd.Parameters.AddWithValue("?", tkb.NamHoc);
+                    cmd.Parameters.AddWithValue("?", tkb.PhongHoc);
+                    cmd.Parameters.AddWithValue("?", tkb.CongKhaiBangDiem);
+
+                    rd = cmd.ExecuteNonQuery();
+                    return rd.ToString() == "1";
+                }
+                else
+                    return false;
+                cnn.Close();
             }
-            else
+            catch
+            {
                 return false;
-            cnn.Close();
-
+            }
         }
         public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
         {
@@ -364,32 +384,39 @@ namespace DAL
         }
         public bool addASubjectToDatabase(MonHoc subject)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?"
-            };
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM MONHOC WHERE MAMONHOC = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "0")
-            {
-                cmd.Parameters.Clear();
-                cmd.CommandText = "INSERT INTO MONHOC VALUES (?, ?)";
                 cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
-                cmd.Parameters.AddWithValue("?", subject.TenMonHoc);
-                rd = cmd.ExecuteNonQuery();
-                return rd.ToString() == "1";
+                var rd = cmd.ExecuteScalar();
+
+                if (rd.ToString() == "0")
+                {
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "INSERT INTO MONHOC VALUES (?, ?)";
+                    cmd.Parameters.AddWithValue("?", subject.MaMonHoc);
+                    cmd.Parameters.AddWithValue("?", subject.TenMonHoc);
+                    rd = cmd.ExecuteNonQuery();
+                    return rd.ToString() == "1";
+                }
+                else
+                    return false;
+                cnn.Close();
             }
-            else
+            catch
+            {
                 return false;
-            cnn.Close();
+            }
         }
         public List<BangDiem> getScoreBoardWithClassAndSubject(string malop,string mamon)
         {
@@ -510,6 +537,70 @@ namespace DAL
             }
             cnn.Close();
             return students;
+        }
+        public List<string> getAllStdIDinAClass(string malop)
+        {
+            var stdID = new List<string>();
+
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT MSSV FROM SINHVIEN WHERE MALOP = ?"
+            };
+
+            cmd.Parameters.AddWithValue("?", malop);
+            var rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                string mssv = "";
+                if (!rd.IsDBNull(0))
+                {
+                    mssv = rd.GetString(0);
+                    stdID.Add(mssv);
+                }
+            }
+            cnn.Close();
+
+            return stdID;
+        }
+        public bool addAStdToScoreBoardWhenImportTimeTable(string mssv, ThoiKhoaBieu tkb)
+        {
+            try
+            {
+                var cnn = new OleDbConnection()
+                {
+                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                };
+                cnn.Open();
+
+                //BangDiem(MSSV, MaLop, MaMonHoc, HocKy, DiemGK, DiemCK, DiemKhac, DiemTong)
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "INSERT INTO BANGDIEM(MSSV, MALOP, MAMONHOC, HOCKY) VALUES (?, ?, ?, ?)"
+                };
+
+                cmd.Parameters.AddWithValue("?", mssv);
+                cmd.Parameters.AddWithValue("?", tkb.MaLop);
+                cmd.Parameters.AddWithValue("?", tkb.MaMonHoc);
+                cmd.Parameters.AddWithValue("?", tkb.HocKy);
+
+                var rd = cmd.ExecuteNonQuery();
+
+                return rd == 1;
+                cnn.Close();
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -155,5 +155,19 @@ namespace BLL
         {
             return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon);
         }
+        public bool addAStdIntoScoreBoard(List<ThoiKhoaBieu> timetable)
+        {
+            bool check = false;
+            foreach (var tkb in timetable)
+            {
+                var dal = new DAL.DataAccessLayer();
+                List<string> stdID = dal.getAllStdIDinAClass(tkb.MaLop);
+                foreach(var std in stdID)
+                {
+                    check = dal.addAStdToScoreBoardWhenImportTimeTable(std, tkb);
+                }
+            }
+            return check;
+        }
     }
 }
