@@ -171,6 +171,8 @@ namespace BLL
         }
         public bool updateScoreBoard(BangDiem scoreboard)
         {
+            if (scoreboard.MaSV.Length > 10)
+                return false;
             if ((scoreboard.DiemCK > 10 && scoreboard.DiemCK < 0) || (scoreboard.DiemGK > 10 && scoreboard.DiemGK < 0) || (scoreboard.DiemKhac > 10 && scoreboard.DiemKhac < 0) || (scoreboard.DiemTong > 10 && scoreboard.DiemTong < 10)) 
             {
                 return false;

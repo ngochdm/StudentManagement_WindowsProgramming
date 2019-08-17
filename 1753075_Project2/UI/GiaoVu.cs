@@ -243,6 +243,33 @@ namespace UI
         }
         #endregion
 
+        #region Thêm Bảng Điểm
+        private void addScoreBoard()
+        {
+            var openFile = openCSVFile.ShowDialog();
+            string path = "";
+            if (openFile == DialogResult.OK)
+                path = openCSVFile.FileName;
+            if (path != "")
+            {
+                var bll = new BLL.BusinessLogicLayer();
+                var scoreboard = bll.readScoreBoardFromCSVFile(path);
+                var check = bll.updateListScoreBoard(scoreboard);
+                if (check == true)
+                    MessageBox.Show("Import scoreboard successfully");
+                else
+                    MessageBox.Show("Import scoreboard UNsuccessfully\n");
+            }
+        }
+        private void btn_addScore_Click(object sender, EventArgs e)
+        {
+            addScoreBoard();
+        }
+        private void thêmBảngĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addScoreBoard();
+        }
+        #endregion
 
 
 
@@ -298,26 +325,18 @@ namespace UI
 
         #endregion
 
-        private void addScoreBoard()
+
+        
+        private void btn_changeScore_Click(object sender, EventArgs e)
         {
-            var openFile = openCSVFile.ShowDialog();
-            string path = "";
-            if (openFile == DialogResult.OK)
-                path = openCSVFile.FileName;
-            if (path != "")
-            {
-                var bll = new BLL.BusinessLogicLayer();
-                var scoreboard = bll.readScoreBoardFromCSVFile(path);
-                var check = bll.updateListScoreBoard(scoreboard);
-                if (check == true)
-                    MessageBox.Show("Import scoreboard successfully");
-                else
-                    MessageBox.Show("Import scoreboard UNsuccessfully\n");
-            }
+            var editS = new EditScore();
+            editS.ShowDialog();
         }
-        private void btn_addScore_Click(object sender, EventArgs e)
+
+        private void sửaĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            addScoreBoard();
+            var editS = new EditScore();
+            editS.ShowDialog();
         }
     }
 }

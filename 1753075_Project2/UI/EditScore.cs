@@ -10,22 +10,26 @@ using static DTO.DataTransferObject;
 
 namespace UI
 {
-    public partial class ViewListStdInClassSubject : Form
+    public partial class EditScore : Form
     {
-        public static string MaLop = "";
-        public static string MaMon = "";
+        public static BangDiem scoreboard;
         public static List<LopHoc> classes;
         public static List<MonHoc> subjects;
 
-        public ViewListStdInClassSubject()
+        public static string MaLop = "";
+        public static string MaMon = "";
+        public static string HocKy = "";
+
+        public EditScore()
         {
             InitializeComponent();
         }
 
-        private void ViewListStdInClassSubject_Load(object sender, EventArgs e)
+        private void EditScore_Load(object sender, EventArgs e)
         {
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
+            cbb_hocky.SelectedIndex = 0;
 
             classes = new BLL.BusinessLogicLayer().getAllInfoOfClasses();
             foreach (var aClass in classes)
@@ -45,8 +49,6 @@ namespace UI
                 cbb_MonHoc.SelectedIndex = 0;
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
-
-                BindListStdsInClassSubject(MaLop, MaMon);
             }
             else lb_tenmon.Text = "This class didn't have any subject";
         }
@@ -66,8 +68,6 @@ namespace UI
                 cbb_MonHoc.SelectedIndex = 0;
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
-
-                BindListStdsInClassSubject(MaLop, MaMon);
             }
             else lb_tenmon.Text = "This class didn't have any subject";
         }
@@ -76,34 +76,37 @@ namespace UI
         {
             MaMon = cbb_MonHoc.SelectedItem.ToString();
             lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
-
-            BindListStdsInClassSubject(MaLop, MaMon);
         }
 
-        private void BindListStdsInClassSubject(string malop, string mamon)
+        private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lv.BeginUpdate();
-            lv.Items.Clear();
-            var students = new BLL.BusinessLogicLayer().getAllStdsInClassAndSubject(malop, mamon);
+            HocKy = cbb_hocky.SelectedItem.ToString();
+        }
 
-            int count = 1;
-            foreach (var std in students)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (tb_ck.Text.Trim() == string.Empty || tb_gk.Text.Trim() == string.Empty || tb_khac.Text.Trim() == string.Empty || tb_MSSV.Text.Trim() == string.Empty || tb_tong.Text.Trim() == string.Empty)
             {
-                ListViewItem item = new ListViewItem(count.ToString());
-                count++;
-
-                //stt,mssv,hoten,socmnd,ngaysinh,gioitinh,diachi
-
-                item.SubItems.Add(std.MaTV);
-                item.SubItems.Add(std.HoTen);
-                item.SubItems.Add(std.SoCMND);
-                item.SubItems.Add(std.NgaySinh);
-                item.SubItems.Add(std.GioiTinh);
-                item.SubItems.Add(std.DiaChi);
-
-                lv.Items.Add(item);
+                MessageBox.Show("Vui lòng điền đầy đủ nội dung để cập nhật điểm", "Alert!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            lv.EndUpdate();
+            else
+            {
+                var mssv = tb_MSSV.Text;
+
+                var gk = (float)double.Parse(tb_gk.Text);
+                var ck = (float)double.Parse(tb_ck.Text);
+                var khac = (float)double.Parse(tb_khac.Text);
+                var tong = (float)double.Parse(tb_tong.Text);
+
+                scoreboard = new BangDiem(mssv, MaLop, MaMon, HocKy, "", gk, ck, khac, tong);
+                var check = new BLL.BusinessLogicLayer().updateScoreBoard(scoreboard);
+
+                if (check == true)
+                    MessageBox.Show("Edit successfully");
+                else
+                    MessageBox.Show("Edit UNsuccessfully");
+            }
+            //this.DialogResult = DialogResult.OK;
         }
     }
 }
