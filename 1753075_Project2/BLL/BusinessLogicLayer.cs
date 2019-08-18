@@ -338,13 +338,27 @@ namespace BLL
         }
         public bool changePwdForGiaovu(string magv,string newpass)
         {
-            if (newpass.Length > 255) return false;
-            else return new DAL.DataAccessLayer().changePasswordForGiaoVu(magv, newpass);
+            try
+            {
+                if (newpass.Length > 255) return false;
+                else return new DAL.DataAccessLayer().changePasswordForGiaoVu(magv, newpass);
+            }
+            catch
+            {
+                return false;
+            }
         }
         public bool changePwdForStudent(string mssv, string newpass)
         {
-            if (newpass.Length > 255) return false;
-            else return new DAL.DataAccessLayer().changePasswordForStudent(mssv, newpass);
+            try
+            {
+                if (newpass.Length > 255) return false;
+                else return new DAL.DataAccessLayer().changePasswordForStudent(mssv, newpass);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }

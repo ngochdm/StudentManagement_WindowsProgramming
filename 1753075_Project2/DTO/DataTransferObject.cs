@@ -184,7 +184,7 @@ namespace DTO
             //Tạo MD5 
             MD5 mh = MD5.Create();
             //Chuyển kiểu chuổi thành kiểu byte
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes("Chuỗi cần mã hóa");
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
             //mã hóa chuỗi đã chuyển
             byte[] hash = mh.ComputeHash(inputBytes);
             //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
