@@ -47,6 +47,7 @@
             this.Semester_HK,
             this.SchoolYear_SC,
             this.RoomID});
+            this.lv.Cursor = System.Windows.Forms.Cursors.Default;
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
             this.lv.Location = new System.Drawing.Point(12, 64);
@@ -60,12 +61,11 @@
             // SubjectID
             // 
             this.SubjectID.Text = "Mã Môn";
-            this.SubjectID.Width = 100;
             // 
             // subjectName
             // 
             this.subjectName.Text = "Tên Môn Học";
-            this.subjectName.Width = 150;
+            this.subjectName.Width = 180;
             // 
             // Semester_HK
             // 

@@ -40,7 +40,8 @@ namespace UI
             cbb_lop.SelectedIndex = 0;
             MaLop = cbb_lop.SelectedItem.ToString();
 
-            subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
+            #region Draft (After edit _ avoid duplicate in cbb subject and semester)
+            /*subjects = new BLL.BusinessLogicLayer().getSubjectsOfClass(MaLop);
             foreach (var subject in subjects)
             {
                 cbb_MonHoc.Items.Add(subject.MaMonHoc);
@@ -59,7 +60,8 @@ namespace UI
                 cbb_hocky.SelectedIndex = 0;
                 HocKy = cbb_hocky.SelectedItem.ToString();
             }
-            else lb_tenmon.Text = "This class didn't have any subject";
+            else lb_tenmon.Text = "This class didn't have any subject";*/
+            #endregion
         }
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,13 +81,15 @@ namespace UI
                 MaMon = cbb_MonHoc.SelectedItem.ToString();
                 lb_tenmon.Text = subjects.First().TenMonHoc;
 
-                semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
+                #region Draft (After edit - avoid duplicate in cbb semester)
+                /*semesters = new BLL.BusinessLogicLayer().getAllSemesterOfSubjectInClass(MaLop, MaMon);
                 foreach (var semester in semesters)
                 {
                     cbb_hocky.Items.Add(semester);
                 }
                 cbb_hocky.SelectedIndex = 0;
-                HocKy = cbb_hocky.SelectedItem.ToString();
+                HocKy = cbb_hocky.SelectedItem.ToString();*/
+                #endregion
             }
             else lb_tenmon.Text = "This class didn't have any subject";
         }

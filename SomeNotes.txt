@@ -6,3 +6,22 @@ GIAOVU = THANHVIENTRUONG
 SINHVIEN = THANHVIENTRUONG + MALOP
 TKB + TENMON
 BANGDIEM + TENMON
+
+- Xem TKB (chỉnh lv mã môn ngắn lại, tên môn dài ra)
+
+Bị duplicate tại combobox:
+* Giáo vụ
+- Xem DS Lớp từng môn học
+- Sửa DS Lớp từng môn học
+- Xem bảng điểm
+- Sửa điểm
+- Sửa TKB
+
+
+
+#region Draft (After edit _ avoid duplicate in cbb subject and semester)
+#region Draft (After edit - avoid duplicate in cbb semester)
+
+
+
+
