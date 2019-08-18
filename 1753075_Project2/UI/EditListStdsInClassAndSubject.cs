@@ -28,6 +28,8 @@ namespace UI
 
         private void EditListStdsInClassAndSubject_Load(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
             cbb_hocky.Items.Clear();
@@ -68,6 +70,8 @@ namespace UI
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             MaLop = cbb_lop.SelectedItem.ToString();
             cbb_MonHoc.Items.Clear();
             cbb_hocky.Items.Clear();
@@ -100,6 +104,8 @@ namespace UI
 
         private void cbb_MonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             MaMon = cbb_MonHoc.SelectedItem.ToString();
             lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
             cbb_hocky.Items.Clear();
@@ -166,7 +172,10 @@ namespace UI
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             HocKy = cbb_hocky.SelectedItem.ToString();
+            BindListStdsInClassSubject(MaLop, MaMon, HocKy);
         }
 
         private void btn_Add_Click(object sender, EventArgs e)

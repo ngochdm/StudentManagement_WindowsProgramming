@@ -238,5 +238,10 @@
   <ItemGroup>
     <None Include="Resources\4288584andbusinessfinancepersonalportfolioprofileresume-115772_115741.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="set_connection.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

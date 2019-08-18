@@ -25,16 +25,24 @@ namespace UI
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ nội dung để đổi mật khẩu");
             }
+
             else if (tb_newPass.Text.Trim().Length < 6) 
             {
                 MessageBox.Show("Mật khẩu mới phải ít nhất 6 kí tự");
             }
+
             else
             {
                 if (tb_newPass.Text.Trim() != tb_confirmPass.Text.Trim())
                 {
                     MessageBox.Show("Xác nhận mật khẩu không trùng với mật khẩu mới");
                 }
+
+                else if(tb_newPass.Text.Trim()==tb_Oldpassword.Text.Trim())
+                {
+                    MessageBox.Show("Mật khẩu mới trùng với mật khẩu cũ");
+                }
+
                 else
                 {
                     var bll = new BLL.BusinessLogicLayer();

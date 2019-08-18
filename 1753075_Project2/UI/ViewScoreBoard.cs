@@ -31,6 +31,8 @@ namespace UI
 
         private void ViewScoreBoard_Load(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             lb_statistic.Text = "";
 
             cbb_lop.Items.Clear();
@@ -73,6 +75,8 @@ namespace UI
 
         private void BindListOfScoreBoardStdsIntoListView(string malop, string mamon, string hocky)
         {
+            lv.Items.Clear();
+
             lb_statistic.Text = "";
             lv.BeginUpdate();
             lv.Items.Clear();
@@ -109,6 +113,8 @@ namespace UI
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             lb_statistic.Text = "";
 
             MaLop = cbb_lop.SelectedItem.ToString();
@@ -143,6 +149,8 @@ namespace UI
 
         private void cbb_MonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             lb_statistic.Text = "";
 
             MaMon = cbb_MonHoc.SelectedItem.ToString();
@@ -162,9 +170,12 @@ namespace UI
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lv.Items.Clear();
+
             lb_statistic.Text = "";
 
             HocKy = cbb_hocky.SelectedItem.ToString();
+            BindListOfScoreBoardStdsIntoListView(MaLop, MaMon, HocKy);
         }
     }
 }

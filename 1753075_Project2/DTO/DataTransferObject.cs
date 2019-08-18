@@ -17,7 +17,10 @@ namespace DTO
             public string NgaySinh { get; set; }
             public string DiaChi { get; set; }
             public string GioiTinh { get; set; }
-            public ThanhVienTruong() { }
+            public ThanhVienTruong()
+            {
+                MaTV = "0";
+            }
             public ThanhVienTruong(string tvid, string cmnd, string hoten, string ngsinh, string dchi, string gt)
             {
                 MaTV = tvid;
@@ -44,7 +47,10 @@ namespace DTO
             public string GioiTinh { get; set; }
             #endregion*/
 
-            public GiaoVu() { }
+            public GiaoVu()
+            {
+                MaTV = "0";
+            }
              public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt) : base(gv_id, cmnd, hoten, ngsinh, dchi, gt)
             {
                 MatKhau = new DataTransferObject().hashPass(pwd);
@@ -69,7 +75,10 @@ namespace DTO
 
             public string MaLop { get; set; }
 
-            public SinhVien() { }
+            public SinhVien()
+            {
+                MaTV = "0";
+            }
             /*public SinhVien(string sv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt)
             {
                 MaSV = sv_id;
@@ -105,7 +114,10 @@ namespace DTO
             public string TenMon { get; set; }
             #endregion
 
-            public ThoiKhoaBieu() { }
+            public ThoiKhoaBieu()
+            {
+                MaLop = "0";MaMonHoc = "0";HocKy = "0";
+            }
             //cid:class id, sid: subject id, syear: school year, sname: school name
             public ThoiKhoaBieu(string cid, string sid, string semester, string syear, string room, bool publicScore, string sname)
             {
@@ -138,6 +150,7 @@ namespace DTO
             public BangDiem()
             {
                 MaSV = "0";
+                    MaLop = "0"; MaMonHoc = "0"; HocKy = "0";
             }
             public BangDiem(string stdid, string cid, string sid, string semester, string sname, float gk, float ck, float khac, float tong)
             {
@@ -157,7 +170,10 @@ namespace DTO
             public string MaLop { get; set; }
             public string TenLop { get; set; }
 
-            public LopHoc() { }
+            public LopHoc()
+            {
+                MaLop = "0";
+            }
             public LopHoc(string malop, string tenlop)
             {
                 MaLop = malop;
@@ -170,7 +186,10 @@ namespace DTO
             public string MaMonHoc { get; set; }
             public string TenMonHoc { get; set; }
 
-            public MonHoc() { }
+            public MonHoc()
+            {
+                MaMonHoc = "0";
+            }
             public MonHoc(string mamon,string tenmon)
             {
                 MaMonHoc = mamon;

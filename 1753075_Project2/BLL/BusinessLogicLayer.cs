@@ -26,15 +26,29 @@ namespace BLL
         }
         public SinhVien getInfoOneStd(string mssv)
         {
-            SinhVien sv = new SinhVien();
-            sv = new DAL.DataAccessLayer().getInfoOneStudent(mssv);
-            return sv;
+            try
+            {
+                SinhVien sv = new SinhVien();
+                sv = new DAL.DataAccessLayer().getInfoOneStudent(mssv);
+                return sv;
+            }
+            catch
+            {
+                return new SinhVien();
+            }
         }
         public GiaoVu getInfoGiaoVu(string magv)
         {
-            GiaoVu gv = new GiaoVu();
-            gv = new DAL.DataAccessLayer().getInfoOneGiaoVu(magv);
-            return gv;
+            try
+            {
+                GiaoVu gv = new GiaoVu();
+                gv = new DAL.DataAccessLayer().getInfoOneGiaoVu(magv);
+                return gv;
+            }
+            catch
+            {
+                return new GiaoVu();
+            }
         }
         public bool importClass(LopHoc lop)
         {
@@ -60,31 +74,38 @@ namespace BLL
         }
         public List<SinhVien> readListStdFromCsvFile(string path)
         {
-            var students = new List<SinhVien>();
-            using (var rd = new StreamReader(path))
+            try
             {
-                var malop = rd.ReadLine();
-                var lop = new LopHoc(malop, malop);
-                var dal = new DAL.DataAccessLayer();
-                dal.importClass(lop);
-
-                rd.ReadLine();
-                string aline;
-                while ((aline = rd.ReadLine()) != null)
+                var students = new List<SinhVien>();
+                using (var rd = new StreamReader(path))
                 {
-                    var arr = aline.Split(',');
-                    //STT,MSSV,Họ tên,Giới tính,CMND,Ngày sinh,Địa chỉ
-                    var mssv = arr[1];
-                    var hoten = arr[2];
-                    var gioitinh = arr[3];
-                    var cmnd = arr[4];
-                    var ngsinh = arr[5];
-                    var diachi = arr[6];
-                    var student = new SinhVien(mssv, cmnd, hoten, ngsinh, diachi, gioitinh, malop);
-                    students.Add(student);
+                    var malop = rd.ReadLine();
+                    var lop = new LopHoc(malop, malop);
+                    var dal = new DAL.DataAccessLayer();
+                    dal.importClass(lop);
+
+                    rd.ReadLine();
+                    string aline;
+                    while ((aline = rd.ReadLine()) != null)
+                    {
+                        var arr = aline.Split(',');
+                        //STT,MSSV,Họ tên,Giới tính,CMND,Ngày sinh,Địa chỉ
+                        var mssv = arr[1];
+                        var hoten = arr[2];
+                        var gioitinh = arr[3];
+                        var cmnd = arr[4];
+                        var ngsinh = arr[5];
+                        var diachi = arr[6];
+                        var student = new SinhVien(mssv, cmnd, hoten, ngsinh, diachi, gioitinh, malop);
+                        students.Add(student);
+                    }
                 }
+                return students;
             }
-            return students;
+            catch
+            {
+                return new List<SinhVien>();
+            }
         }
         public bool addListMemsInClass(List<SinhVien> students)
         {
@@ -105,39 +126,61 @@ namespace BLL
         }
         public List<LopHoc> getAllInfoOfClasses()
         {
-            return new DAL.DataAccessLayer().getAllInfoOfClasses();
+            try
+            {
+                return new DAL.DataAccessLayer().getAllInfoOfClasses();
+            }
+            catch
+            {
+                return new List<LopHoc>();
+            }
         }
         public List<SinhVien> getAllStdsInAClass(string lop)
         {
-            return new DAL.DataAccessLayer().getAllStdsInAClass(lop);
+            try
+            {
+                if (lop.Length > 10) return new List<SinhVien>();
+                return new DAL.DataAccessLayer().getAllStdsInAClass(lop);
+            }
+            catch
+            {
+                return new List<SinhVien>();
+            }
         }
         public List<ThoiKhoaBieu> readListTimeTableFromCSVFile(string path)
         {
-            var tt = new List<ThoiKhoaBieu>();
-            using (var rd = new StreamReader(path))
+                var tt = new List<ThoiKhoaBieu>();
+            try
             {
-                var malop = rd.ReadLine();
-                rd.ReadLine();
-
-                string aline;
-                while ((aline = rd.ReadLine()) != null)
+                using (var rd = new StreamReader(path))
                 {
-                    var arr = aline.Split(',');
-                    //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
-                    //STT,Mã môn,Tên môn,Học kỳ,Năm học,Phòng học,Công Khai Bảng Điểm
-                    var mamon = arr[1];
-                    var tenmon = arr[2];
-                    var hocky = arr[3];
-                    var namhoc = arr[4];
-                    var phonghoc = arr[5];
-                    var congkhaibangdiem = int.Parse(arr[6]);
-                    bool ckbd = false;
-                    if (congkhaibangdiem == 1) ckbd = true;
-                    var tkb = new ThoiKhoaBieu(malop, mamon, hocky, namhoc, phonghoc, ckbd, tenmon);
-                    tt.Add(tkb);
+                    var malop = rd.ReadLine();
+                    rd.ReadLine();
+
+                    string aline;
+                    while ((aline = rd.ReadLine()) != null)
+                    {
+                        var arr = aline.Split(',');
+                        //TKB(MaLop,MaMonHoc,HocKy,NamHoc,PhongHoc,CongKhaiBangDiem)
+                        //STT,Mã môn,Tên môn,Học kỳ,Năm học,Phòng học,Công Khai Bảng Điểm
+                        var mamon = arr[1];
+                        var tenmon = arr[2];
+                        var hocky = arr[3];
+                        var namhoc = arr[4];
+                        var phonghoc = arr[5];
+                        var congkhaibangdiem = int.Parse(arr[6]);
+                        bool ckbd = false;
+                        if (congkhaibangdiem == 1) ckbd = true;
+                        var tkb = new ThoiKhoaBieu(malop, mamon, hocky, namhoc, phonghoc, ckbd, tenmon);
+                        tt.Add(tkb);
+                    }
                 }
+                return tt;
             }
-            return tt;
+            catch
+            {
+                return tt;
+            }
         }
         public bool addListTimeTable(List<ThoiKhoaBieu> tt)
         {
@@ -158,12 +201,21 @@ namespace BLL
         }
         public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
         {
-            return new DAL.DataAccessLayer().getTimeTableOfAClass(lop);
+            try
+            {
+                if (lop.Length > 10) return new List<ThoiKhoaBieu>();
+                return new DAL.DataAccessLayer().getTimeTableOfAClass(lop);
+            }
+            catch
+            {
+                return new List<ThoiKhoaBieu>();
+            }
         }
         public bool insertASubject(MonHoc subject)
         {
             try
             {
+                if (subject.MaMonHoc.Length > 10) return false;
                 return new DAL.DataAccessLayer().addASubjectToDatabase(subject);
             }
             catch
@@ -173,15 +225,39 @@ namespace BLL
         }
         public List<BangDiem> getAllScoreBoardWithClassAndSubject(string malop,string mamon, string hocky)
         {
-            return new DAL.DataAccessLayer().getScoreBoardWithClassAndSubject(malop, mamon, hocky);
+            try
+            {
+                if (malop.Length > 10 || mamon.Length > 10) return new List<BangDiem>();
+                return new DAL.DataAccessLayer().getScoreBoardWithClassAndSubject(malop, mamon, hocky);
+            }
+            catch
+            {
+                return new List<BangDiem>();
+            }
         }
         public List<MonHoc> getSubjectsOfClass(string malop)
         {
-            return new DAL.DataAccessLayer().getAllSubjectOfClass(malop);
+            try
+            {
+                if (malop.Length > 10) return new List<MonHoc>();
+                return new DAL.DataAccessLayer().getAllSubjectOfClass(malop);
+            }
+            catch
+            {
+                return new List<MonHoc>();
+            }
         }
         public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon, string hocky)
         {
-            return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon, hocky);
+            try
+            {
+                if (malop.Length > 10 || mamon.Length > 10) return new List<SinhVien>();
+                return new DAL.DataAccessLayer().getAllStdsInClassAndSubject(malop, mamon, hocky);
+            }
+            catch
+            {
+                return new List<SinhVien>();
+            }
         }
         public bool addAStdIntoScoreBoard(List<ThoiKhoaBieu> timetable)
         {
@@ -241,39 +317,46 @@ namespace BLL
         }
         public List<BangDiem> readScoreBoardFromCSVFile(string path)
         {
-            var scoreboard = new List<BangDiem>();
-            using (var rd = new StreamReader(path))
+            try
             {
-                //malop,mamon,hocky
-                var firstline = rd.ReadLine();
-                var fl = firstline.Split(',');
-
-                var malop = fl[0];
-                var mamon = fl[1];
-                var hocky = fl[2];
-
-                rd.ReadLine();
-
-                string aline;
-
-                while ((aline = rd.ReadLine()) != null)
+                var scoreboard = new List<BangDiem>();
+                using (var rd = new StreamReader(path))
                 {
-                    var arr = aline.Split(',');
+                    //malop,mamon,hocky
+                    var firstline = rd.ReadLine();
+                    var fl = firstline.Split(',');
 
-                    //BangDiem(MSSV,MaLop,MaMonHoc,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong)
-                    //STT,MSSV,Họ tên,Điểm giữa kỳ,Điểm cuối kỳ,Điểm khác,Điểm tổng
+                    var malop = fl[0];
+                    var mamon = fl[1];
+                    var hocky = fl[2];
 
-                    var mssv = arr[1];
-                    var diemgk = (float) double.Parse(arr[3]);
-                    var diemck = (float) double.Parse(arr[4]);
-                    var diemkhac = (float) double.Parse(arr[5]);
-                    var diemtong = (float) double.Parse(arr[6]);
+                    rd.ReadLine();
 
-                    var sc = new BangDiem(mssv, malop, mamon, hocky, "", diemgk, diemck, diemkhac, diemtong);
-                    scoreboard.Add(sc);
+                    string aline;
+
+                    while ((aline = rd.ReadLine()) != null)
+                    {
+                        var arr = aline.Split(',');
+
+                        //BangDiem(MSSV,MaLop,MaMonHoc,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong)
+                        //STT,MSSV,Họ tên,Điểm giữa kỳ,Điểm cuối kỳ,Điểm khác,Điểm tổng
+
+                        var mssv = arr[1];
+                        var diemgk = (float)double.Parse(arr[3]);
+                        var diemck = (float)double.Parse(arr[4]);
+                        var diemkhac = (float)double.Parse(arr[5]);
+                        var diemtong = (float)double.Parse(arr[6]);
+
+                        var sc = new BangDiem(mssv, malop, mamon, hocky, "", diemgk, diemck, diemkhac, diemtong);
+                        scoreboard.Add(sc);
+                    }
                 }
+                return scoreboard;
             }
-            return scoreboard;
+            catch
+            {
+                return new List<BangDiem>();
+            }
         }
         public bool editTimeTable(ThoiKhoaBieu timetable)
         {
@@ -317,21 +400,44 @@ namespace BLL
         }
         public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
         {
-            return new DAL.DataAccessLayer().getAllSemesterOfSubjectInClass(malop, mamon);
+            try
+            {
+                if (malop.Length > 10 || mamon.Length > 10) return new List<string>();
+                return new DAL.DataAccessLayer().getAllSemesterOfSubjectInClass(malop, mamon);
+            }
+            catch
+            {
+                return new List<string>();
+            }
         }
         public bool checkScorePublic(string malop,string mamon,string hocky)
         {
-            return new DAL.DataAccessLayer().checkScoreBoardIsPublicOrNot(malop, mamon, hocky);
+            try
+            {
+                if (malop.Length > 10 || mamon.Length > 10) return false;
+                return new DAL.DataAccessLayer().checkScoreBoardIsPublicOrNot(malop, mamon, hocky);
+            }
+            catch
+            {
+                return false;
+            }
         }
         public BangDiem getScoreBoardForStudent(string mssv,string malop,string mamon,string hocky)
         {
-            var dal = new DAL.DataAccessLayer();
-            var congkhai = checkScorePublic(malop, mamon, hocky);
-            if (congkhai == true) 
+            try
             {
-                return dal.getScoreFromDatabase(mssv, malop, mamon, hocky);
+                var dal = new DAL.DataAccessLayer();
+                var congkhai = checkScorePublic(malop, mamon, hocky);
+                if (congkhai == true)
+                {
+                    return dal.getScoreFromDatabase(mssv, malop, mamon, hocky);
+                }
+                else
+                {
+                    return new BangDiem();
+                }
             }
-            else
+            catch
             {
                 return new BangDiem();
             }
@@ -360,6 +466,5 @@ namespace BLL
                 return false;
             }
         }
-
     }
 }

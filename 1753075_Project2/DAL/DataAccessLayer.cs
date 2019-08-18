@@ -15,16 +15,20 @@ namespace DAL
         private string ConnectionString { get; set; }
         public DataAccessLayer()
         {
-            ConnectionString = GetConnectionString("set_connection.txt");
+            string path = @"set_connection.txt";
+            ConnectionString = GetConnectionString(path);
+            //ConnectionString = GetConnectionString("set_connection.txt");
         }
         public string GetConnectionString(string path)
         {
             string connectionstring = "";
             using (var rd = new StreamReader(path))
             {
-                var server = rd.ReadLine().Replace("_", "-");
+                connectionstring = rd.ReadLine();
+                /*var server = rd.ReadLine().Replace("_", "-");
                 var db = rd.ReadLine();
-                connectionstring = $"Provider=SQLNCLI11;Server={server};Database={db};Trusted_Connection=Yes";
+                connectionstring = $"Provider=SQLNCLI11;Server={server};Database={db};Trusted_Connection=Yes";*/
+                rd.Close();
             }
             return connectionstring;
         }
@@ -104,68 +108,82 @@ namespace DAL
         }
         public SinhVien getInfoOneStudent(string mssv)
         {
-            SinhVien sv = new SinhVien();
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                SinhVien sv = new SinhVien();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MSSV = ?"
-            };
-            cmd.Parameters.AddWithValue("?", mssv);
-            var rd = cmd.ExecuteReader();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MSSV = ?"
+                };
+                cmd.Parameters.AddWithValue("?", mssv);
+                var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
-            {
-                if (!rd.IsDBNull(0)) sv.MaTV = rd.GetString(0);
-                if (!rd.IsDBNull(1)) sv.SoCMND = rd.GetString(1);
-                if (!rd.IsDBNull(2)) sv.HoTen = rd.GetString(2);
-                if (!rd.IsDBNull(3)) sv.MaLop = rd.GetString(3);
-                if (!rd.IsDBNull(4)) sv.NgaySinh = rd.GetDateTime(4).ToShortDateString();
-                if (!rd.IsDBNull(5)) sv.DiaChi = rd.GetString(5);
-                if (!rd.IsDBNull(6)) sv.GioiTinh = rd.GetString(6);
-                sv.MatKhau = "";
+                while (rd.Read())
+                {
+                    if (!rd.IsDBNull(0)) sv.MaTV = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) sv.SoCMND = rd.GetString(1);
+                    if (!rd.IsDBNull(2)) sv.HoTen = rd.GetString(2);
+                    if (!rd.IsDBNull(3)) sv.MaLop = rd.GetString(3);
+                    if (!rd.IsDBNull(4)) sv.NgaySinh = rd.GetDateTime(4).ToShortDateString();
+                    if (!rd.IsDBNull(5)) sv.DiaChi = rd.GetString(5);
+                    if (!rd.IsDBNull(6)) sv.GioiTinh = rd.GetString(6);
+                    sv.MatKhau = "";
+                }
+
+                cnn.Close();
+                return sv;
             }
-
-            cnn.Close();
-            return sv;
+            catch
+            {
+                return new SinhVien();
+            }
         }
         public GiaoVu getInfoOneGiaoVu(string MaGV)
         {
-            GiaoVu gv = new GiaoVu();
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                GiaoVu gv = new GiaoVu();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM GIAOVU WHERE MAGIAOVU = ?"
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM GIAOVU WHERE MAGIAOVU = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", MaGV);
-            var rd = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("?", MaGV);
+                var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
-            {
-                if (!rd.IsDBNull(0)) gv.MaTV = rd.GetString(0);
-                if (!rd.IsDBNull(1)) gv.SoCMND = rd.GetString(1);
-                if (!rd.IsDBNull(2)) gv.HoTen = rd.GetString(2);
-                if (!rd.IsDBNull(3)) gv.NgaySinh = rd.GetDateTime(3).ToShortDateString();
-                if (!rd.IsDBNull(4)) gv.DiaChi = rd.GetString(4);
-                if (!rd.IsDBNull(5)) gv.GioiTinh = rd.GetString(5);
-                gv.MatKhau = "";
+                while (rd.Read())
+                {
+                    if (!rd.IsDBNull(0)) gv.MaTV = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) gv.SoCMND = rd.GetString(1);
+                    if (!rd.IsDBNull(2)) gv.HoTen = rd.GetString(2);
+                    if (!rd.IsDBNull(3)) gv.NgaySinh = rd.GetDateTime(3).ToShortDateString();
+                    if (!rd.IsDBNull(4)) gv.DiaChi = rd.GetString(4);
+                    if (!rd.IsDBNull(5)) gv.GioiTinh = rd.GetString(5);
+                    gv.MatKhau = "";
+                }
+                cnn.Close();
+                return gv;
             }
-            cnn.Close();
-            return gv;
+            catch
+            {
+                return new GiaoVu();
+            }
         }
         public bool importClass(LopHoc lop)
         {
@@ -214,6 +232,15 @@ namespace DAL
         {
             try
             {
+                //SinhVien(MSSV,SoCMND,HoTen,MatKhau,MaLop,NgaySinh,DiaChi,GioiTinh)
+                sv.MaTV = sv.MaTV.Replace("\"", string.Empty);
+                sv.SoCMND = sv.SoCMND.Replace("\"", string.Empty);
+                sv.HoTen = sv.HoTen.Replace("\"", string.Empty);
+                sv.MaLop = sv.MaLop.Replace("\"", string.Empty);
+                sv.NgaySinh = sv.NgaySinh.Replace("\"", string.Empty);
+                sv.DiaChi = sv.DiaChi.Replace("\"", string.Empty);
+                sv.GioiTinh = sv.GioiTinh.Replace("\"", string.Empty);
+
                 var cnn = new OleDbConnection()
                 {
                     //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
@@ -276,68 +303,82 @@ namespace DAL
         }
         public List<LopHoc> getAllInfoOfClasses()
         {
-            var classes = new List<LopHoc>();
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var classes = new List<LopHoc>();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MALOP, TENLOP FROM LOPHOC"
-            };
-            var rd = cmd.ExecuteReader();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MALOP, TENLOP FROM LOPHOC"
+                };
+                var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
-            {
-                string malop = "", tenlop = "";
-                if (!rd.IsDBNull(0)) malop = rd.GetString(0);
-                if (!rd.IsDBNull(1)) tenlop = rd.GetString(1);
-                else tenlop = malop;
-                var aClass = new LopHoc(malop, tenlop);
-                classes.Add(aClass);
+                while (rd.Read())
+                {
+                    string malop = "", tenlop = "";
+                    if (!rd.IsDBNull(0)) malop = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) tenlop = rd.GetString(1);
+                    else tenlop = malop;
+                    var aClass = new LopHoc(malop, tenlop);
+                    classes.Add(aClass);
+                }
+                cnn.Close();
+                return classes;
             }
-            cnn.Close();
-            return classes;
+            catch
+            {
+                return new List<LopHoc>();
+            }
         }
         public List<SinhVien> getAllStdsInAClass(string lop)
         {
-            var students = new List<SinhVien>();
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var students = new List<SinhVien>();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = ?"
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MSSV, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MALOP = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", lop);
-            var rd = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("?", lop);
+                var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
-            {
-                string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+                while (rd.Read())
+                {
+                    string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
 
-                if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
-                if (!rd.IsDBNull(1)) socmnd = rd.GetString(1);
-                if (!rd.IsDBNull(2)) hoten = rd.GetString(2);
-                if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
-                if (!rd.IsDBNull(4)) diachi = rd.GetString(4);
-                if (!rd.IsDBNull(5)) gioitinh = rd.GetString(5);
+                    if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) socmnd = rd.GetString(1);
+                    if (!rd.IsDBNull(2)) hoten = rd.GetString(2);
+                    if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
+                    if (!rd.IsDBNull(4)) diachi = rd.GetString(4);
+                    if (!rd.IsDBNull(5)) gioitinh = rd.GetString(5);
 
-                var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, lop);
-                students.Add(std);
+                    var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, lop);
+                    students.Add(std);
+                }
+                cnn.Close();
+                return students;
             }
-            cnn.Close();
-            return students;
+            catch
+            {
+                return new List<SinhVien>();
+            }
         }
         public bool importTimeTable(ThoiKhoaBieu tkb)
         {
@@ -412,43 +453,50 @@ namespace DAL
         }
         public List<ThoiKhoaBieu> getTimeTableOfAClass(string lop)
         {
-            var timetable = new List<ThoiKhoaBieu>();
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var timetable = new List<ThoiKhoaBieu>();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM FROM TKB T INNER JOIN MONHOC MH ON(T.MaMonHoc = MH.MaMonHoc) WHERE T.MALOP = ?"
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT T.MAMONHOC, MH.TENMONHOC, T.HOCKY, T.NAMHOC, T.PHONGHOC, T.CONGKHAIBANGDIEM FROM TKB T INNER JOIN MONHOC MH ON(T.MaMonHoc = MH.MaMonHoc) WHERE T.MALOP = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", lop);
-            var rd = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("?", lop);
+                var rd = cmd.ExecuteReader();
 
-            while (rd.Read())
-            {
-                string mamon = "", tenmon = "", hocky = "", namhoc = "", phonghoc = "", ckbd = "";
-                if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
-                if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
-                if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
-                if (!rd.IsDBNull(3)) namhoc = rd.GetString(3);
-                if (!rd.IsDBNull(4)) phonghoc = rd.GetString(4);
-                if (!rd.IsDBNull(5)) ckbd = rd.GetString(5);
+                while (rd.Read())
+                {
+                    string mamon = "", tenmon = "", hocky = "", namhoc = "", phonghoc = "", ckbd = "";
+                    if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
+                    if (!rd.IsDBNull(2)) hocky = rd.GetString(2);
+                    if (!rd.IsDBNull(3)) namhoc = rd.GetString(3);
+                    if (!rd.IsDBNull(4)) phonghoc = rd.GetString(4);
+                    if (!rd.IsDBNull(5)) ckbd = rd.GetString(5);
 
-                bool ckhaibd = false;
-                if (ckbd == "1") ckhaibd = true;
+                    bool ckhaibd = false;
+                    if (ckbd == "1") ckhaibd = true;
 
-                var tt = new ThoiKhoaBieu(lop, mamon, hocky, namhoc, phonghoc, ckhaibd, tenmon);
+                    var tt = new ThoiKhoaBieu(lop, mamon, hocky, namhoc, phonghoc, ckhaibd, tenmon);
 
-                timetable.Add(tt);
+                    timetable.Add(tt);
+                }
+
+                cnn.Close();
+                return timetable;
             }
-
-            cnn.Close();
-            return timetable;
+            catch
+            {
+                return new List<ThoiKhoaBieu>();
+            }
         }
         public bool addASubjectToDatabase(MonHoc subject)
         {
@@ -493,170 +541,205 @@ namespace DAL
         }
         public List<BangDiem> getScoreBoardWithClassAndSubject(string malop, string mamon, string hocky)
         {
-            var scoreboard = new List<BangDiem>();
-
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var scoreboard = new List<BangDiem>();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MH.TENMONHOC, BD.MSSV, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG FROM BANGDIEM BD INNER JOIN MONHOC MH ON(BD.MAMONHOC = MH.MAMONHOC) WHERE BD.MAMONHOC = ? AND BD.MALOP = ? AND BD.HOCKY = ?"
-            };
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteReader();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MH.TENMONHOC, BD.MSSV, BD.DIEMGIUAKY, BD.DIEMCUOIKY, BD.DIEMKHAC, BD.DIEMTONG FROM BANGDIEM BD INNER JOIN MONHOC MH ON(BD.MAMONHOC = MH.MAMONHOC) WHERE BD.MAMONHOC = ? AND BD.MALOP = ? AND BD.HOCKY = ?"
+                };
 
-            while (rd.Read())
-            {
-                string tenmon = "", mssv = "";
-                float diemgk = 0, diemkhac = 0, diemck = 0, diemtong = 0;
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteReader();
 
-                if (!rd.IsDBNull(0)) tenmon = rd.GetString(0);
-                if (!rd.IsDBNull(1)) mssv = rd.GetString(1);
+                while (rd.Read())
+                {
+                    string tenmon = "", mssv = "";
+                    float diemgk = 0, diemkhac = 0, diemck = 0, diemtong = 0;
 
-                if (!rd.IsDBNull(2))
-                    //diemgk = rd.GetFloat(3);
-                    diemgk = (float)rd.GetDouble(2);
-                if (!rd.IsDBNull(3))
-                    //diemck = rd.GetFloat(4);
-                    diemck = (float)rd.GetDouble(3);
-                if (!rd.IsDBNull(4))
-                    //diemkhac = rd.GetFloat(5);
-                    diemkhac = (float)rd.GetDouble(4);
-                if (!rd.IsDBNull(5))
-                    //diemtong = rd.GetFloat(6);
-                    diemtong = (float)rd.GetDouble(5);
+                    if (!rd.IsDBNull(0)) tenmon = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) mssv = rd.GetString(1);
 
-                var score = new BangDiem(mssv, malop, mamon, hocky, tenmon, diemgk, diemck, diemkhac, diemtong);
-                scoreboard.Add(score);
+                    if (!rd.IsDBNull(2))
+                        //diemgk = rd.GetFloat(3);
+                        diemgk = (float)rd.GetDouble(2);
+                    if (!rd.IsDBNull(3))
+                        //diemck = rd.GetFloat(4);
+                        diemck = (float)rd.GetDouble(3);
+                    if (!rd.IsDBNull(4))
+                        //diemkhac = rd.GetFloat(5);
+                        diemkhac = (float)rd.GetDouble(4);
+                    if (!rd.IsDBNull(5))
+                        //diemtong = rd.GetFloat(6);
+                        diemtong = (float)rd.GetDouble(5);
+
+                    var score = new BangDiem(mssv, malop, mamon, hocky, tenmon, diemgk, diemck, diemkhac, diemtong);
+                    scoreboard.Add(score);
+                }
+                cnn.Close();
+
+                return scoreboard;
             }
-            cnn.Close();
-
-            return scoreboard;
+            catch
+            {
+                return new List<BangDiem>();
+            }
         }
         public List<MonHoc> getInfoAllSubject()
         {
-            var subjects = new List<MonHoc>();
-
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var subjects = new List<MonHoc>();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MAMONHOC, TENMONHOC FROM MONHOC"
-            };
-            var rd = cmd.ExecuteReader();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            while (rd.Read())
-            {
-                string mamon = "", tenmon = "";
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MAMONHOC, TENMONHOC FROM MONHOC"
+                };
+                var rd = cmd.ExecuteReader();
 
-                if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
-                if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
+                while (rd.Read())
+                {
+                    string mamon = "", tenmon = "";
 
-                else tenmon = mamon;
-                var subject = new MonHoc(mamon, tenmon);
+                    if (!rd.IsDBNull(0)) mamon = rd.GetString(0);
+                    if (!rd.IsDBNull(1)) tenmon = rd.GetString(1);
 
-                subjects.Add(subject);
+                    else tenmon = mamon;
+                    var subject = new MonHoc(mamon, tenmon);
+
+                    subjects.Add(subject);
+                }
+                cnn.Close();
+                return subjects;
             }
-            cnn.Close();
-            return subjects;
+            catch
+            {
+                return new List<MonHoc>();
+            }
         }
         public List<MonHoc> getAllSubjectOfClass(string malop)
         {
-            var timetable = getTimeTableOfAClass(malop);
-
-            var subjects = new List<MonHoc>();
-            foreach (var tb in timetable)
+            try
             {
-                subjects.Add(new MonHoc(tb.MaMonHoc, tb.TenMon));
-            }
+                var timetable = getTimeTableOfAClass(malop);
 
-            return subjects;
+                var subjects = new List<MonHoc>();
+                foreach (var tb in timetable)
+                {
+                    subjects.Add(new MonHoc(tb.MaMonHoc, tb.TenMon));
+                }
+
+                return subjects;
+            }
+            catch
+            {
+                return new List<MonHoc>();
+            }
         }
         public List<SinhVien> getAllStdsInClassAndSubject(string malop, string mamon, string hocky)
         {
-            var students = new List<SinhVien>();
-
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var students = new List<SinhVien>();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI FROM SINHVIEN SV INNER JOIN BANGDIEM BD ON(BD.MSSV = SV.MSSV) WHERE BD.MALOP = ? AND BD.MaMonHoc = ? AND BD.HOCKY = ?"
-            };
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteReader();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT BD.MSSV, SV.HOTEN, SV.SoCMND, SV.NGAYSINH, SV.GIOITINH, SV.DIACHI FROM SINHVIEN SV INNER JOIN BANGDIEM BD ON(BD.MSSV = SV.MSSV) WHERE BD.MALOP = ? AND BD.MaMonHoc = ? AND BD.HOCKY = ?"
+                };
 
-            while (rd.Read())
-            {
-                string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteReader();
 
-                if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
-                if (!rd.IsDBNull(2)) socmnd = rd.GetString(2);
-                if (!rd.IsDBNull(1)) hoten = rd.GetString(1);
-                if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
-                if (!rd.IsDBNull(5)) diachi = rd.GetString(5);
-                if (!rd.IsDBNull(4)) gioitinh = rd.GetString(4);
+                while (rd.Read())
+                {
+                    string mssv = "", socmnd = "", hoten = "", ngaysinh = "", diachi = "", gioitinh = "";
 
-                var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, malop);
-                students.Add(std);
+                    if (!rd.IsDBNull(0)) mssv = rd.GetString(0);
+                    if (!rd.IsDBNull(2)) socmnd = rd.GetString(2);
+                    if (!rd.IsDBNull(1)) hoten = rd.GetString(1);
+                    if (!rd.IsDBNull(3)) ngaysinh = rd.GetDateTime(3).ToShortDateString();
+                    if (!rd.IsDBNull(5)) diachi = rd.GetString(5);
+                    if (!rd.IsDBNull(4)) gioitinh = rd.GetString(4);
+
+                    var std = new SinhVien(mssv, socmnd, hoten, ngaysinh, diachi, gioitinh, malop);
+                    students.Add(std);
+                }
+                cnn.Close();
+                return students;
             }
-            cnn.Close();
-            return students;
+            catch
+            {
+                return new List<SinhVien>();
+            }
         }
         public List<string> getAllStdIDinAClass(string malop)
         {
-            var stdID = new List<string>();
-
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var stdID = new List<string>();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT MSSV FROM SINHVIEN WHERE MALOP = ?"
-            };
-
-            cmd.Parameters.AddWithValue("?", malop);
-            var rd = cmd.ExecuteReader();
-
-            while (rd.Read())
-            {
-                string mssv = "";
-                if (!rd.IsDBNull(0))
+                var cnn = new OleDbConnection()
                 {
-                    mssv = rd.GetString(0);
-                    stdID.Add(mssv);
-                }
-            }
-            cnn.Close();
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            return stdID;
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT MSSV FROM SINHVIEN WHERE MALOP = ?"
+                };
+
+                cmd.Parameters.AddWithValue("?", malop);
+                var rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    string mssv = "";
+                    if (!rd.IsDBNull(0))
+                    {
+                        mssv = rd.GetString(0);
+                        stdID.Add(mssv);
+                    }
+                }
+                cnn.Close();
+
+                return stdID;
+            }
+            catch
+            {
+                return new List<string>();
+            }
         }
         public bool addAStdToScoreBoardWhenImportTimeTable(string mssv, ThoiKhoaBieu tkb)
         {
@@ -868,37 +951,44 @@ namespace DAL
         }
         public List<string> getAllSemesterOfSubjectInClass(string malop, string mamon)
         {
-            var semesters = new List<string>();
-
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var semesters = new List<string>();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT HOCKY FROM TKB WHERE MALOP = ? AND MAMONHOC = ?"
-            };
-
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-
-            var rd = cmd.ExecuteReader();
-
-            while(rd.Read())
-            {
-                if (!rd.IsDBNull(0)) 
+                var cnn = new OleDbConnection()
                 {
-                    var semester = rd.GetString(0);
-                    semesters.Add(semester);
-                }
-            }
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            cnn.Close();
-            return semesters;
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT HOCKY FROM TKB WHERE MALOP = ? AND MAMONHOC = ?"
+                };
+
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+
+                var rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    if (!rd.IsDBNull(0))
+                    {
+                        var semester = rd.GetString(0);
+                        semesters.Add(semester);
+                    }
+                }
+
+                cnn.Close();
+                return semesters;
+            }
+            catch
+            {
+                return new List<string>();
+            }
         }
         public bool checkScoreBoardIsPublicOrNot(string malop, string mamon, string hocky)
         {
@@ -939,47 +1029,54 @@ namespace DAL
         }
         public BangDiem getScoreFromDatabase(string mssv, string malop, string mamon, string hocky)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                ConnectionString = this.ConnectionString
-            };
-            cnn.Open();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT DIEMGIUAKY, DIEMCUOIKY, DIEMKHAC, DIEMTONG FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT DIEMGIUAKY, DIEMCUOIKY, DIEMKHAC, DIEMTONG FROM BANGDIEM WHERE MSSV = ? AND MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+                };
 
-            cmd.Parameters.AddWithValue("?", mssv);
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("?", mssv);
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteReader();
 
-            BangDiem scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", 0, 0, 0, 0);
-            while (rd.Read())
-            {
-                float gk = 0, ck = 0, khac = 0, tong = 0;
-                if (!rd.IsDBNull(0))
-                    gk = (float) rd.GetDouble(0);
-                if (!rd.IsDBNull(1))
-                    ck = (float) rd.GetDouble(1);
-                if (!rd.IsDBNull(2))
-                    khac = (float) rd.GetDouble(2);
-                if (!rd.IsDBNull(3))
-                    tong = (float) rd.GetDouble(3);
+                BangDiem scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", 0, 0, 0, 0);
+                while (rd.Read())
+                {
+                    float gk = 0, ck = 0, khac = 0, tong = 0;
+                    if (!rd.IsDBNull(0))
+                        gk = (float)rd.GetDouble(0);
+                    if (!rd.IsDBNull(1))
+                        ck = (float)rd.GetDouble(1);
+                    if (!rd.IsDBNull(2))
+                        khac = (float)rd.GetDouble(2);
+                    if (!rd.IsDBNull(3))
+                        tong = (float)rd.GetDouble(3);
 
-                //scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", gk, ck, khac, tong);
-                scoreboard.DiemGK = gk;
-                scoreboard.DiemCK = ck;
-                scoreboard.DiemKhac = khac;
-                scoreboard.DiemTong = tong;
+                    //scoreboard = new BangDiem(mssv, malop, mamon, hocky, "", gk, ck, khac, tong);
+                    scoreboard.DiemGK = gk;
+                    scoreboard.DiemCK = ck;
+                    scoreboard.DiemKhac = khac;
+                    scoreboard.DiemTong = tong;
+                }
+                cnn.Close();
+
+                return scoreboard;
             }
-            cnn.Close();
-
-            return scoreboard;
+            catch
+            {
+                return new BangDiem();
+            }
         }
         public bool changePasswordForGiaoVu(string magv, string newpass)
         {
@@ -1071,6 +1168,5 @@ namespace DAL
                 return false;
             }
         }
-
     }
 }
