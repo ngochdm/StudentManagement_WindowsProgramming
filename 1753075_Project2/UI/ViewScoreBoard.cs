@@ -31,6 +31,8 @@ namespace UI
 
         private void ViewScoreBoard_Load(object sender, EventArgs e)
         {
+            lb_statistic.Text = "";
+
             cbb_lop.Items.Clear();
             cbb_MonHoc.Items.Clear();
             cbb_hocky.Items.Clear();
@@ -71,11 +73,14 @@ namespace UI
 
         private void BindListOfScoreBoardStdsIntoListView(string malop, string mamon, string hocky)
         {
+            lb_statistic.Text = "";
             lv.BeginUpdate();
             lv.Items.Clear();
             var scores = new BLL.BusinessLogicLayer().getAllScoreBoardWithClassAndSubject(malop, mamon, hocky) ;
 
             int count = 1;
+            int countPass = 0, countFail = 0;
+
             foreach (var score in scores)
             {
                 //MSSV,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong
@@ -87,14 +92,25 @@ namespace UI
                 item.SubItems.Add(score.DiemTong.ToString());
                 item.SubItems.Add(count.ToString());
                 count++;
+                if (score.DiemTong < 5.0)
+                {
+                    item.ForeColor = Color.Red;
+                    countFail++;
+                }
+                else countPass++;
 
                 lv.Items.Add(item);
             }
             lv.EndUpdate();
+
+            double ratioPass = 1.0 * countPass / (countPass + countFail), ratioFail = 1.0 * countFail / (countPass + countFail);
+            lb_statistic.Text = $"{countPass} student(s) passed and {countFail} student(s) failed this subject. Ratio Pass: {(ratioPass * 100).ToString("F1")}% - Ratio Fail: {(ratioFail * 100).ToString("F1")}%";
         }
 
         private void cbb_lop_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lb_statistic.Text = "";
+
             MaLop = cbb_lop.SelectedItem.ToString();
             cbb_MonHoc.Items.Clear();
             cbb_hocky.Items.Clear();
@@ -127,6 +143,8 @@ namespace UI
 
         private void cbb_MonHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lb_statistic.Text = "";
+
             MaMon = cbb_MonHoc.SelectedItem.ToString();
             lb_tenmon.Text = subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc;
             cbb_hocky.Items.Clear();
@@ -144,6 +162,8 @@ namespace UI
 
         private void cbb_hocky_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lb_statistic.Text = "";
+
             HocKy = cbb_hocky.SelectedItem.ToString();
         }
     }

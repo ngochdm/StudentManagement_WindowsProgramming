@@ -33,6 +33,8 @@
             this.cbb_hocky = new System.Windows.Forms.ComboBox();
             this.lb_tenmon = new System.Windows.Forms.Label();
             this.lv = new System.Windows.Forms.ListView();
+            this.SubjectID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SubjectName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.semester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.midterm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.final = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,8 +44,6 @@
             this.lb_mamon = new System.Windows.Forms.Label();
             this.cbb_MonHoc = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.SubjectID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SubjectName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tb_khac = new System.Windows.Forms.TextBox();
             this.tb_gk = new System.Windows.Forms.TextBox();
             this.tb_tong = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@
             this.cbb_hocky.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_hocky.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_hocky.FormattingEnabled = true;
-            this.cbb_hocky.Location = new System.Drawing.Point(238, 94);
+            this.cbb_hocky.Location = new System.Drawing.Point(217, 94);
             this.cbb_hocky.Name = "cbb_hocky";
             this.cbb_hocky.Size = new System.Drawing.Size(136, 33);
             this.cbb_hocky.TabIndex = 33;
@@ -80,7 +80,7 @@
             // 
             this.lb_tenmon.AutoSize = true;
             this.lb_tenmon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lb_tenmon.Location = new System.Drawing.Point(405, 32);
+            this.lb_tenmon.Location = new System.Drawing.Point(363, 36);
             this.lb_tenmon.Name = "lb_tenmon";
             this.lb_tenmon.Size = new System.Drawing.Size(146, 25);
             this.lb_tenmon.TabIndex = 32;
@@ -107,23 +107,32 @@
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
             // 
+            // SubjectID
+            // 
+            this.SubjectID.DisplayIndex = 1;
+            this.SubjectID.Text = "Mã Môn";
+            // 
+            // SubjectName
+            // 
+            this.SubjectName.DisplayIndex = 2;
+            this.SubjectName.Text = "Tên Môn";
+            this.SubjectName.Width = 100;
+            // 
             // semester
             // 
             this.semester.DisplayIndex = 3;
             this.semester.Text = "Học Kỳ";
-            this.semester.Width = 80;
+            this.semester.Width = 70;
             // 
             // midterm
             // 
             this.midterm.DisplayIndex = 4;
             this.midterm.Text = "Giữa Kỳ";
-            this.midterm.Width = 70;
             // 
             // final
             // 
             this.final.DisplayIndex = 5;
             this.final.Text = "Cuối Kỳ";
-            this.final.Width = 70;
             // 
             // others
             // 
@@ -159,7 +168,7 @@
             this.cbb_MonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_MonHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbb_MonHoc.FormattingEnabled = true;
-            this.cbb_MonHoc.Location = new System.Drawing.Point(238, 29);
+            this.cbb_MonHoc.Location = new System.Drawing.Point(217, 29);
             this.cbb_MonHoc.Name = "cbb_MonHoc";
             this.cbb_MonHoc.Size = new System.Drawing.Size(136, 33);
             this.cbb_MonHoc.TabIndex = 29;
@@ -169,22 +178,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.label1.Location = new System.Drawing.Point(406, 101);
+            this.label1.Location = new System.Drawing.Point(377, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 20);
             this.label1.TabIndex = 32;
             this.label1.Text = "Nếu xem tất cả bảng điểm thì không chọn học kỳ";
-            // 
-            // SubjectID
-            // 
-            this.SubjectID.DisplayIndex = 1;
-            this.SubjectID.Text = "Mã Môn";
-            // 
-            // SubjectName
-            // 
-            this.SubjectName.DisplayIndex = 2;
-            this.SubjectName.Text = "Tên Môn";
-            this.SubjectName.Width = 100;
             // 
             // tb_khac
             // 

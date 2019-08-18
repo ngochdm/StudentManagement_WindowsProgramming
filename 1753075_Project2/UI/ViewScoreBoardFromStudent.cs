@@ -145,6 +145,8 @@ namespace UI
                 item.SubItems.Add(count.ToString());
                 count++;
 
+                if (score.DiemTong < 5.0) item.ForeColor = Color.Red;
+
                 lv.Items.Add(item);
             }
             lv.EndUpdate();

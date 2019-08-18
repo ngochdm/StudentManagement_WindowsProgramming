@@ -43,6 +43,7 @@
             this.lb_tenmon = new System.Windows.Forms.Label();
             this.lb_Hocky = new System.Windows.Forms.Label();
             this.cbb_hocky = new System.Windows.Forms.ComboBox();
+            this.lb_statistic = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lv
@@ -56,10 +57,10 @@
             this.STT});
             this.lv.FullRowSelect = true;
             this.lv.GridLines = true;
-            this.lv.Location = new System.Drawing.Point(12, 110);
+            this.lv.Location = new System.Drawing.Point(12, 143);
             this.lv.MultiSelect = false;
             this.lv.Name = "lv";
-            this.lv.Size = new System.Drawing.Size(776, 584);
+            this.lv.Size = new System.Drawing.Size(776, 551);
             this.lv.TabIndex = 5;
             this.lv.UseCompatibleStateImageBehavior = false;
             this.lv.View = System.Windows.Forms.View.Details;
@@ -174,11 +175,23 @@
             this.cbb_hocky.TabIndex = 27;
             this.cbb_hocky.SelectedIndexChanged += new System.EventHandler(this.cbb_hocky_SelectedIndexChanged);
             // 
+            // lb_statistic
+            // 
+            this.lb_statistic.AutoSize = true;
+            this.lb_statistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_statistic.ForeColor = System.Drawing.Color.Red;
+            this.lb_statistic.Location = new System.Drawing.Point(28, 113);
+            this.lb_statistic.Name = "lb_statistic";
+            this.lb_statistic.Size = new System.Drawing.Size(78, 22);
+            this.lb_statistic.TabIndex = 29;
+            this.lb_statistic.Text = "Statistic:";
+            // 
             // ViewScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 706);
+            this.Controls.Add(this.lb_statistic);
             this.Controls.Add(this.lb_Hocky);
             this.Controls.Add(this.cbb_hocky);
             this.Controls.Add(this.lb_tenmon);
@@ -214,5 +227,6 @@
         private System.Windows.Forms.ColumnHeader STT;
         private System.Windows.Forms.Label lb_Hocky;
         private System.Windows.Forms.ComboBox cbb_hocky;
+        private System.Windows.Forms.Label lb_statistic;
     }
 }
