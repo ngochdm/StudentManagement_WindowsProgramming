@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DTO
@@ -46,13 +47,7 @@ namespace DTO
             public GiaoVu() { }
              public GiaoVu(string gv_id, string cmnd, string hoten, string pwd, string ngsinh, string dchi, string gt) : base(gv_id, cmnd, hoten, ngsinh, dchi, gt)
             {
-                MatKhau = pwd;
-                /*MaGV = gv_id;
-                SoCMND = cmnd;
-                HoTen = hoten;
-                NgaySinh = ngsinh;
-                DiaChi = dchi;
-                GioiTinh = gt;*/
+                MatKhau = new DataTransferObject().hashPass(pwd);
             }
 
             public GiaoVu(string gv_id, string cmnd, string hoten, string ngsinh, string dchi, string gt) : base(gv_id, cmnd, hoten, ngsinh, dchi, gt) { }
@@ -92,7 +87,8 @@ namespace DTO
                 var day = int.Parse(nsinh[0]).ToString("00");
                 var month = int.Parse(nsinh[1]).ToString("00");
                 var year = nsinh[2];
-                MatKhau = $"{day}{month}{year}";
+                var matkhau = $"{day}{month}{year}";
+                MatKhau = new DTO.DataTransferObject().hashPass(matkhau);
             }
         }
 
@@ -180,6 +176,28 @@ namespace DTO
                 MaMonHoc = mamon;
                 TenMonHoc = tenmon;
             }
+        }
+
+        public string hashPass(string pass)
+        {
+            string passAfterHash = "";
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes("Chuỗi cần mã hóa");
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            passAfterHash = sb.ToString();
+            //nếu bạn muốn các chữ cái in thường thay vì in hoa thì bạn thay chữ "X" in hoa             trong "X2" thành "x"
+
+            return passAfterHash;
         }
     }
 }

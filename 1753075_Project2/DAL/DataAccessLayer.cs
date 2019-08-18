@@ -33,25 +33,28 @@ namespace DAL
         {
             try
             {
+                string pass = new DTO.DataTransferObject().hashPass(pwd);
                 var cnn = new OleDbConnection()
                 {
                     ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
                     //ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
+
                 var cmd = new OleDbCommand()
                 {
                     Connection = cnn,
                     CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ?",
                 };
                 cmd.Parameters.AddWithValue("?", user);
+
                 var rd = cmd.ExecuteScalar();
                 if (rd.ToString() == "1")
                 {
                     cmd.Parameters.Clear();
                     cmd.CommandText = "SELECT COUNT(MAGIAOVU) FROM GIAOVU WHERE MAGIAOVU = ? AND MATKHAU = ?";
                     cmd.Parameters.AddWithValue("?", user);
-                    cmd.Parameters.AddWithValue("?", pwd);
+                    cmd.Parameters.AddWithValue("?", pass);
                     rd = cmd.ExecuteScalar();
                     if (rd.ToString() == "1")
                     {
@@ -75,7 +78,7 @@ namespace DAL
                         cmd.Parameters.Clear();
                         cmd.CommandText = "SELECT COUNT(MSSV) FROM SINHVIEN WHERE MSSV = ? AND MATKHAU = ?";
                         cmd.Parameters.AddWithValue("?", user);
-                        cmd.Parameters.AddWithValue("?", pwd);
+                        cmd.Parameters.AddWithValue("?", pass);
                         rd = cmd.ExecuteScalar();
                         if (rd.ToString() == "1")
                         {
@@ -108,7 +111,7 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = "SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM SINHVIEN WHERE MSSV = ?"
+                CommandText = "SELECT MSSV, SOCMND, HOTEN, MALOP, NGAYSINH, DIACHI, GIOITINH FROM SINHVIEN WHERE MSSV = ?"
             };
             cmd.Parameters.AddWithValue("?", mssv);
             var rd = cmd.ExecuteReader();
@@ -122,7 +125,7 @@ namespace DAL
                 if (!rd.IsDBNull(4)) sv.NgaySinh = rd.GetDateTime(4).ToShortDateString();
                 if (!rd.IsDBNull(5)) sv.DiaChi = rd.GetString(5);
                 if (!rd.IsDBNull(6)) sv.GioiTinh = rd.GetString(6);
-                if (!rd.IsDBNull(7)) sv.MatKhau = rd.GetString(7);
+                sv.MatKhau = "";
             }
 
             cnn.Close();
@@ -140,7 +143,7 @@ namespace DAL
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
-                CommandText = "SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH, MATKHAU FROM GIAOVU WHERE MAGIAOVU = ?"
+                CommandText = "SELECT MAGIAOVU, SOCMND, HOTEN, NGAYSINH, DIACHI, GIOITINH FROM GIAOVU WHERE MAGIAOVU = ?"
             };
 
             cmd.Parameters.AddWithValue("?", MaGV);
@@ -154,7 +157,7 @@ namespace DAL
                 if (!rd.IsDBNull(3)) gv.NgaySinh = rd.GetDateTime(3).ToShortDateString();
                 if (!rd.IsDBNull(4)) gv.DiaChi = rd.GetString(4);
                 if (!rd.IsDBNull(5)) gv.GioiTinh = rd.GetString(5);
-                if (!rd.IsDBNull(6)) gv.MatKhau = rd.GetString(6).ToString();
+                gv.MatKhau = "";
             }
             cnn.Close();
             return gv;
@@ -963,10 +966,12 @@ namespace DAL
 
             if (rd.ToString() == "1")
             {
+                var NewPass = new DTO.DataTransferObject().hashPass(newpass);
+
                 cmd.Parameters.Clear();
                 cmd.CommandText = "UPDATE GIAOVU SET MATKHAU = ? WHERE MAGIAOVU = ?";
 
-                cmd.Parameters.AddWithValue("?", newpass);
+                cmd.Parameters.AddWithValue("?", NewPass);
                 cmd.Parameters.AddWithValue("?", magv);
 
                 rd = cmd.ExecuteNonQuery();
@@ -1000,10 +1005,12 @@ namespace DAL
 
             if (rd.ToString() == "1")
             {
+                var NewPass = new DTO.DataTransferObject().hashPass(newpass);
+
                 cmd.Parameters.Clear();
                 cmd.CommandText = "UPDATE SINHVIEN SET MATKHAU = ? WHERE MSSV = ?";
 
-                cmd.Parameters.AddWithValue("?", newpass);
+                cmd.Parameters.AddWithValue("?", NewPass);
                 cmd.Parameters.AddWithValue("?", mssv);
 
                 rd = cmd.ExecuteNonQuery();
