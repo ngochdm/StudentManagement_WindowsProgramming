@@ -75,24 +75,28 @@
             // 
             this.midterm.DisplayIndex = 2;
             this.midterm.Text = "Giữa Kỳ";
+            this.midterm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.midterm.Width = 80;
             // 
             // final
             // 
             this.final.DisplayIndex = 3;
             this.final.Text = "Cuối Kỳ";
+            this.final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.final.Width = 80;
             // 
             // others
             // 
             this.others.DisplayIndex = 4;
             this.others.Text = "Điểm khác";
+            this.others.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.others.Width = 80;
             // 
             // average
             // 
             this.average.DisplayIndex = 5;
             this.average.Text = "Điểm Tổng";
+            this.average.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.average.Width = 80;
             // 
             // STT
@@ -180,7 +184,7 @@
             this.lb_statistic.AutoSize = true;
             this.lb_statistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_statistic.ForeColor = System.Drawing.Color.Red;
-            this.lb_statistic.Location = new System.Drawing.Point(28, 113);
+            this.lb_statistic.Location = new System.Drawing.Point(12, 109);
             this.lb_statistic.Name = "lb_statistic";
             this.lb_statistic.Size = new System.Drawing.Size(78, 22);
             this.lb_statistic.TabIndex = 29;

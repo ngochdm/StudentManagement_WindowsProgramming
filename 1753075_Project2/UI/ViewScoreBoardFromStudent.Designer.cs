@@ -192,6 +192,7 @@
             this.tb_khac.ReadOnly = true;
             this.tb_khac.Size = new System.Drawing.Size(155, 35);
             this.tb_khac.TabIndex = 37;
+            this.tb_khac.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tb_gk
             // 
@@ -201,6 +202,7 @@
             this.tb_gk.ReadOnly = true;
             this.tb_gk.Size = new System.Drawing.Size(155, 35);
             this.tb_gk.TabIndex = 35;
+            this.tb_gk.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tb_tong
             // 
@@ -210,6 +212,7 @@
             this.tb_tong.ReadOnly = true;
             this.tb_tong.Size = new System.Drawing.Size(155, 35);
             this.tb_tong.TabIndex = 38;
+            this.tb_tong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tb_ck
             // 
@@ -219,6 +222,7 @@
             this.tb_ck.ReadOnly = true;
             this.tb_ck.Size = new System.Drawing.Size(155, 35);
             this.tb_ck.TabIndex = 36;
+            this.tb_ck.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lb_tong
             // 

@@ -1,2 +1,2 @@
-LAPTOP_KM8USCIO
+LAPTOP-KM8USCIO
 StudentManagement

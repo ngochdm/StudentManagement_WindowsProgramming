@@ -12,7 +12,7 @@ namespace DAL
     public class DataAccessLayer
     {
         #region Dynamic Connection String
-        /*private string ConnectionString { get; set; }
+        private string ConnectionString { get; set; }
         public DataAccessLayer()
         {
             ConnectionString = GetConnectionString("set_connection.txt");
@@ -22,13 +22,14 @@ namespace DAL
             string connectionstring = "";
             using (var rd = new StreamReader(path))
             {
-                var server = rd.ReadLine();
+                var server = rd.ReadLine().Replace("_", "-");
                 var db = rd.ReadLine();
                 connectionstring = $"Provider=SQLNCLI11;Server={server};Database={db};Trusted_Connection=Yes";
             }
             return connectionstring;
-        }*/
+        }
         #endregion
+
         public int checkUserPwd(string user, string pwd)
         {
             try
@@ -36,9 +37,10 @@ namespace DAL
                 string pass = new DTO.DataTransferObject().hashPass(pwd);
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-                    //ConnectionString = this.ConnectionString
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
+
                 cnn.Open();
 
                 var cmd = new OleDbCommand()
@@ -105,9 +107,11 @@ namespace DAL
             SinhVien sv = new SinhVien();
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
+
             var cmd = new OleDbCommand()
             {
                 Connection = cnn,
@@ -136,7 +140,8 @@ namespace DAL
             GiaoVu gv = new GiaoVu();
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -168,9 +173,11 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
+
                 var cmd = new OleDbCommand()
                 {
                     Connection = cnn,
@@ -209,9 +216,11 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
+
                 var cmd = new OleDbCommand()
                 {
                     Connection = cnn,
@@ -270,7 +279,8 @@ namespace DAL
             var classes = new List<LopHoc>();
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -298,7 +308,8 @@ namespace DAL
             var students = new List<SinhVien>();
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -334,9 +345,11 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
+
                 var cmd = new OleDbCommand()
                 {
                     Connection = cnn,
@@ -402,7 +415,8 @@ namespace DAL
             var timetable = new List<ThoiKhoaBieu>();
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -442,7 +456,8 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
 
@@ -482,7 +497,8 @@ namespace DAL
 
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -531,7 +547,8 @@ namespace DAL
 
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -575,7 +592,8 @@ namespace DAL
 
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -613,7 +631,8 @@ namespace DAL
 
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -645,7 +664,8 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
 
@@ -677,7 +697,8 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
 
@@ -727,7 +748,8 @@ namespace DAL
         {
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -770,7 +792,8 @@ namespace DAL
                 //MSSV,MaLop,MaMonHoc,HocKy
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
 
@@ -818,7 +841,8 @@ namespace DAL
             {
                 var cnn = new OleDbConnection()
                 {
-                    ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
 
@@ -848,7 +872,8 @@ namespace DAL
 
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -877,38 +902,47 @@ namespace DAL
         }
         public bool checkScoreBoardIsPublicOrNot(string malop, string mamon, string hocky)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT CONGKHAIBANGDIEM FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
-            };
-            
-            cmd.Parameters.AddWithValue("?", malop);
-            cmd.Parameters.AddWithValue("?", mamon);
-            cmd.Parameters.AddWithValue("?", hocky);
-            var rd = cmd.ExecuteReader();
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT CONGKHAIBANGDIEM FROM TKB WHERE MALOP = ? AND MAMONHOC = ? AND HOCKY = ?"
+                };
 
-            string ckbd = "0";
-            while(rd.Read())
-            {
-                ckbd = rd.GetString(0);
+                cmd.Parameters.AddWithValue("?", malop);
+                cmd.Parameters.AddWithValue("?", mamon);
+                cmd.Parameters.AddWithValue("?", hocky);
+                var rd = cmd.ExecuteReader();
+
+                string ckbd = "0";
+                while (rd.Read())
+                {
+                    ckbd = rd.GetString(0);
+                }
+                cnn.Close();
+
+                if (ckbd == "1") return true;
+                else return false;
             }
-            cnn.Close();
-
-            if (ckbd == "1") return true;
-            else return false;
+            catch
+            {
+                return false;
+            }
         }
         public BangDiem getScoreFromDatabase(string mssv, string malop, string mamon, string hocky)
         {
             var cnn = new OleDbConnection()
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                ConnectionString = this.ConnectionString
             };
             cnn.Open();
 
@@ -949,81 +983,93 @@ namespace DAL
         }
         public bool changePasswordForGiaoVu(string magv, string newpass)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM GIAOVU WHERE MAGIAOVU = ? "
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM GIAOVU WHERE MAGIAOVU = ? "
+                };
 
-            cmd.Parameters.AddWithValue("?", magv);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "1")
-            {
-                var NewPass = new DTO.DataTransferObject().hashPass(newpass);
-
-                cmd.Parameters.Clear();
-                cmd.CommandText = "UPDATE GIAOVU SET MATKHAU = ? WHERE MAGIAOVU = ?";
-
-                cmd.Parameters.AddWithValue("?", NewPass);
                 cmd.Parameters.AddWithValue("?", magv);
+                var rd = cmd.ExecuteScalar();
 
-                rd = cmd.ExecuteNonQuery();
-                cnn.Close();
-                return rd.ToString() == "1";
+                if (rd.ToString() == "1")
+                {
+                    var NewPass = new DTO.DataTransferObject().hashPass(newpass);
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "UPDATE GIAOVU SET MATKHAU = ? WHERE MAGIAOVU = ?";
+
+                    cmd.Parameters.AddWithValue("?", NewPass);
+                    cmd.Parameters.AddWithValue("?", magv);
+
+                    rd = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    return rd.ToString() == "1";
+                }
+                else
+                {
+                    cnn.Close();
+                    return false;
+                }
             }
-            else
+            catch
             {
-                cnn.Close();
                 return false;
             }
-
-           // return false;
         }
         public bool changePasswordForStudent(string mssv, string newpass)
         {
-            var cnn = new OleDbConnection()
+            try
             {
-                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
-            };
-            cnn.Open();
+                var cnn = new OleDbConnection()
+                {
+                    //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    ConnectionString = this.ConnectionString
+                };
+                cnn.Open();
 
-            var cmd = new OleDbCommand()
-            {
-                Connection = cnn,
-                CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ? "
-            };
+                var cmd = new OleDbCommand()
+                {
+                    Connection = cnn,
+                    CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ? "
+                };
 
-            cmd.Parameters.AddWithValue("?", mssv);
-            var rd = cmd.ExecuteScalar();
-
-            if (rd.ToString() == "1")
-            {
-                var NewPass = new DTO.DataTransferObject().hashPass(newpass);
-
-                cmd.Parameters.Clear();
-                cmd.CommandText = "UPDATE SINHVIEN SET MATKHAU = ? WHERE MSSV = ?";
-
-                cmd.Parameters.AddWithValue("?", NewPass);
                 cmd.Parameters.AddWithValue("?", mssv);
+                var rd = cmd.ExecuteScalar();
 
-                rd = cmd.ExecuteNonQuery();
-                cnn.Close();
-                return rd.ToString() == "1";
+                if (rd.ToString() == "1")
+                {
+                    var NewPass = new DTO.DataTransferObject().hashPass(newpass);
+
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = "UPDATE SINHVIEN SET MATKHAU = ? WHERE MSSV = ?";
+
+                    cmd.Parameters.AddWithValue("?", NewPass);
+                    cmd.Parameters.AddWithValue("?", mssv);
+
+                    rd = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    return rd.ToString() == "1";
+                }
+                else
+                {
+                    cnn.Close();
+                    return false;
+                }
             }
-            else
+            catch
             {
-                cnn.Close();
                 return false;
             }
-
-            // return false;
         }
 
     }
