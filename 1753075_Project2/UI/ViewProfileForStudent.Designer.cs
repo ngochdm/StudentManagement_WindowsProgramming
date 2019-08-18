@@ -36,7 +36,6 @@
             this.tb_hotensv = new System.Windows.Forms.TextBox();
             this.tb_Mssv = new System.Windows.Forms.TextBox();
             this.btn_changePwdsv = new System.Windows.Forms.Button();
-            this.btn_editsv = new System.Windows.Forms.Button();
             this.lb_hotensv = new System.Windows.Forms.Label();
             this.lb_gtsv = new System.Windows.Forms.Label();
             this.lb_ngsinhsv = new System.Windows.Forms.Label();
@@ -52,8 +51,9 @@
             this.tb_GTsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_GTsv.Location = new System.Drawing.Point(526, 171);
             this.tb_GTsv.Name = "tb_GTsv";
+            this.tb_GTsv.ReadOnly = true;
             this.tb_GTsv.Size = new System.Drawing.Size(131, 30);
-            this.tb_GTsv.TabIndex = 12;
+            this.tb_GTsv.TabIndex = 6;
             // 
             // tb_Dchisv
             // 
@@ -61,32 +61,36 @@
             this.tb_Dchisv.Location = new System.Drawing.Point(168, 221);
             this.tb_Dchisv.Multiline = true;
             this.tb_Dchisv.Name = "tb_Dchisv";
+            this.tb_Dchisv.ReadOnly = true;
             this.tb_Dchisv.Size = new System.Drawing.Size(489, 73);
-            this.tb_Dchisv.TabIndex = 13;
+            this.tb_Dchisv.TabIndex = 7;
             // 
             // tb_ngsinhsv
             // 
             this.tb_ngsinhsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_ngsinhsv.Location = new System.Drawing.Point(168, 171);
             this.tb_ngsinhsv.Name = "tb_ngsinhsv";
+            this.tb_ngsinhsv.ReadOnly = true;
             this.tb_ngsinhsv.Size = new System.Drawing.Size(230, 30);
-            this.tb_ngsinhsv.TabIndex = 14;
+            this.tb_ngsinhsv.TabIndex = 5;
             // 
             // tb_cmndsv
             // 
             this.tb_cmndsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_cmndsv.Location = new System.Drawing.Point(168, 125);
             this.tb_cmndsv.Name = "tb_cmndsv";
+            this.tb_cmndsv.ReadOnly = true;
             this.tb_cmndsv.Size = new System.Drawing.Size(230, 30);
-            this.tb_cmndsv.TabIndex = 15;
+            this.tb_cmndsv.TabIndex = 3;
             // 
             // tb_hotensv
             // 
             this.tb_hotensv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_hotensv.Location = new System.Drawing.Point(168, 78);
             this.tb_hotensv.Name = "tb_hotensv";
+            this.tb_hotensv.ReadOnly = true;
             this.tb_hotensv.Size = new System.Drawing.Size(489, 30);
-            this.tb_hotensv.TabIndex = 16;
+            this.tb_hotensv.TabIndex = 2;
             // 
             // tb_Mssv
             // 
@@ -95,27 +99,21 @@
             this.tb_Mssv.Name = "tb_Mssv";
             this.tb_Mssv.ReadOnly = true;
             this.tb_Mssv.Size = new System.Drawing.Size(489, 30);
-            this.tb_Mssv.TabIndex = 3;
+            this.tb_Mssv.TabIndex = 0;
             // 
             // btn_changePwdsv
             // 
             this.btn_changePwdsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_changePwdsv.Location = new System.Drawing.Point(50, 327);
+            this.btn_changePwdsv.Image = ((System.Drawing.Image)(resources.GetObject("btn_changePwdsv.Image")));
+            this.btn_changePwdsv.Location = new System.Drawing.Point(323, 320);
             this.btn_changePwdsv.Name = "btn_changePwdsv";
-            this.btn_changePwdsv.Size = new System.Drawing.Size(209, 48);
-            this.btn_changePwdsv.TabIndex = 10;
+            this.btn_changePwdsv.Size = new System.Drawing.Size(334, 60);
+            this.btn_changePwdsv.TabIndex = 1;
             this.btn_changePwdsv.Text = "Change password";
+            this.btn_changePwdsv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_changePwdsv.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_changePwdsv.UseVisualStyleBackColor = true;
-            // 
-            // btn_editsv
-            // 
-            this.btn_editsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_editsv.Location = new System.Drawing.Point(543, 318);
-            this.btn_editsv.Name = "btn_editsv";
-            this.btn_editsv.Size = new System.Drawing.Size(114, 57);
-            this.btn_editsv.TabIndex = 11;
-            this.btn_editsv.Text = "EDIT";
-            this.btn_editsv.UseVisualStyleBackColor = true;
+            this.btn_changePwdsv.Click += new System.EventHandler(this.btn_changePwdsv_Click);
             // 
             // lb_hotensv
             // 
@@ -192,8 +190,9 @@
             this.tb_lopsv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_lopsv.Location = new System.Drawing.Point(526, 125);
             this.tb_lopsv.Name = "tb_lopsv";
+            this.tb_lopsv.ReadOnly = true;
             this.tb_lopsv.Size = new System.Drawing.Size(131, 30);
-            this.tb_lopsv.TabIndex = 12;
+            this.tb_lopsv.TabIndex = 4;
             // 
             // ViewProfileForStudent
             // 
@@ -208,7 +207,6 @@
             this.Controls.Add(this.tb_hotensv);
             this.Controls.Add(this.tb_Mssv);
             this.Controls.Add(this.btn_changePwdsv);
-            this.Controls.Add(this.btn_editsv);
             this.Controls.Add(this.lb_hotensv);
             this.Controls.Add(this.lb_LopSv);
             this.Controls.Add(this.lb_gtsv);
@@ -236,7 +234,6 @@
         private System.Windows.Forms.TextBox tb_hotensv;
         private System.Windows.Forms.TextBox tb_Mssv;
         private System.Windows.Forms.Button btn_changePwdsv;
-        private System.Windows.Forms.Button btn_editsv;
         private System.Windows.Forms.Label lb_hotensv;
         private System.Windows.Forms.Label lb_gtsv;
         private System.Windows.Forms.Label lb_ngsinhsv;

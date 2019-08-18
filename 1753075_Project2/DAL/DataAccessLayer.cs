@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.IO;
 using System.Linq;
 using System.Text;
 using DTO;
@@ -10,6 +11,24 @@ namespace DAL
 {
     public class DataAccessLayer
     {
+        #region Dynamic Connection String
+        /*private string ConnectionString { get; set; }
+        public DataAccessLayer()
+        {
+            ConnectionString = GetConnectionString("set_connection.txt");
+        }
+        public string GetConnectionString(string path)
+        {
+            string connectionstring = "";
+            using (var rd = new StreamReader(path))
+            {
+                var server = rd.ReadLine();
+                var db = rd.ReadLine();
+                connectionstring = $"Provider=SQLNCLI11;Server={server};Database={db};Trusted_Connection=Yes";
+            }
+            return connectionstring;
+        }*/
+        #endregion
         public int checkUserPwd(string user, string pwd)
         {
             try
@@ -17,6 +36,7 @@ namespace DAL
                 var cnn = new OleDbConnection()
                 {
                     ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+                    //ConnectionString = this.ConnectionString
                 };
                 cnn.Open();
                 var cmd = new OleDbCommand()
@@ -924,5 +944,80 @@ namespace DAL
 
             return scoreboard;
         }
+        public bool changePasswordForGiaoVu(string magv, string newpass)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT COUNT(*) FROM GIAOVU WHERE MAGIAOVU = ? "
+            };
+
+            cmd.Parameters.AddWithValue("?", magv);
+            var rd = cmd.ExecuteScalar();
+
+            if (rd.ToString() == "1")
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "UPDATE GIAOVU SET MATKHAU = ? WHERE MAGIAOVU = ?";
+
+                cmd.Parameters.AddWithValue("?", newpass);
+                cmd.Parameters.AddWithValue("?", magv);
+
+                rd = cmd.ExecuteNonQuery();
+                cnn.Close();
+                return rd.ToString() == "1";
+            }
+            else
+            {
+                cnn.Close();
+                return false;
+            }
+
+           // return false;
+        }
+        public bool changePasswordForStudent(string mssv, string newpass)
+        {
+            var cnn = new OleDbConnection()
+            {
+                ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"
+            };
+            cnn.Open();
+
+            var cmd = new OleDbCommand()
+            {
+                Connection = cnn,
+                CommandText = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = ? "
+            };
+
+            cmd.Parameters.AddWithValue("?", mssv);
+            var rd = cmd.ExecuteScalar();
+
+            if (rd.ToString() == "1")
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "UPDATE SINHVIEN SET MATKHAU = ? WHERE MSSV = ?";
+
+                cmd.Parameters.AddWithValue("?", newpass);
+                cmd.Parameters.AddWithValue("?", mssv);
+
+                rd = cmd.ExecuteNonQuery();
+                cnn.Close();
+                return rd.ToString() == "1";
+            }
+            else
+            {
+                cnn.Close();
+                return false;
+            }
+
+            // return false;
+        }
+
     }
 }

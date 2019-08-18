@@ -34,5 +34,11 @@ namespace UI
             tb_hotenGV.Text = gv.HoTen;
             tb_ngsinhGv.Text = gv.NgaySinh;
         }
+
+        private void btn_changePwdGv_Click(object sender, EventArgs e)
+        {
+            var changePass = new ChangePassword(MaGV);
+            changePass.ShowDialog();
+        }
     }
 }

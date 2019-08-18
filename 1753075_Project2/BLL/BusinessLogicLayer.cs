@@ -336,5 +336,16 @@ namespace BLL
                 return new BangDiem();
             }
         }
+        public bool changePwdForGiaovu(string magv,string newpass)
+        {
+            if (newpass.Length > 255) return false;
+            else return new DAL.DataAccessLayer().changePasswordForGiaoVu(magv, newpass);
+        }
+        public bool changePwdForStudent(string mssv, string newpass)
+        {
+            if (newpass.Length > 255) return false;
+            else return new DAL.DataAccessLayer().changePasswordForStudent(mssv, newpass);
+        }
+
     }
 }

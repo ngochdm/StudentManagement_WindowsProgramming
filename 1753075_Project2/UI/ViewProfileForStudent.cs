@@ -35,5 +35,11 @@ namespace UI
             tb_Mssv.Text = MSSV;
             tb_ngsinhsv.Text = std.NgaySinh;
         }
+
+        private void btn_changePwdsv_Click(object sender, EventArgs e)
+        {
+            var changePass = new ChangePassword(MSSV);
+            changePass.ShowDialog();
+        }
     }
 }

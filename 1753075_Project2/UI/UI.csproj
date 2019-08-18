@@ -167,6 +167,9 @@
     <EmbeddedResource Include="AddAStudent.resx">
       <DependentUpon>AddAStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditListStdsInClassAndSubject.resx">
       <DependentUpon>EditListStdsInClassAndSubject.cs</DependentUpon>
     </EmbeddedResource>

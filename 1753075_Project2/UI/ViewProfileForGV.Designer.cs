@@ -35,7 +35,6 @@
             this.lb_ngsinhGv = new System.Windows.Forms.Label();
             this.lb_dchiGv = new System.Windows.Forms.Label();
             this.lb_gtGv = new System.Windows.Forms.Label();
-            this.btn_editGv = new System.Windows.Forms.Button();
             this.btn_changePwdGv = new System.Windows.Forms.Button();
             this.tb_MaGV = new System.Windows.Forms.TextBox();
             this.tb_hotenGV = new System.Windows.Forms.TextBox();
@@ -105,25 +104,19 @@
             this.lb_gtGv.TabIndex = 0;
             this.lb_gtGv.Text = "Giới Tính:";
             // 
-            // btn_editGv
-            // 
-            this.btn_editGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_editGv.Location = new System.Drawing.Point(550, 340);
-            this.btn_editGv.Name = "btn_editGv";
-            this.btn_editGv.Size = new System.Drawing.Size(114, 57);
-            this.btn_editGv.TabIndex = 1;
-            this.btn_editGv.Text = "EDIT";
-            this.btn_editGv.UseVisualStyleBackColor = true;
-            // 
             // btn_changePwdGv
             // 
             this.btn_changePwdGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_changePwdGv.Location = new System.Drawing.Point(57, 349);
+            this.btn_changePwdGv.Image = ((System.Drawing.Image)(resources.GetObject("btn_changePwdGv.Image")));
+            this.btn_changePwdGv.Location = new System.Drawing.Point(323, 347);
             this.btn_changePwdGv.Name = "btn_changePwdGv";
-            this.btn_changePwdGv.Size = new System.Drawing.Size(223, 48);
-            this.btn_changePwdGv.TabIndex = 1;
+            this.btn_changePwdGv.Size = new System.Drawing.Size(341, 57);
+            this.btn_changePwdGv.TabIndex = 0;
             this.btn_changePwdGv.Text = "Change password";
+            this.btn_changePwdGv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_changePwdGv.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_changePwdGv.UseVisualStyleBackColor = true;
+            this.btn_changePwdGv.Click += new System.EventHandler(this.btn_changePwdGv_Click);
             // 
             // tb_MaGV
             // 
@@ -139,14 +132,16 @@
             this.tb_hotenGV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_hotenGV.Location = new System.Drawing.Point(175, 100);
             this.tb_hotenGV.Name = "tb_hotenGV";
+            this.tb_hotenGV.ReadOnly = true;
             this.tb_hotenGV.Size = new System.Drawing.Size(489, 30);
-            this.tb_hotenGV.TabIndex = 2;
+            this.tb_hotenGV.TabIndex = 1;
             // 
             // tb_cmndGv
             // 
             this.tb_cmndGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_cmndGv.Location = new System.Drawing.Point(175, 147);
             this.tb_cmndGv.Name = "tb_cmndGv";
+            this.tb_cmndGv.ReadOnly = true;
             this.tb_cmndGv.Size = new System.Drawing.Size(489, 30);
             this.tb_cmndGv.TabIndex = 2;
             // 
@@ -155,8 +150,9 @@
             this.tb_ngsinhGv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_ngsinhGv.Location = new System.Drawing.Point(175, 193);
             this.tb_ngsinhGv.Name = "tb_ngsinhGv";
+            this.tb_ngsinhGv.ReadOnly = true;
             this.tb_ngsinhGv.Size = new System.Drawing.Size(265, 30);
-            this.tb_ngsinhGv.TabIndex = 2;
+            this.tb_ngsinhGv.TabIndex = 3;
             // 
             // tb_DchiGv
             // 
@@ -164,16 +160,18 @@
             this.tb_DchiGv.Location = new System.Drawing.Point(175, 243);
             this.tb_DchiGv.Multiline = true;
             this.tb_DchiGv.Name = "tb_DchiGv";
+            this.tb_DchiGv.ReadOnly = true;
             this.tb_DchiGv.Size = new System.Drawing.Size(489, 73);
-            this.tb_DchiGv.TabIndex = 2;
+            this.tb_DchiGv.TabIndex = 5;
             // 
             // tb_GTgv
             // 
             this.tb_GTgv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_GTgv.Location = new System.Drawing.Point(565, 193);
             this.tb_GTgv.Name = "tb_GTgv";
+            this.tb_GTgv.ReadOnly = true;
             this.tb_GTgv.Size = new System.Drawing.Size(99, 30);
-            this.tb_GTgv.TabIndex = 2;
+            this.tb_GTgv.TabIndex = 4;
             // 
             // ViewProfileForGV
             // 
@@ -187,7 +185,6 @@
             this.Controls.Add(this.tb_hotenGV);
             this.Controls.Add(this.tb_MaGV);
             this.Controls.Add(this.btn_changePwdGv);
-            this.Controls.Add(this.btn_editGv);
             this.Controls.Add(this.lb_hotenGv);
             this.Controls.Add(this.lb_gtGv);
             this.Controls.Add(this.lb_ngsinhGv);
@@ -213,7 +210,6 @@
         private System.Windows.Forms.Label lb_ngsinhGv;
         private System.Windows.Forms.Label lb_dchiGv;
         private System.Windows.Forms.Label lb_gtGv;
-        private System.Windows.Forms.Button btn_editGv;
         private System.Windows.Forms.Button btn_changePwdGv;
         private System.Windows.Forms.TextBox tb_MaGV;
         private System.Windows.Forms.TextBox tb_hotenGV;
