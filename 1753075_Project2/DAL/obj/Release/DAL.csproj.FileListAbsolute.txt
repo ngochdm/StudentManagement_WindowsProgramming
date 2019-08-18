@@ -1,0 +1,9 @@
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\bin\Release\DAL.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\bin\Release\DAL.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\bin\Release\DTO.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\bin\Release\DTO.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\obj\Release\DAL.csproj.CopyComplete
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\obj\Release\DAL.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DAL\obj\Release\DAL.pdb

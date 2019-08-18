@@ -1,0 +1,11 @@
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\BLL.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\BLL.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\DAL.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\DTO.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\DAL.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\bin\Release\DTO.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\obj\Release\BLL.csproj.CopyComplete
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\obj\Release\BLL.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\BLL\obj\Release\BLL.pdb

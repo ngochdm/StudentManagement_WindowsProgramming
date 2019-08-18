@@ -135,7 +135,7 @@ namespace UI
                 //MaMon,TenMon,HocKy,DiemGK,DiemCK,DiemKhac,DiemTong,STT
                 ListViewItem item = new ListViewItem(score.MaMonHoc);
 
-                item.SubItems.Add(subjects.Find(x => x.MaMonHoc.Contains(MaMon)).TenMonHoc);
+                item.SubItems.Add(subjects.Find(x => x.MaMonHoc.Contains(MaMon.Trim())).TenMonHoc);
                 item.SubItems.Add(score.HocKy);
                 item.SubItems.Add(score.DiemGK.ToString());
                 item.SubItems.Add(score.DiemCK.ToString());

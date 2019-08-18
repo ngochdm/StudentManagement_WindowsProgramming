@@ -38,7 +38,7 @@ namespace DAL
         {
             try
             {
-                string pass = new DTO.DataTransferObject().hashPass(pwd);
+                string pass = new DTO.DataTransferObject().hashPass(pwd); 
                 var cnn = new OleDbConnection()
                 {
                     //ConnectionString = "Provider=SQLNCLI11;Server=LAPTOP-KM8USCIO;Database=StudentManagement;Trusted_Connection=Yes"

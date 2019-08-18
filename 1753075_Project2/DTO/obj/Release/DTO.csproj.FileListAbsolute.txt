@@ -1,0 +1,6 @@
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\bin\Release\DTO.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\bin\Release\DTO.pdb
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\obj\Release\DTO.csprojAssemblyReference.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\obj\Release\DTO.csproj.CoreCompileInputs.cache
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\obj\Release\DTO.dll
+D:\LEARNING\CLC2\Year 2\Term 3\LT Window\Project\Project 2_SM\Source Code\1753075_Project2\DTO\obj\Release\DTO.pdb
